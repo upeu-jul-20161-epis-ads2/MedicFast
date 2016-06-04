@@ -4,6 +4,7 @@ __pycache__
 media
 db.sqlite3
 /nbproject/private/
+migrations
 temp
 *~
 ~*
