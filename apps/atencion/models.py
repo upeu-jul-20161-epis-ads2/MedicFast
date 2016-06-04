@@ -96,12 +96,12 @@ class Persona(models.Model):
     ocupacion = models.CharField(max_length=20, choices=ocupacion)
     direccion_actual = models.CharField(max_length=100)
     distrito = models.ForeignKey(Distrito)
-
+    contacto = models.CharField(max_length=10)
     class Meta:
         verbose_name = "Persona"
         verbose_name_plural = "Personas"
     def __str__(self):
-        return "%s" %self.numero
+        return "%s" %(self.nombres, self.apellido_paterno,self.apellido_materno)
 
 class Historia(models.Model):
     persona = models.OneToOneField(Persona)

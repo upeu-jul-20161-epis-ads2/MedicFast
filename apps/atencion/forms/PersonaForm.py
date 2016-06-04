@@ -9,22 +9,22 @@ from unicodedata import normalize
 from ..models import Persona
 
 
-def validate_unique_nombre(self):
-    """validacion de campo unico"""
-    if normalize('NFKD', self).encode('ascii', 'ignore').lower() in list(
-            normalize('NFKD', c['nombre']).encode('ascii', 'ignore').lower()
-            for c in Persona.objects.values('nombre')
-    ):
-        raise forms.ValidationError(
-            _(u'%(model_name)s with this %(field_label)s already exists.') % {
-                'model_name': capfirst(_('group')),
-                'field_label': capfirst(_('nombre')),
-            })
-
 class PersonaForm(forms.ModelForm):
     """Class PersonaForm."""
     class Meta:
         model = Persona
-        exclude = ('',)
+        exclude = ('edad',)
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese nombre'}),}
+            'nombres': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese nombres'}),
+            'apellido_paterno': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Apellido Paterno'}),
+            'apellido_materno': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Apellido Materno'}),
+            'dni': forms.NumberInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese dni'}),
+            'fecha_nacimiento': forms.DateInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Fecha de Nacimiento'}),
+            'estado_civil': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+            'sexo': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+            'telefono': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Telefono/Celular'}),
+            'ocupacion': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+            'direccion_actual': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Direccion Actual'}),
+            'distrito': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+            'contacto': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Numero de Contacto'}),
+}

@@ -30,7 +30,7 @@ from apps.utils.forms import empty
 import json
 from django.utils.text import capfirst, get_text_list
 from .forms.PersonaForm import (PersonaForm)
-from .forms.ProductoForm import ProductoForm
+from .forms.ProductoForm import (ProductoForm)
 from .models import (Persona, Producto)
 
 
@@ -187,28 +187,6 @@ class PersonaDeleteView(DeleteView):
         return self.delete(request, *args, **kwargs)
 
 
-<<<<<<< HEAD
-class HitoriaBusquedaTemplateView(TemplateView):
-    """Historia Template View.
-
-    Clase usada para buscar el historial de una persona.
-    """
-
-    template_name = "historial/busqueda.html"
-
-    def get(self, request, *args, **kwargs):
-        try:
-            codigo = request.GET['codigo']
-            print(codigo)
-        except Exception as e:
-            pass
-
-        context = {}
-
-
-        return self.render_to_response(context)
-
-=======
 # class Producto
 class ProductoListView(ListView):
     model = Producto
@@ -360,4 +338,3 @@ class ProductoDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
->>>>>>> 9ee0fe2161baf4f24f7cf1924cbda8b41f77c0b2
