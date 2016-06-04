@@ -30,7 +30,7 @@ from apps.utils.forms import empty
 import json
 from django.utils.text import capfirst, get_text_list
 from .forms.PersonaForm import (PersonaForm)
-from .forms.ProductoForm import ProductoForm
+from .forms.ProductoForm import (ProductoForm)
 from .models import (Persona, Producto)
 
 

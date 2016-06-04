@@ -1,0 +1,100 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+{% block title %}
+
+{% endblock %}
+{% block rootcontainer %}
+
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '{% url "atencion:producto_list" %}?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '{% url "atencion:producto_list" %}?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+    <div class="btn-toolbar btn-toolbar-top">
+        <div class="row">
+            <div class="btn-actions">
+                <a href="{% url 'atencion:producto_add' %}" class="btn btn-primary text-bold" title="Agregar Producto">
+                    <i class="fa fa-plus">
+                    </i>
+                    <span class="hidden-xs"> Agregar Producto
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-overflow">
+        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="" data-search="codigo" data-order="codigo">Código</th>
+                    <th class="" data-search="descripcion" data-order="descripcion">Descripción</th>
+                    
+                    <th class="btn-actions col-block text-center">Stock</th>
+                
+                    <th class="btn-actions col-block text-center">opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in object_list %}
+                <tr>
+                    <td>
+                        {% if is_paginated %}
+                            {{ page_obj.start_index|add:forloop.counter0 }}
+                        {% else %}
+                            {{ forloop.counter }}
+                        {% endif %}
+                    </td>
+                    <td>{{ d.codigo }}</td>
+                    <td>{{ d.descripcion }}</td>
+                    <td>{{ d.stock }}</td>
+                   
+                    <td class="text-center">
+                        
+                         <a href="{% url 'atencion:producto_update' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Producto" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+                         <a href="{% url 'atencion:producto_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Producto?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Producto" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+   <div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }}
+            {% ifequal object_list.count 1 %}
+                {{ opts.verbose_name|capfirst }}
+            {% else %}{{ opts.verbose_name_plural|title }}
+            {% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+{% block customjs %}
+    <script>
+     $('#delmodal').on('hidden.bs.modal', function () {
+        $(location).attr('href', '{% url "atencion:producto_list" %}');
+     });
+    $('#updmodal').on('hidden.bs.modal', function () {
+        $(location).attr('href', '{% url "atencion:producto_list" %}');
+     });
+
+    </script>
+{% endblock %}
