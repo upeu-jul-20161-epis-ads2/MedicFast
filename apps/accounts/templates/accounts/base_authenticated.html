@@ -1,0 +1,76 @@
+{% extends "mod_backend/base.html" %}
+{% load i18n staticfiles %}
+
+{% block title %} {{ title }} | {{ site_title|default:_('Backend site admin') }} {% endblock title %}
+
+{% block extrastyle %}
+<link href="{% static 'jasny-bootstrap/css/jasny-bootstrap.css' %}" rel="stylesheet">
+
+<link href="{% static 'custom/css/base.css' %}" rel="stylesheet">
+<link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'bootstrap-fileinput/css/fileinput.css' %}" rel="stylesheet">
+<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet">
+
+{% endblock extrastyle%}
+
+{% block header %}
+
+
+{% include "accounts/partials/header.html" %}
+{% endblock header %}
+
+
+{% block rootcontainer %}
+<div id="shell-load">
+  <div class="breadcrumbs">
+    {% block breadcrumbs %}
+
+    {% endblock breadcrumbs %}
+  </div>
+  <div id="shell-content" class="container-fluid" >
+
+    <div class="container shell-view">
+
+      
+
+      <div class="page-header">
+        <h3>{% block content_title %}{% endblock content_title %}</h3>
+      </div>
+      {% block messages %}
+      {% load notify %}
+      {% get_notify request %}
+      {% endblock messages %}
+
+      {% block content %}{% endblock content %}
+      {% block sidebar %}{% endblock sidebar %}
+
+      
+    </div>
+  </div>
+</div> <!-- /dw-shell-load -->
+{% endblock rootcontainer %}
+
+
+{% block footer %}
+{% include "mod_backend/partials/footer.html" %}
+{% endblock footer %}
+
+<div id="loading-content" class="alpha60"></div>
+<div id="spinner" class="preview corner-all shadow-dark"></div>
+
+{% block extrajs %}
+<!--
+<script src="{% static 'jquery/jquery.spinx.js' %}"></script>
+-->
+<script src="{% static 'jasny-bootstrap/js/jasny-bootstrap.js' %}"></script>
+
+<script src="{% static 'custom/js/jquery.kumbiaphp.js' %}"></script>
+<script src="{% static 'custom/js/jquery.kgrid.js' %}"></script>
+<!--
+<script src="{% static 'custom/js/jquery.kloadx.js' %}"></script>
+-->
+<script src="{% static 'custom/js/backend.js' %}"></script>
+<script src="{% static 'custom/js/validador.js' %}"></script>
+<script src="{% static 'custom/js/jquery.keyfilter.js' %}"></script>
+<script src="{% static 'bootstrap-fileinput/js/fileinput.js' %}"></script>
+{% endblock extrajs %}

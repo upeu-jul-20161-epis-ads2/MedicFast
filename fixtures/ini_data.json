@@ -1,0 +1,1020 @@
+[{
+	"fields": {
+		"model": "logentry",
+		"app_label": "admin"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 1
+}, {
+	"fields": {
+		"model": "permission",
+		"app_label": "auth"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 2
+}, {
+	"fields": {
+		"model": "group",
+		"app_label": "auth"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 3
+}, {
+	"fields": {
+		"model": "contenttype",
+		"app_label": "contenttypes"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 4
+}, {
+	"fields": {
+		"model": "session",
+		"app_label": "sessions"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 5
+}, {
+	"fields": {
+		"model": "site",
+		"app_label": "sites"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 6
+}, {
+	"fields": {
+		"model": "migrationhistory",
+		"app_label": "south"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 7
+}, {
+	"fields": {
+		"model": "user",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 8
+}, {
+	"fields": {
+		"model": "person",
+		"app_label": "params"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 9
+}, {
+	"fields": {
+		"model": "solution",
+		"app_label": "space"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 11
+}, {
+	"fields": {
+		"model": "association",
+		"app_label": "space"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 12
+}, {
+	"fields": {
+		"model": "enterprise",
+		"app_label": "space"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 13
+}, {
+	"fields": {
+		"model": "headquar",
+		"app_label": "space"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 14
+}, {
+	"fields": {
+		"model": "access",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 15
+}, {
+	"fields": {
+		"model": "module",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 16
+}, {
+	"fields": {
+		"model": "menu",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 17
+}, {
+	"fields": {
+		"model": "userenterprise",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 18
+}, {
+	"fields": {
+		"model": "userheadquar",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 19
+}, {
+	"fields": {
+		"model": "userassociation",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 20
+}, {
+	"fields": {
+		"model": "ticket",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 21
+}, {
+	"fields": {
+		"model": "backup",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 22
+}, {
+	"fields": {
+		"model": "flatpage",
+		"app_label": "flatpages"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 23
+}, {
+	"fields": {
+		"model": "permission",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 51
+}, {
+	"fields": {
+		"model": "grouppermissions",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 52
+}, {
+	"fields": {
+		"model": "modulesolutions",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 53
+}, {
+	"fields": {
+		"model": "group",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 54
+}, {
+	"fields": {
+		"model": "dashboard",
+		"app_label": "mod_backend"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 55
+}, {
+	"fields": {
+		"model": "profile",
+		"app_label": "accounts"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 56
+}, {
+	"fields": {
+		"model": "audit",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 57
+}, {
+	"fields": {
+		"model": "log",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 58
+}, {
+	"fields": {
+		"model": "maintenance",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 59
+}, {
+	"fields": {
+		"model": "system",
+		"app_label": "sad"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 60
+}, {
+	"fields": {
+		"model": "mymodel",
+		"app_label": "params"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 61
+}, {
+	"fields": {
+		"model": "tempc",
+		"app_label": "tempapp"
+	},
+	"model": "contenttypes.contenttype",
+	"pk": 100
+}, 
+
+
+
+
+
+{
+	"fields": {
+		"expire_date": "2014-10-09T11:52:40.096Z",
+		"session_data": "ZTk4NWE1MmVhYzI4Yjk0MDg0NDI1YmM5ZWExY2RlZTNkMTk4ZWQ1ZTp7Il9hdXRoX3VzZXJfaGFzaCI6ImQ1N2JiNjkxYzhjZGM0YWUzNjI5ZmVlYjg5MDU5NWIzNTBlNDRhOGUiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOjF9"
+	},
+	"model": "sessions.session",
+	"pk": "ecj21qkqs4ue3m7v0beqfvxwq4ign2o0"
+}, 
+
+
+
+{
+	"fields": {
+		"domain": "localhost:8000",
+		"name": "localhost:8000"
+	},
+	"model": "sites.site",
+	"pk": 1
+}, 
+
+
+
+
+{
+	"fields": {
+		"name": "Shomware Ultimate",
+		"created_at": "2013-10-31T04:52:44Z",
+		"is_active": true,
+		"updated_at": "2013-11-13T05:03:19Z",
+		"test_date": null,
+		"test_image": "test_images/default.png",
+		"price": null,
+		"description": "Limitado para ventas"
+	},
+	"model": "space.solution",
+	"pk": 1
+}, {
+	"fields": {
+		"name": "Shomware Basic",
+		"created_at": "2013-10-31T04:53:33Z",
+		"is_active": true,
+		"updated_at": "2014-09-10T12:58:36.219Z",
+		"test_date": null,
+		"test_image": "test_images/default.png",
+		"price": null,
+		"description": "Backend + Ventas"
+	},
+	"model": "space.solution",
+	"pk": 2
+}, 
+
+
+
+
+
+{
+	"fields": {
+		"codename": "user",
+		"name": "Can ALL user",
+		"content_type": 8
+	},
+	"model": "auth.permission",
+	"pk": 1
+}, {
+	"fields": {
+		"codename": "solution",
+		"name": "Can ALL solution",
+		"content_type": 11
+	},
+	"model": "auth.permission",
+	"pk": 2
+}, {
+	"fields": {
+		"codename": "association",
+		"name": "Can ALL association",
+		"content_type": 12
+	},
+	"model": "auth.permission",
+	"pk": 3
+}, {
+	"fields": {
+		"codename": "enterprise",
+		"name": "Can ALL enterprise",
+		"content_type": 13
+	},
+	"model": "auth.permission",
+	"pk": 4
+}, {
+	"fields": {
+		"codename": "headquar",
+		"name": "Can ALL headquar(sedes)",
+		"content_type": 14
+	},
+	"model": "auth.permission",
+	"pk": 5
+}, {
+	"fields": {
+		"codename": "access",
+		"name": "Can ALL access",
+		"content_type": 15
+	},
+	"model": "auth.permission",
+	"pk": 6
+}, {
+	"fields": {
+		"codename": "module",
+		"name": "Can ALL module",
+		"content_type": 16
+	},
+	"model": "auth.permission",
+	"pk": 7
+}, {
+	"fields": {
+		"codename": "menu",
+		"name": "Can ALL menu",
+		"content_type": 17
+	},
+	"model": "auth.permission",
+	"pk": 8
+}, {
+	"fields": {
+		"codename": "ticket",
+		"name": "Can ALL ticket",
+		"content_type": 21
+	},
+	"model": "auth.permission",
+	"pk": 9
+}, {
+	"fields": {
+		"codename": "backup",
+		"name": "Can ALL backup",
+		"content_type": 22
+	},
+	"model": "auth.permission",
+	"pk": 10
+}, {
+	"fields": {
+		"codename": "permission",
+		"name": "Can ALL sad/permission",
+		"content_type": 51
+	},
+	"model": "auth.permission",
+	"pk": 51
+}, {
+	"fields": {
+		"codename": "grouppermissions_update",
+		"name": "Can sad/grouppermissions/update",
+		"content_type": 52
+	},
+	"model": "auth.permission",
+	"pk": 52
+}, {
+	"fields": {
+		"codename": "modulesolutions_update",
+		"name": "Can sad/modulesolutions/update",
+		"content_type": 53
+	},
+	"model": "auth.permission",
+	"pk": 53
+}, {
+	"fields": {
+		"codename": "group",
+		"name": "Can ALL sad/group",
+		"content_type": 54
+	},
+	"model": "auth.permission",
+	"pk": 54
+}, {
+	"fields": {
+		"codename": "dashboard",
+		"name": "Can view mod_backend/dashboard",
+		"content_type": 55
+	},
+	"model": "auth.permission",
+	"pk": 55
+}, {
+	"fields": {
+		"codename": "profile",
+		"name": "Cand edit accounts/profile",
+		"content_type": 56
+	},
+	"model": "auth.permission",
+	"pk": 56
+}, {
+	"fields": {
+		"codename": "audit",
+		"name": "Can ALL sad/audit",
+		"content_type": 57
+	},
+	"model": "auth.permission",
+	"pk": 57
+}, {
+	"fields": {
+		"codename": "log",
+		"name": "Can ALL sad/log",
+		"content_type": 58
+	},
+	"model": "auth.permission",
+	"pk": 58
+}, {
+	"fields": {
+		"codename": "maintenance",
+		"name": "Can ALL sad/maintenance",
+		"content_type": 59
+	},
+	"model": "auth.permission",
+	"pk": 59
+}, {
+	"fields": {
+		"codename": "system",
+		"name": "Can ALL sad/system",
+		"content_type": 60
+	},
+	"model": "auth.permission",
+	"pk": 60
+}, {
+	"fields": {
+		"codename": "mymodel",
+		"name": "Can ALL params/mymodel",
+		"content_type": 61
+	},
+	"model": "auth.permission",
+	"pk": 61
+}, {
+	"fields": {
+		"codename": "tempc_tempa",
+		"name": "tempa of tempapp",
+		"content_type": 100
+	},
+	"model": "auth.permission",
+	"pk": 100
+}, 
+
+
+
+
+
+
+
+{
+	"fields": {
+		"name": "MASTER",
+		"permissions": [56, 55, 6, 10, 54, 52, 8, 7, 53, 51, 9, 1, 3, 4, 5, 2]
+	},
+	"model": "auth.group",
+	"pk": 1
+}, {
+	"fields": {
+		"name": "CATASTRO",
+		"permissions": [56]
+	},
+	"model": "auth.group",
+	"pk": 10
+}, {
+	"fields": {
+		"name": "GERENTE VENTAS",
+		"permissions": []
+	},
+	"model": "auth.group",
+	"pk": 11
+}, {
+	"fields": {
+		"name": "VENDEDOR",
+		"permissions": []
+	},
+	"model": "auth.group",
+	"pk": 12
+}, {
+	"fields": {
+		"name": "RRHH",
+		"permissions": []
+	},
+	"model": "auth.group",
+	"pk": 13
+}, 
+
+
+
+
+
+
+{
+	"fields": {
+		"username": "admin",
+		"first_name": "",
+		"last_name": "",
+		"person": null,
+		"is_active": true,
+		"last_headquar_id": null,
+		"last_module_id": null,
+		"is_superuser": true,
+		"is_staff": true,
+		"last_login": "2014-09-25T11:52:40.088Z",
+		"groups": [],
+		"user_permissions": [],
+		"password": "pbkdf2_sha256$12000$Z8v8i2VpzOvZ$H2C4XRW3JBeBxqnxWJZfAm8WwjcTawalH0R2ciGuXSY=",
+		"email": "",
+		"date_joined": "2014-09-25T11:03:03.450Z"
+	},
+	"model": "sad.user",
+	"pk": 1
+}, 
+
+{
+	"fields": {
+		"status": "ON",
+		"created_at": "2014-09-16T01:18:48.406Z",
+		"description": "Alta",
+		"updated_at": "2014-09-16T01:18:48.406Z",
+		"user": 1
+	},
+	"model": "sad.userstatus",
+	"pk": 1
+}, 
+
+
+
+
+
+{
+	"fields": {
+		"description": "",
+		"created_at": "2013-10-31T04:51:34Z",
+		"is_active": true,
+		"updated_at": "2014-09-19T11:56:35.733Z",
+		"module": "BACKEND",
+		"solutions": [1],
+		"groups": [1, 10],
+		"icon": null,
+		"initial_groups": [1],
+		"name": "Backend"
+	},
+	"model": "sad.module",
+	"pk": 1
+}, {
+	"fields": {
+		"description": "",
+		"created_at": "2013-10-31T04:52:14Z",
+		"is_active": true,
+		"updated_at": "2014-09-09T19:46:48.630Z",
+		"module": "VENTAS",
+		"solutions": [1, 2],
+		"groups": [11, 12],
+		"icon": null,
+		"initial_groups": [11],
+		"name": "Ventas"
+	},
+	"model": "sad.module",
+	"pk": 10
+}, 
+
+
+
+
+
+
+
+
+
+{
+	"fields": {
+		"description": null,
+		"parent": null,
+		"title": "System",
+		"url": "#",
+		"created_at": "2014-09-08T11:16:49.783Z",
+		"permission": null,
+		"is_active": true,
+		"pos": 700,
+		"module": "BACKEND",
+		"updated_at": "2014-09-09T20:09:33.607Z",
+		"icon": "fa fa-cogs"
+	},
+	"model": "sad.menu",
+	"pk": 3
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "Menus",
+		"url": "sad/menu/index/",
+		"created_at": "2014-09-09T20:09:24.076Z",
+		"permission": 8,
+		"is_active": true,
+		"pos": 707,
+		"module": "BACKEND",
+		"updated_at": "2014-09-09T20:09:24.086Z",
+		"icon": "fa fa-align-justify"
+	},
+	"model": "sad.menu",
+	"pk": 4
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "permissions",
+		"url": "sad/permission/index/",
+		"created_at": "2014-09-09T21:39:29.587Z",
+		"permission": 51,
+		"is_active": true,
+		"pos": 701,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:08:43.540Z",
+		"icon": "fa fa-lock"
+	},
+	"model": "sad.menu",
+	"pk": 5
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "groups",
+		"url": "sad/group/index/",
+		"created_at": "2014-09-10T11:08:18.406Z",
+		"permission": 54,
+		"is_active": true,
+		"pos": 702,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:06:45.915Z",
+		"icon": "fa fa-weixin"
+	},
+	"model": "sad.menu",
+	"pk": 6
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "Group permissions",
+		"url": "sad/grouppermissions/update/",
+		"created_at": "2014-09-10T11:10:39.559Z",
+		"permission": 52,
+		"is_active": true,
+		"pos": 703,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:10:39.966Z",
+		"icon": "fa fa-magic"
+	},
+	"model": "sad.menu",
+	"pk": 7
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "Solutions",
+		"url": "space/solution/index/",
+		"created_at": "2014-09-10T11:11:37.798Z",
+		"permission": 2,
+		"is_active": true,
+		"pos": 704,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:20:59.630Z",
+		"icon": "fa fa-wrench"
+	},
+	"model": "sad.menu",
+	"pk": 8
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "Modules",
+		"url": "sad/module/index",
+		"created_at": "2014-09-10T11:19:00.946Z",
+		"permission": 7,
+		"is_active": true,
+		"pos": 705,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:21:12.751Z",
+		"icon": "fa fa-cubes"
+	},
+	"model": "sad.menu",
+	"pk": 9
+}, {
+	"fields": {
+		"description": null,
+		"parent": 3,
+		"title": "Module solutions",
+		"url": "sad/modulesolutions/update/",
+		"created_at": "2014-09-10T11:20:27.913Z",
+		"permission": 53,
+		"is_active": true,
+		"pos": 706,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:20:28.506Z",
+		"icon": "fa fa-magic"
+	},
+	"model": "sad.menu",
+	"pk": 10
+}, {
+	"fields": {
+		"description": null,
+		"parent": null,
+		"title": "Dashboard",
+		"url": "#",
+		"created_at": "2014-09-10T11:22:34.792Z",
+		"permission": null,
+		"is_active": true,
+		"pos": 100,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:27:36.015Z",
+		"icon": "fa fa-home"
+	},
+	"model": "sad.menu",
+	"pk": 11
+}, {
+	"fields": {
+		"description": null,
+		"parent": 11,
+		"title": "Dashboard",
+		"url": "mod_backend/dashboard/",
+		"created_at": "2014-09-10T11:23:26.226Z",
+		"permission": 55,
+		"is_active": true,
+		"pos": 101,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:23:26.708Z",
+		"icon": "fa fa-home"
+	},
+	"model": "sad.menu",
+	"pk": 12
+}, {
+	"fields": {
+		"description": null,
+		"parent": null,
+		"title": "account",
+		"url": "#",
+		"created_at": "2014-09-10T11:28:51.622Z",
+		"permission": null,
+		"is_active": true,
+		"pos": 601,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:30:18.960Z",
+		"icon": "fa fa-user"
+	},
+	"model": "sad.menu",
+	"pk": 13
+}, {
+	"fields": {
+		"description": null,
+		"parent": 13,
+		"title": "Association",
+		"url": "space/association/edit_current/",
+		"created_at": "2014-09-10T11:29:42.782Z",
+		"permission": 3,
+		"is_active": true,
+		"pos": 601,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:47:39.559Z",
+		"icon": "fa fa-slideshare"
+	},
+	"model": "sad.menu",
+	"pk": 14
+}, {
+	"fields": {
+		"description": null,
+		"parent": 13,
+		"title": "Enterprises",
+		"url": "space/enterprise/index/",
+		"created_at": "2014-09-10T11:37:19.209Z",
+		"permission": 4,
+		"is_active": true,
+		"pos": 602,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:45:25.786Z",
+		"icon": "fa fa-cloud"
+	},
+	"model": "sad.menu",
+	"pk": 15
+}, {
+	"fields": {
+		"description": null,
+		"parent": 13,
+		"title": "Enterprise",
+		"url": "space/enterprise/edit_current/",
+		"created_at": "2014-09-10T11:44:49.436Z",
+		"permission": 4,
+		"is_active": true,
+		"pos": 603,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:45:01.378Z",
+		"icon": "fa fa-institution"
+	},
+	"model": "sad.menu",
+	"pk": 16
+}, {
+	"fields": {
+		"description": null,
+		"parent": 13,
+		"title": "Headquarters",
+		"url": "space/headquar/index/",
+		"created_at": "2014-09-10T11:59:59.931Z",
+		"permission": 5,
+		"is_active": true,
+		"pos": 604,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T11:59:59.979Z",
+		"icon": "fa fa-sitemap"
+	},
+	"model": "sad.menu",
+	"pk": 17
+}, {
+	"fields": {
+		"description": null,
+		"parent": 13,
+		"title": "Users",
+		"url": "sad/user/index/",
+		"created_at": "2014-09-10T12:00:43.304Z",
+		"permission": 1,
+		"is_active": true,
+		"pos": 605,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:02:10.919Z",
+		"icon": "fa fa-users"
+	},
+	"model": "sad.menu",
+	"pk": 18
+}, {
+	"fields": {
+		"description": null,
+		"parent": null,
+		"title": "Logs",
+		"url": "#",
+		"created_at": "2014-09-10T12:08:31.401Z",
+		"permission": null,
+		"is_active": false,
+		"pos": 800,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T13:30:02.445Z",
+		"icon": "fa fa-eye"
+	},
+	"model": "sad.menu",
+	"pk": 19
+}, {
+	"fields": {
+		"description": null,
+		"parent": 19,
+		"title": "Access",
+		"url": "sad/access/index/",
+		"created_at": "2014-09-10T12:10:01.898Z",
+		"permission": 6,
+		"is_active": true,
+		"pos": 801,
+		"module": "BACKEND",
+		"updated_at": "2014-09-19T11:57:05.870Z",
+		"icon": "fa fa-exchange"
+	},
+	"model": "sad.menu",
+	"pk": 20
+}, {
+	"fields": {
+		"description": null,
+		"parent": 19,
+		"title": "Audits",
+		"url": "sad/audit/index/",
+		"created_at": "2014-09-10T12:11:12.665Z",
+		"permission": 57,
+		"is_active": true,
+		"pos": 802,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:20:24.767Z",
+		"icon": "fa fa-eye"
+	},
+	"model": "sad.menu",
+	"pk": 21
+}, {
+	"fields": {
+		"description": null,
+		"parent": 19,
+		"title": "Logs",
+		"url": "sad/log/index/",
+		"created_at": "2014-09-10T12:22:08.217Z",
+		"permission": 58,
+		"is_active": true,
+		"pos": 803,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:22:09.046Z",
+		"icon": "fa fa-filter"
+	},
+	"model": "sad.menu",
+	"pk": 22
+}, {
+	"fields": {
+		"description": null,
+		"parent": 19,
+		"title": "Backups",
+		"url": "sad/backup/index/",
+		"created_at": "2014-09-10T12:22:45.470Z",
+		"permission": 10,
+		"is_active": true,
+		"pos": 804,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:22:45.482Z",
+		"icon": "fa fa-hdd"
+	},
+	"model": "sad.menu",
+	"pk": 23
+}, {
+	"fields": {
+		"description": null,
+		"parent": 19,
+		"title": "Tables",
+		"url": "sad/maintenance/index/",
+		"created_at": "2014-09-10T12:23:25.108Z",
+		"permission": 59,
+		"is_active": true,
+		"pos": 808,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:23:25.117Z",
+		"icon": "fa fa-bolt"
+	},
+	"model": "sad.menu",
+	"pk": 24
+}, {
+	"fields": {
+		"description": null,
+		"parent": 19,
+		"title": "System",
+		"url": "sad/system/index/",
+		"created_at": "2014-09-10T12:24:07.727Z",
+		"permission": 60,
+		"is_active": true,
+		"pos": 809,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:24:08.145Z",
+		"icon": "fa fa-wrench"
+	},
+	"model": "sad.menu",
+	"pk": 25
+}, {
+	"fields": {
+		"description": null,
+		"parent": null,
+		"title": "Params",
+		"url": "#",
+		"created_at": "2014-09-10T12:25:00.982Z",
+		"permission": null,
+		"is_active": true,
+		"pos": 900,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:25:12.014Z",
+		"icon": "fa fa-th-list"
+	},
+	"model": "sad.menu",
+	"pk": 26
+}, {
+	"fields": {
+		"description": null,
+		"parent": 26,
+		"title": "My Model",
+		"url": "params/mymodel/index/",
+		"created_at": "2014-09-10T12:25:46.131Z",
+		"permission": 61,
+		"is_active": true,
+		"pos": 901,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:25:46.434Z",
+		"icon": "f"
+	},
+	"model": "sad.menu",
+	"pk": 27
+}, {
+	"fields": {
+		"description": null,
+		"parent": null,
+		"title": "Next",
+		"url": "#",
+		"created_at": "2014-09-10T12:26:14.454Z",
+		"permission": null,
+		"is_active": true,
+		"pos": 999,
+		"module": "BACKEND",
+		"updated_at": "2014-09-10T12:26:15.043Z",
+		"icon": "fa fa-calendar"
+	},
+	"model": "sad.menu",
+	"pk": 100
+}]

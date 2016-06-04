@@ -1,0 +1,144 @@
+{% extends "mod_backend/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Create/Update grouppermissions
+NOTA: grouppermissions es el controlador ya no es group
+
+-->
+{% load i18n app_security %}
+{% load l10n humanize %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name_plural|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        //form_data : ['{{f}}', '{{q}}'],
+        //form_to   : '/sad/modulesolutions/?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '/sad/modulesolutions/update/?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+<div class="btn-toolbar btn-toolbar-top">
+    <div class="row">
+        <div class="btn-actions">
+
+        </div>            
+    </div>
+</div>
+
+<form class="js-validate form-vertical" method="post">{% csrf_token %}
+    <input id="old_privilegios" name="old_privilegios" type="hidden" value="{{ privilegios|join:',' }}" /> 
+    
+    <div class="container-overflow">
+        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+            
+            <thead>
+                
+                <tr>
+                    <th rowspan="1">#</th>
+                    <th rowspan="1" class="col-hidden" data-search="module" data-order="module">{% trans 'Module'|capfirst %}</th>
+                    <th rowspan="1" class="col-hidden" data-search="name" data-order="name">{% trans 'name'|capfirst %}</th>
+                    {% for d in solution_list %}
+                    <th class="text-center">{{ d.name }}</th>
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <th colspan="3" class='col-blocked'></th>
+                    <th colspan="{{ solution_list|length }}" class="col-blocked text-center">{% trans 'Solution'|capfirst%}</th>
+                </tr>
+                
+
+            </thead>
+            <tbody>
+                {% for d in object_list %}       
+                <tr>
+                    <td>{% if is_paginated %}
+                        {{ page_obj.start_index|add:forloop.counter0 }}
+                        {% else %}
+                        {{ forloop.counter }}
+                        {% endif %}
+                    </td>
+                    <td>{{ d.module  }} </td>
+                    <td>{{ d.name }}</td>
+
+                    {% for s in solution_list %}
+                    {% with d.id|stringformat:'s' as id_to_str %}
+                    {% with s.id|stringformat:'s'|add:'-'|add:id_to_str as compa %}
+                    <td>
+                        {% if compa in privilegios %}
+                        <input id="privilegios" name="privilegios" type="checkbox" value="{{ s.id }}-{{ d.id }}" checked="checked" />
+                        {% else %}
+                        <input id="privilegios" name="privilegios" type="checkbox" value="{{ s.id }}-{{ d.id }}" />
+                        {% endif %}
+
+                    </td>
+                    {% endwith %}
+                    {% endwith %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+
+    <div class="row" >
+        <div class="form-actions"><button type="submit"
+            name="submit" title="{% trans 'Save' %}"
+
+
+            class="btn btn-primary text-bold"
+            id="submit-id-submit"
+
+
+            ><i class="btn-icon-onlyx fa fa-save"></i><span class="hidden-xsx"> {% trans 'Save' %}</span></button> <button type="button"
+            name="cancel"  title="{% trans 'Cancel' %}"
+
+
+            class="btn btn btn-danger btn-back text-bold"
+            id="button-id-cancel"
+
+
+            ><i class="btn-icon-onlyx fa fa-ban"></i><span class="hidden-xs"> {% trans 'Cancel' %}</span></button> <button type="reset"
+            name="reset"  title="{% trans 'Reset' %}"
+
+
+            class="btn btn btn-default text-bold"
+            id="reset-id-reset"
+
+
+            ><i class="btn-icon-onlyx fa fa-undo"></i><span class="hidden-xs"> {% trans 'Reset' %}</span></button> 
+        </div>
+    </div>
+</form>
+
+
+<div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

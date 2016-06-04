@@ -1,0 +1,52 @@
+<div class="overlay"></div>
+<!-- Sidebar -->
+<nav class="navbar navbar-inverse navbar-fixed-top menu-left" id="sidebar-wrapper" role="navigation">
+    <ul class="nav sidebar-nav">
+        <li {% ifequal request.path '/home/' %} class="active" {% endifequal %} class="sidebar">
+            <a href="/home/">
+                Home
+            </a>
+        </li>
+         {% if not userx.is_authenticated %}
+        <li class="sidebar">
+            <a href="/accounts/login/">
+                Iniciar Sesi&oacute;n
+            </a>
+        </li>
+          {% endif %}
+        <li>
+            <a href="{%url 'hotel:list'%}">Habitaciones</a>
+        </li>
+        <li>
+            <a href="{%url 'hotel:list_cliente'%}">Clientes</a>
+        </li>
+        <li>
+            <a href="{%url 'hotel:lista_habitacionesr'%}">Reservas</a>
+        </li>
+        <li>
+            <a href="#">Entrada y Salida</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Seleccione:</li>
+                <li><a href="{%url 'hotel:list_detalle'%}">Detalle de Habitación</a></li>
+                <li><a href="{% url 'hotel:list_documento' %}">Tipo de Documento</a></li>
+                <li><a href="{% url 'hotel:list_tcliente' %}">Tipo de Cliente</a></li>
+                <li><a href="{% url 'hotel:list_nacionalidad' %}">Nacionalidad</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Seleccione reporte:</li>
+                <li><a href="#">Reporte de ingresos</a></li>
+                <li><a href="#">Ingresos del mes</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Salir del Sistema</a>
+        </li>
+    </ul>
+</nav>
+<!-- /#sidebar-wrapper -->

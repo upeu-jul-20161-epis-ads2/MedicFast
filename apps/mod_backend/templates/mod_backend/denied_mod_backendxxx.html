@@ -1,0 +1,8 @@
+{% extends request.is_ajax|yesno:"mod_backend/base_ajax.html,mod_backend/base_mod_backend.html" %}
+
+{% load i18n %}
+{% block title %} {{ title }} {% endblock %}
+{% block content %}
+    {% load notify %}
+    {% get_notify request %}
+{% endblock content %}

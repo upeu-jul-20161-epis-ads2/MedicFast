@@ -1,0 +1,115 @@
+{% extends "mod_backend/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Lista menu
+-->
+{% load i18n app_security %}
+{% load l10n humanize %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name_plural|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '/sad/menu/index/?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '/sad/menu/index/?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+<div class="btn-toolbar btn-toolbar-top">
+    <div class="row">
+        <div class="btn-actions">
+            <a href="/sad/menu/create/" class="btn btn-primary text-bold" title="{% trans 'Add' %} {% trans 'Menu' %}"><i class="fa fa-plus"></i> <span class="hidden-xs"> {% trans 'Add'  %}</span></a> 
+        </div>            
+    </div>
+</div>
+<div class="container-overflow">
+    <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-hidden" data-search="module" data-order="module">{% trans 'Module' %}</th>
+                <th class="col-hidden" data-search="pos" data-order="pos">{% trans 'Position' %}</th>
+                <th class="col-hidden" data-search="parent" data-order="parent">{% trans 'Parent' %}</th>
+                <th class="col-hidden" data-search="title" data-order="title">{% trans 'title'|capfirst %}</th>
+                <th class="col-hidden" data-search="permission" data-order="permission">{% trans 'permission'|capfirst %}</th>
+                <th class="col-hidden" data-search="url" data-order="url">{% trans 'URL' %}</th>
+                <th class="col-hidden" data-search="icon" data-order="icon">{% trans 'Icon' %}</th>
+                <th class="col-hidden" data-search="active" data-order="active">{% trans 'active'|capfirst %}</th>
+
+                <th class="btn-actions col-blocked text-center">{% trans 'Action' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in object_list %}       
+            <tr class="{{ d.is_active|yesno:',danger' }}">
+                <td>{% if is_paginated %}
+                    {{ page_obj.start_index|add:forloop.counter0 }}
+                    {% else %}
+                    {{ forloop.counter }}
+                    {% endif %}
+                </td>
+                <td><span class="label label-{{ d.is_active|yesno:'primary,success' }}">{{ d.get_module_display }}</span></td>
+                <td>{{ d.pos }}</td>
+                <td>{{ d.parent.title }}</td>
+                <td>{{ d.title  }} </td>
+                <td>{{ d.permission.content_type.app_label }}{{ d.permission_id|yesno:'.,'}}{{ d.permission.codename }}</td>
+                 <td>{{ d.url }}</td>
+                <td>{{ d.icon }}</td>
+                <td>
+                    <span class="label label-{{ d.is_active|yesno:'primary,success' }}">
+                        {% if d.is_active %}{% trans 'Yes'|upper %} {% else %} {% trans 'No'|upper %} {% endif %}
+                    </span>
+                </td>
+
+
+                <td class="text-center">
+                    <a href="/sad/menu/update/{{d.pk|key:'menu_upd'}}/" class="btn btn-info btn-sm text-bold" title="{% trans 'Change' %} {% trans 'Menu' %}" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+
+                    {% if d.is_active %}
+
+                    <a href="/sad/menu/state/ina/{{d.pk|key:'menu_ina'}}/" class="btn btn-success btn-sm text-bold" title="{% trans 'inactivate'|capfirst %} {% trans 'Menu' %}" rel="tooltip"><i class="btn-icon-only fa fa-flag"></i></a>
+
+                    {% else %}
+
+                    <a href="/sad/menu/state/rea/{{d.pk|key:'menu_rea'}}/" class="btn btn-info btn-sm text-bold" title="{% trans 'reactivate'|capfirst %} {% trans 'Menu' %}" rel="tooltip"><i class="btn-icon-only fa fa-flag"></i></a>
+
+                    {% endif %}
+                    
+                    <a href="/sad/menu/delete/{{d.pk|key:'menu_del'}}/" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="{% trans 'Delete' %} {% trans 'Menu' %}?." msg="{% trans 'Are you sure?' %}<br/>{% trans 'Remember that this operation can not be reversed.' %}" title="{% trans 'Delete' %} {% trans 'Menu' %}" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

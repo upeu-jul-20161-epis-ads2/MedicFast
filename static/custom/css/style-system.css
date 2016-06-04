@@ -1,0 +1,228 @@
+*{
+    font-family:'Roboto Condensed',sans serif;
+}
+
+body{
+    background: #FFFFFF;
+}
+
+.form-group .errorlist{
+    color:red !important;
+    font-size:11px;
+}
+
+.navbar{
+    background: #15A07A!important;
+}
+.navbar a{
+    color:#FFFFFF !important;
+}
+
+
+.btn,
+.panel,
+.panel-primary,
+.panel-heading,
+.modal-content,
+.form-control{
+    border-radius:0px!important;
+}
+
+.btn{
+    font-size: 14px;    
+}
+
+.panel-primary{
+    border-color:#15A07A !important;
+    margin-top: 25px!important;
+}
+
+.panel > .panel-heading {
+    background-image: none !important;
+    background-color: #15A07A !important;
+    color: white !important;
+    border-color: #15A07A!important;
+}
+
+.versalitas{
+    font-variant:small-caps;
+}
+
+.title{
+    font-family:'Lobster',cursive;
+}
+.title-panel{
+    font-weight:bold;
+    font-size:16px!important;
+}
+
+table td{
+    font-size:12px!important;
+}
+
+table th{
+    font-size:13px!important;
+}
+
+.btn-add{
+    background-color:#15A07A!important;
+    color:#FFFFFF!important;
+}
+.btn-add:hover{
+    background-color:#177B60!important;
+}
+.btn-save{
+    background-color:#15A07A!important;
+    color:#FFFFFF!important;
+}
+
+.btn-update{
+    background-color:#865320!important;
+    color:#FFFFFF!important;
+}
+
+.btn-view{
+    background-color:#C66213!important;
+    color:#FFFFFF!important;
+}
+
+.btn-del{
+    background-color:#15A07A!important;
+    color:#FFFFFF!important;
+}
+
+.btn-cancel{
+    background-color:#D2D2D2!important;
+    color:#3C3C3C!important;
+}
+
+.btn-view:hover,.btn-update:hover,.btn-del:hover,.btn-save:hover{
+    background:#177B60!important;
+}
+
+.modal-header{
+    background-color: #15A07A !important;
+    padding:-5px;
+    color:#FFFFFF!important;
+}
+
+.close{
+    color:#FFFFFF!important;
+}
+
+.span-header-body{
+    padding-top: 150px!important;
+}
+
+
+
+/* Estilos Habitacion */
+
+
+.piso  {
+
+}
+.hotel .piso .habitacion {
+    display: inline-block;
+
+}
+
+.menu-habitacion{
+    list-style-type: none;
+    visibility: hidden; 
+    bottom: 0!important;
+    position: absolute;
+}
+.menu-habitacion button,a{
+
+}
+
+.habitacion-caja{
+    border: solid 5px #BA4624;
+    position: relative;
+    width: 200px;
+    height: 200px; 
+    display: inline-block;
+}
+
+.habitacion-descripcion{
+    top: 0!important;
+    position: absolute!important;
+    height: 60px;
+}
+.habitacion-descripcion p{
+    position: absolute;
+    color: #F5F5F5!important;
+    font-size: 1.2em;
+    height: 60px;
+    width: 0px;
+}
+
+.hotel .piso .habitacion-caja .habitacion-descripcion .DISPONIBLE {
+    border-right: 50px solid green;
+    border-bottom: 17.5px solid transparent;
+}
+
+.hotel .piso .habitacion-caja .habitacion-descripcion .RESERVADO {
+
+    border-right: 50px solid yellow;
+    border-bottom: 17.5px solid transparent;
+}
+.hotel .piso .habitacion-caja .habitacion-descripcion .OCUPADO {
+
+    border-right: 50px solid blue;
+    border-bottom: 17.5px solid transparent;
+}
+.hotel .piso .habitacion-caja .habitacion-descripcion .MANTENIMIENTO_S {
+
+    border-right: 50px solid orange;
+    border-bottom: 17.5px solid transparent;
+}
+.hotel .piso .habitacion-caja .habitacion-descripcion .MANTENIMIENTO_c {
+
+    border-right: 50px solid black;
+    border-bottom: 17.5px solid transparent;
+}
+.hotel .piso .habitacion-caja .habitacion-descripcion .INHABILITADO {
+
+    border-right: 50px solid red;
+    border-bottom: 17.5px solid transparent;
+}
+
+.menu-top{
+    border-bottom: 0;
+}
+.menu-top .dropdown-menu li a{
+    color: #222222!important;
+}
+.menu-top .dropdown-menu li a:hover{
+    color: #f3f3f3!important;
+    background: #177B60!important;
+}
+.menu-top .dropdown-menu li.active a{
+    color: #f3f3f3!important;
+    background: #15A07A!important;
+}
+
+#footer {
+    clear: both;
+    padding: 10px;
+}
+
+.menu-bottom{
+    z-index: 99999;
+
+}
+p.text-footer{
+    font-size:11px!important;
+}
+
+.img-hover a img:hover{
+    -webkit-transform: scale(2.5);
+    transform: scale(2.5);
+    margin-left: 7%;
+}
+
+.checkbox-itecs{
+
+}

@@ -1,0 +1,352 @@
+<!-- Base para apps con bootstrap-3 -->
+{% load i18n staticfiles %}
+{% load i18n crispy_forms_tags notify %}
+<html lang="{{ LANGUAGE_CODE|default:" en-us" }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block extrahead %}
+        {% endblock extrahead %}
+        <title>{% block title %}Hotel Eurobuilding{% endblock title %}</title>
+
+        <link href="{% static 'bootstrap-3.1.1-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-3.1.1-dist/css/bootstrap-theme.min.css' %}" rel="stylesheet">
+        <link href="{% static 'datetimepicker/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+        <link href="{% static 'typehead/typehead.css' %}" rel="stylesheet">
+        <link href="{% static 'custom/css/style-website.css' %}" rel="stylesheet">
+        <link href="{% static 'custom/css/fonts-website.css' %}" rel="stylesheet">
+        <link href="{% static 'custom/css/media-website.css' %}" rel="stylesheet">
+        <link href="{% static 'custom/lib/css/freelancer.css' %}" rel="stylesheet">
+
+        <!-- http://fortawesome.github.io/Font-Awesome/icons/-->
+        <link href="{% static 'font-awesome-4.2.0/css/font-awesome.min.css' %}" rel="stylesheet">
+
+
+        {% block extrastyle %}
+        {% endblock extrastyle %}
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="{% static 'jquery/jquery.min.js' %}"></script>
+
+        {% block headjs %}
+        {% endblock headjs %}
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+    
+        <![endif]-->
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-static-top menu-top">
+            <div class="container-fluid">
+                <div class="nav-header">
+                    <div class="col-xs-6 col-md-6 logo">
+                        <div class="top-logo">
+                            <img class="" src="{% static 'custom/img/upeu.png' %}"  style="width: 70px; height: 70px"/>
+                            <span>Medic Fast</span> - 
+                            <span>Centro Medico Upeu</span>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-6 col-md-6 info">
+                        <span></span><label class="razon-social">Gestion y Administracion de Historias Clinicas Virtuales</label><br>
+                        <span class="glyphicon glyphicon-map-marker"></span>&nbsp;<label class="dir">Salida Arequipa km-6,
+                            Chullunquiani Juliaca Perú</label><br>
+                        <span class="glyphicon glyphicon-phone"></span>&nbsp;<label class="tel">Cel. RPC.951752186 - 950302618 - 950302633</label>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="sticky-anchor"></div>
+        <nav class="navbar navbar-inverse navbar-static-top menu-bottom" id="sticky">
+            <div class="container-fluid">
+                <div class="nav-header">
+                    <div class="btn-menu">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                                aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="logo-menu-footer">
+                        <p><span class="fa fa-home">&nbsp;</span>Centro Médico Upeu</p>
+                    </div>
+                    <div class="logo-menu-footer-left">
+                        <p><span class="fa fa-home">&nbsp;</span>Centro Médico Upeu</p>
+                    </div>
+                    <div class="navbar-collapse collapse navbar-right" id="navbar">
+                        <ul class="nav navbar-nav" id="nav">
+                            <li class="active"><a href="#"><span class="glyphicon glyphicon-home">&nbsp;</span>Inicio<span
+                                        class="sr-only">(current)</span></a></li>
+                            <li class="dropdown dropup">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false"><span class="glyphicon glyphicon-user">&nbsp;</span>¿Quiénes
+                                    somos? <span
+                                        class="caret"></span><span
+                                        class="sr-only">Toggle Dropdown</span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#" data-scroll-nav="2">Misión</a></li>
+                                    <li><a href="#" data-scroll-nav="2">Visión</a></li>
+                                </ul>
+                            </li>
+                           
+                           
+                            <li><a href="#" data-scroll-nav="4"><span class="glyphicon glyphicon-glass">&nbsp;</span>Servicios<span
+                                        class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                           
+                            <li>{% if user.is_authenticated %}
+                                <a href="{% url 'hotel:list' %}"><span class="glyphicon glyphicon-wrench">&nbsp;</span>Ingresar</a>
+                                {% else %}
+                                <a href="#" data-toggle="modal" data-target="#openLogin"><span
+                                        class="glyphicon glyphicon-wrench">&nbsp;</span>Ingresar</a>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+
+                </div>
+
+            </div>
+        </nav>
+
+        <section class="carousel">
+            <div id="carousel-example-generic" class="carousel slide carousel-fade" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="{% static 'custom/img/galeria/3.jpg' %}" alt="3">
+
+                        <div class="carousel-caption text-image">"You have an excellent staff in the club lounge"</div>
+                    </div>
+                    <div class="item">
+                        <img src="{% static 'custom/img/galeria/2.jpg' %}" alt="2">
+
+                        <div class="carousel-caption text-image">"You have an excellent staff in the club lounge"</div>
+                    </div>
+                    <div class="item">
+                        <img src="{% static 'custom/img/galeria/1.jpg' %}" alt="1">
+
+                        <div class="carousel-caption text-image">"You have an excellent staff in the club lounge"</div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="information">
+           
+            <div class="bloque-info" data-scroll-index="1">
+                <h1 class="text-center title-info"> SOBRE NOSOTROS</h1>
+                <hr class="star-primary">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail section-info">
+                                <img src="{% static 'custom/img/galeria-prom/prom-fam.jpg' %}" alt="prom-fam"
+                                     class="galeria-prom">
+
+                                <div class="caption text-center">
+                                    <h2>Dr. Roger Fernandez</h2>
+
+                                    <p class="paragraf-info">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+                                        id elit non mi porta
+                                        gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail section-info">
+                                <img src="{% static 'custom/img/galeria-prom/eventos.jpg' %}" alt="eventos"
+                                     class="galeria-prom">
+
+                                <div class="caption text-center">
+                                    <h2>Dra. Alicia Martinez</h2>
+
+                                    <p class="paragraf-info">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+                                        id elit non mi porta
+                                        gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail section-info">
+                                <img src="{% static 'custom/img/galeria-prom/serv-adc.jpg' %}" alt="serv-adc"
+                                     class="galeria-prom">
+
+                                <div class="caption text-center">
+                                    <h2>Enf. Lisbeth Sanchez</h2>
+
+                                    <p class="paragraf-info">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+                                        id elit non mi porta
+                                        gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bloque-info" data-scroll-index="2">
+                <h1 class="text-center title-info">SOBRE LA INSTITUCION</h1>
+                <hr class="star-primary">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="thumbnail section-info">
+                                <div class="caption text-center">
+                                    <h1>Misión</h1>
+
+                                    <p class="paragraf-info">Brindar servicios de atenciones medicas eficientemente dando el primer lugar al paciente.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="thumbnail section-info">
+                                <div class="caption text-center">
+                                    <h1>Visión</h1>
+
+                                    <p class="paragraf-info">Ser una institucion reconocida por los valores cristianos realizando servicio de atenciones medicas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+           
+
+        
+        </section>
+
+        <footer class="text-center">
+            <div class="footer-above">
+                <div class="container">
+                    <div class="row">
+                        <div class="footer-col col-md-4">
+                            <h3>DIRECCIÓN</h3>
+
+                            <p>Carretera Arequipa Alt.km-6<br>Puno - San Román - Juliaca (chullunquiani)</p>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>REDES SOCIALES</h3>
+                            <ul class="list-inline">
+                                <li>
+                                    <a target="_blank" href="https://www.facebook.com/pages/upeu.edu.pe/413512325389586?ref=ts&fref=ts" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="footer-col col-md-4">
+                            <h3>ACERCA DE </span></h3> Medic Fast
+                            <p>Area de Centro medico de la Universidad Peruana Unión Filial Juliaca.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-below">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            Copyright &copy; Universidad Peruana Unión<br>
+                            Powered by Centro Medico Universidad Peruana Unión Filial Juliaca
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Trigger the modal with a button -->
+        <!-- Modal -->
+        <div id="openLogin" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+            <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3 class="modal-title title-panel">{% trans 'Ingresar' %}</h3>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{% url 'login' %}" method="post" class="form-horizontal">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Usuario</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" name='username' class="form-control" placeholder="Ingrese usuario..."/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Contraseña</label>
+
+                                <div class="col-sm-10">
+                                    <input type="password" name="password" class="form-control"
+                                           placeholder="Ingrese contraseña..."/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-login">
+                                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Ingresar
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" data-dismiss="modal"><span
+                                class="glyphicon glyphicon-refresh"></span>
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
+        <script src="{% static 'bootstrap-3.1.1-dist/js/bootstrap.min.js' %}"></script>
+        <!-- http://www.jsdelivr.com/#!momentjs http://momentjs.com/timezone/-->
+        <script src="{% static 'moment/moment-with-locales.min.js' %}"></script>
+        <script src="{% static 'datetimepicker/js/bootstrap-datetimepicker.min.js' %}"></script>
+        <script src="{% static 'typehead/bootstrap.typehead.min.js' %}"></script>
+        <script src="{% static 'custom/js/utils.js' %}"></script>
+        <script src="{% static 'custom/js/scroll-to-top.js' %}"></script>
+        <script src="{% static 'custom/js/scrollOnePage.min.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,88 @@
+{% extends "home/base_home.html" %}
+{% load i18n %}
+{% block title %} {{ page_title }} {% endblock %}
+{% block rootcontainer %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <h1>Backengo</h1>
+
+        <p>
+            Módulo de administración y configuración de un SaaS, modernas y seguras escritas en Django y con la
+            elegancia de Bootstrap.
+
+        </p>
+
+        <p>
+            Por medio del <b>Backengo</b> podrás gestionar las diferentes partes del sistema: usuarios, perfiles,
+            recursos, permisos, módulos, planes, menús, asociaciones, empresas, sedes, logs, seguridad,
+            internacionalización y mucho más!.
+
+        </p>
+
+
+        <p class='text-right'>
+            <a href="http://backenddj-model.appspot.com/" class="btn btn-default btn-xs" title="Diseño UML"
+               role="button"><i class="fa fa-check-circle fa-xs"></i> <span class="hidden-xs">Diseño UML</span></a>
+
+            <a href="/admin/doc/" class="btn btn-danger" title="Doc. en Django"><span
+                    class="glyphicon glyphicon-ok"></span> <span class="hidden-xs">Doc. en Django</span></a>
+
+            <a class="btn btn-primary btn-lg" href="http://github.com/submitconsulting/backenddj/" target="_blank"><i
+                    class="fa fa-github fa fa-lg"></i> Ver proyecto en GitHub &raquo;</a>
+
+
+        </p>
+
+        <div class="btn-actions">
+
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4><i class="fa fa-fullscreen fa fa-2x"></i> 100% Responsivo</h4>
+            Basado en Bootstrap de Twitter, provee un diseño adaptado a todo tipo de pantalla.
+        </div>
+        <div class="col-md-4">
+            <h4><i class="fa fa-cloud fa fa-2x"></i> 100% Cuztomizable</h4>
+            Puedes personalizar el backend con temas, apariencias y variables de configuración
+        </div>
+        <div class="col-md-4">
+            <h4><i class="fa fa-group fa fa-2x"></i> 100% OpenSource</h4>
+            El Backengo está licenciado bajo la New BSD, lo cual te provee de toda una libertad a nivel de programación
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h4><i class="fa fa-cogs fa fa-2x"></i> Arquitectura MTV (MVC)</h4>
+            Realizado bajo el patrón de diseño Model-Template-View y construido con la solidez de Django
+        </div>
+
+        <div class="col-md-4">
+            <h4><i class="fa fa-asterisk fa fa-2x"></i> Características</h4>
+            <ul>
+                <li>SaaS</li>
+                <li>Diseño orientado al usuario final</li>
+                <li>Rápido, seguro, sencillo y estable gracias al poder de Django</li>
+                <li>Control de autidorías y sucesos del sistema</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <h4><i class="fa fa-magic fa fa-2x"></i> RICH App </h4>
+            El Frontend de Backengo está construido sobre Bootstrap 3 y por ende sobre JQuery 1.9 o superior
+        </div>
+    </div>
+
+</div>
+
+{% endblock rootcontainer %}

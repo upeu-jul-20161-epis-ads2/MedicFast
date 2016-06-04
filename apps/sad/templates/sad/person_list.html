@@ -1,0 +1,93 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Lista persons
+-->
+{% load i18n app_security %}
+{% load l10n humanize %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo;
+<a href="/sad/user/index/">{% trans 'users'|capfirst %}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name_plural|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '/sad/user/person_search/?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '/sad/user/person_search/?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+<div class="btn-toolbar btn-toolbar-top">
+    <div class="row">
+        <div class="btn-actions">
+            
+        </div>            
+    </div>
+</div>
+<div class="container-overflow">
+    <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-hidden" data-search="first_name" data-order="first_name">{% trans 'first name'|capfirst %}</th>
+                <th class="col-hidden" data-search="last_name" data-order="last_name">{% trans 'last name'|capfirst %}</th>
+                <th class="col-hidden" >{% trans 'Document'|capfirst %}</th>
+
+                <th class="btn-actions col-blocked text-center">{% trans 'Action' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in object_list %}       
+            <tr>
+                <td>{% if is_paginated %}
+                    {{ page_obj.start_index|add:forloop.counter0 }}
+                    {% else %}
+                    {{ forloop.counter }}
+                    {% endif %}
+                </td>
+                
+                <td>{{ d.first_name  }}</td>
+                <td>{{ d.last_name   }} </td>
+                <td>{{ d.get_identity_type_display }}{{ d.identity_num|add:'' }}</td>
+                 
+
+                <td class="text-center">
+                    
+                    <a href="/sad/user/person_add/{{d.pk|key:'user_cre'}}/" class="btn btn-danger btn-sm text-bold" title="{% trans 'Add' %} {% trans 'a' %} {% trans 'user' %}" rel="tooltip"><i class="btn-icon-only fa fa-plus"></i></a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

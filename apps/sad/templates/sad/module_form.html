@@ -1,0 +1,62 @@
+{% extends "mod_backend/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Create/Update module
+-->
+{% load i18n crispy_forms_tags staticfiles %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo;
+<a href="/sad/module/index/">{{opts.verbose_name_plural|capfirst}}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+
+{% crispy form %}
+
+{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'custom/css/admin.css' %}">
+{% endblock extrastyle %}
+{% block extrajs %}
+{{ block.super }}
+<script src="{% static 'admin/js/core.js' %}"></script>
+<script src="{% static 'admin/js/jquery.js' %}"></script> 
+<script src="{% static 'admin/js/jquery.init.js' %}"></script>
+
+<script src="{% static 'admin/js/SelectBox.js' %}"></script>
+<script src="{% static 'admin/js/SelectFilter2.js' %}"></script>
+
+
+<script type="text/javascript">
+$(function(){
+            $('#id_module').on('change',function(){
+                var item = $('option:selected',this).text();
+                $('#id_name').val(item);
+            });
+
+            jQuery.each($('#id_groups'), function () {
+                // "Locations" can be any label you want
+                SelectFilter.init('id_groups', "{% trans 'groups'|capfirst %}", false, '/static/admin/');
+            });
+
+            jQuery.each($('#id_initial_groups'), function () {
+                // "Locations" can be any label you want
+                SelectFilter.init('id_initial_groups', "{% trans 'groups'|capfirst %} ini.", true, '/static/admin/');
+            });
+
+        });
+</script>
+{% endblock extrajs %}

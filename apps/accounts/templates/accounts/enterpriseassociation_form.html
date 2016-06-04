@@ -1,0 +1,57 @@
+{% extends "mod_backend/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     account
+
+Descripcion: Registra usuarios
+-->
+
+{% load i18n crispy_forms_tags notify %}
+
+{% block rootcontainer %}
+
+<div id="shell-load">
+  <div id="shell-content" class="container-fluid" >
+    <div class="container shell-view">
+
+
+    <div class="page-header">
+        <h3>{% trans 'Register' %}</h3>
+        <p>{% blocktrans %}Add new association and new enterprise.
+        To join an existing association, ask the administrator the association.{% endblocktrans %}</p>
+    </div>
+    {% get_notify request %}
+
+    {% crispy form %}
+
+</div>
+</div>
+</div> <!-- /dw-shell-load -->
+{% endblock %}
+
+
+{% block extrajs %}
+{{ block.super }}
+
+<script type="text/javascript">
+$('#id_logo').fileinput({
+	showUpload: false,
+	showRemove: false,
+	initialCaption: '{{ form.logo.value }}',
+	initialPreview: ['<img src="{{ MEDIA_URL }}{{ form.logo.value }}">',],
+	browseClass: 'btn btn-warning',
+	browseLabel: '<span class="hidden-xs">{% trans "Pick image" %}</span>',
+	browseIcon: '<i class="btn-icon-only glyphicon glyphicon-picture"></i>',
+});
+
+$('#form').on("submit", f=function() {
+            if (confirm("¿Está seguro enviar esta información?")==true)
+            {
+                return true;
+            }
+            return false;
+        });
+
+</script>
+{% endblock extrajs %}

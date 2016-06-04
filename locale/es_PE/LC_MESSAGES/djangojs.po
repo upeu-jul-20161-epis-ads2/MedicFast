@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-19 16:29-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\static\custom\js\jquery.kgrid.js:43
+msgid "COLUMNS"
+msgstr "COLUMNAS"
+
+#: .\static\custom\js\jquery.kgrid.js:54
+msgid "No se ha definido una url para la búsqueda para el datagrid"
+msgstr ""
+
+#: .\static\custom\js\jquery.kgrid.js:85
+msgid "Word or text"
+msgstr "Palabra o texto"
+
+#: .\static\custom\js\jquery.kgrid.js:122
+msgid "Search"
+msgstr "Buscar"
+
+#: .\static\custom\js\jquery.kgrid.js:157
+#: .\static\custom\js\jquery.kgrid.js:199
+msgid "Ascending"
+msgstr ""
+
+#: .\static\custom\js\jquery.kgrid.js:157
+#: .\static\custom\js\jquery.kgrid.js:199
+msgid "Descending"
+msgstr ""
+
+#: .\static\custom\js\jquery.kumbiaphp.js:74
+#: .\static\custom\js\jquery.kumbiaphp.js:76
+#: .\static\custom\js\jquery.kumbiaphp.js:141
+msgid "ACCEPT"
+msgstr "ACEPTAR"
+
+#: .\static\custom\js\jquery.kumbiaphp.js:79
+#: .\static\custom\js\jquery.kumbiaphp.js:142
+msgid "CANCEL"
+msgstr "CANCELAR"
+
+#: .\static\custom\js\validador.js:256
+msgid "Selecciona un elemento de la lista"
+msgstr ""
+
+#: .\static\custom\js\validador.js:261
+msgid "Selecciona algún elemento."
+msgstr ""
+
+#: .\static\custom\js\validador.js:266
+msgid "Selecciona alguna opción."
+msgstr ""
+
+#: .\static\custom\js\validador.js:272
+msgid "Por favor completa este campo"
+msgstr "Favor completa este campo"
+
+#: .\static\custom\js\validador.js:281
+msgid "El campo no coincide"
+msgstr ""
+
+#: .\static\custom\js\validador.js:284
+msgid "No se ha podido establecer el campo a comparar"
+msgstr ""

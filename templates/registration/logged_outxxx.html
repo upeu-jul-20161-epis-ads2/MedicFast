@@ -1,0 +1,41 @@
+{% extends "home/base_home.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     account
+
+Descripcion: Log out. QUITAR
+-->
+{% load i18n notify %}
+
+
+{% block rootcontainer %}
+
+
+<div id="shell-load">
+	<div id="shell-content" class="container-fluid" >
+		<div class="container shell-view">
+			<br>
+
+			<div class="breadcrumbs">
+				<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+				&rsaquo; {% trans 'Log out' %}
+			</div>
+
+			<div class="page-header">
+				<h3>{% trans 'Log out' %}</h3>
+			</div>
+			{% get_notify request %}
+
+
+			<p>{% trans 'Thanks for spending some quality time with the Web site today.' %}</p>
+
+			<p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
+
+		</div>
+	</div>
+</div> <!-- /dw-shell-load -->
+
+
+
+{% endblock %}

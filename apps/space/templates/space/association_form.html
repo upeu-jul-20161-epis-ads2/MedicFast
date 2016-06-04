@@ -1,0 +1,43 @@
+{% extends "mod_backend/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     space
+
+Descripcion: Create/Update solution
+-->
+{% load i18n crispy_forms_tags %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+
+{% crispy form %}
+
+{% endblock %}
+
+{% block extrajs %}
+{{ block.super }}
+
+<script type="text/javascript">
+$('#id_logo').fileinput({
+	showUpload: false,
+	showRemove: false,
+	initialCaption: '{{ form.logo.value }}',
+	initialPreview: ['<img src="{{ MEDIA_URL }}{{ form.logo.value }}">',],
+	browseClass: 'btn btn-warning',
+	browseLabel: '<span class="hidden-xs">{% trans "Pick image" %}</span>',
+	browseIcon: '<i class="btn-icon-only glyphicon glyphicon-picture"></i>',
+});
+
+</script>
+{% endblock extrajs %}

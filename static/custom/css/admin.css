@@ -1,0 +1,208 @@
+/* SELECTOR (FILTER INTERFACE) */ 
+
+.selector {
+    width: 100%;
+    float: left;
+
+
+}
+
+.selector select {
+    width: 100%;
+    height: 15.1em;
+
+}
+
+.selector-available, .selector-chosen {
+    float: left;
+    width: 42%;
+    text-align: center;
+
+}
+
+.selector-chosen select {
+    /*border-top: none;*/
+}
+
+.selector-available h2, .selector-chosen h2 {
+    
+    font-size: 13px;
+
+}
+
+.selector .selector-available h2 {
+    
+}
+
+.selector .selector-filter {
+    background: white;
+    border: 1px solid #ccc;
+    /*border-width: 0 1px;*/
+    padding: 3px;
+    color: #999;
+    
+    margin: 0;
+    text-align: left;
+
+}
+
+.selector .selector-filter label,
+.inline-group .aligned .selector .selector-filter label {
+    width: 16px;
+    padding: 2px;
+
+}
+
+.selector .selector-available input {
+    width: 80%;
+}
+
+.selector ul.selector-chooser {
+    float: left;
+    width: 22px;
+    height: 50px;
+    background: url(../img/chooser-bg.gif) top center no-repeat;
+    margin: 8em 5px 0 5px;
+    padding: 0;
+}
+
+.selector-chooser li {
+    margin: 0;
+    padding: 3px;
+    list-style-type: none;
+}
+
+.selector select {
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.selector-add, .selector-remove {
+    width: 16px;
+    height: 16px;
+    display: block;
+    text-indent: -3000px;
+    overflow: hidden;
+}
+
+.selector-add {
+    background: url(../img/selector-icons.gif) 0 -161px no-repeat;
+    cursor: default;
+    margin-bottom: 2px;
+}
+
+.active.selector-add {
+    background: url(../img/selector-icons.gif) 0 -187px no-repeat;
+    cursor: pointer;
+}
+
+.selector-remove {
+    background: url(../img/selector-icons.gif) 0 -109px no-repeat;
+    cursor: default;
+}
+
+.active.selector-remove {
+    background: url(../img/selector-icons.gif) 0 -135px no-repeat;
+    cursor: pointer;
+}
+
+a.selector-chooseall, a.selector-clearall {
+    display: inline-block;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    color: #666;
+}
+
+a.selector-chooseall {
+    padding: 3px 18px 3px 0;
+}
+
+a.selector-clearall {
+    padding: 3px 0 3px 18px;
+}
+
+a.active.selector-chooseall:hover, a.active.selector-clearall:hover {
+    color: #036;
+}
+
+a.selector-chooseall {
+    background: url(../img/selector-icons.gif) right -263px no-repeat;
+    cursor: default;
+}
+
+a.active.selector-chooseall {
+    background: url(../img/selector-icons.gif) right -289px no-repeat;
+    cursor: pointer;
+}
+
+a.selector-clearall {
+    background: url(../img/selector-icons.gif) left -211px no-repeat;
+    cursor: default;
+}
+
+a.active.selector-clearall {
+    background: url(../img/selector-icons.gif) left -237px no-repeat;
+    cursor: pointer;
+}
+
+/* STACKED SELECTORS */
+
+.stacked {
+
+}
+
+.stacked select {
+    width: 100%;
+    height: 6.1em;
+}
+
+.stacked .selector-available, .stacked .selector-chosen {
+    width: 100%;
+}
+
+.stacked .selector-available {
+    margin-bottom: 0;
+}
+
+.stacked .selector-available input {
+    width: 80%;
+}
+
+.stacked ul.selector-chooser {
+    height: 22px;
+    width: 50px;
+    margin: 0 0 3px 45%;
+    background: url(../img/chooser_stacked-bg.gif) top center no-repeat;
+}
+
+.stacked .selector-chooser li {
+    float: left;
+    padding: 3px 3px 3px 5px;
+}
+
+.stacked .selector-chooseall, .stacked .selector-clearall {
+    display: none;
+}
+
+.stacked .selector-add {
+    background: url(../img/selector-icons.gif) 0 -57px no-repeat;
+    cursor: default;
+}
+
+.stacked .active.selector-add {
+    background: url(../img/selector-icons.gif) 0 -83px no-repeat;
+    cursor: pointer;
+}
+
+.stacked .selector-remove {
+    background: url(../img/selector-icons.gif) 0 -5px no-repeat;
+    cursor: default;
+}
+
+.stacked .active.selector-remove {
+    background: url(../img/selector-icons.gif) 0 -31px no-repeat;
+    cursor: pointer;
+}
+

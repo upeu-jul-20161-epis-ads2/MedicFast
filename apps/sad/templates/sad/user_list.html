@@ -1,0 +1,118 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Lista user
+-->
+{% load i18n app_security %}
+{% load l10n humanize %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name_plural|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '/sad/user/index/?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '/sad/user/index/?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+<div class="btn-toolbar btn-toolbar-top">
+    <div class="row">
+        <div class="btn-actions">
+            <a href="/sad/user/create/" class="btn btn-primary text-bold" title="{% trans 'Add' %} {% trans 'user' %}"><i class="fa fa-plus"></i> <span class="hidden-xs"> {% trans 'Add'  %}</span></a>
+
+            <a href="/sad/user/person_search/" class="btn btn-success text-bold" title="{% trans 'Add' %} {% trans 'from'  %} {% trans 'user' %}"><i class="fa fa-plus"></i> <span class="hidden-xs"> {% trans 'Add'  %} {% trans 'from'  %} {% trans 'Person'  %}</span></a> 
+
+        </div>            
+    </div>
+</div>
+<div class="container-overflow">
+    <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-hidden" data-search="is_superuser" data-order="is_superuser">{% trans 'Type' %}</th>
+                <th class="col-hidden" data-search="username" data-order="username">{% trans 'username'|capfirst %}</th>
+                <th class="col-hidden" data-search="person__first_name" data-order="person__first_name">{% trans 'first name'|capfirst %}</th>
+                <th class="col-hidden" data-search="person__last_name" data-order="person__last_name">{% trans 'last name'|capfirst %}</th>
+                <th class="col-hidden" >{% trans 'Document'|capfirst %}</th>
+                <th class="col-hidden" data-search="email" data-order="email">{% trans 'Email' %}</th>
+                <th class="col-hidden" data-search="active" data-order="active">{% trans 'active'|capfirst %}</th>
+
+                <th class="btn-actions col-blocked text-center">{% trans 'Action' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in object_list %}       
+            <tr class="{{ d.is_active|yesno:',danger' }}">
+                <td>{% if is_paginated %}
+                    {{ page_obj.start_index|add:forloop.counter0 }}
+                    {% else %}
+                    {{ forloop.counter }}
+                    {% endif %}
+                </td>
+                <td><span class="label label-{{ d.is_superuser|yesno:'primary,info' }}">{{ d.is_superuser|yesno:'SUPERUSER,user' }}</span></td>
+                <td><span class="label label-{{ d.is_superuser|yesno:'primary,info' }}">{{ d.username }}</span></td>
+                <td>{{ d.person.first_name  }} </td>
+                <td>{{ d.person.last_name   }} </td>
+                <td>{{ d.person.get_identity_type_display }}{{ d.person.identity_num|add:'' }}</td>
+                 <td>{{ d.email }}</td>
+                <td>{{d.status}} - 
+                    <span class="label label-{{ d.is_active|yesno:'primary,success' }}">
+                        {% if d.is_active %}{% trans 'Yes'|upper %} {% else %} {% trans 'No'|upper %} {% endif %}
+                    </span>
+                </td>
+
+
+                <td class="text-center">
+                    <a href="/sad/user/detail/{{d.pk|key:'user_det'}}/" class="btn btn-warning btn-sm text-bold" title="{% trans 'Detail' %} {% trans 'user' %}" rel="tooltip"><i class="btn-icon-only fa fa-eye"></i></a>
+
+                    <a href="/sad/user/update/{{d.pk|key:'user_upd'}}/" class="btn btn-info btn-sm text-bold" title="{% trans 'Change' %} {% trans 'user' %}" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+
+                    {% if d.is_active %}
+
+                    <a href="/sad/user/state/ina/{{d.pk|key:'user_ina'}}/" class="btn btn-success btn-sm text-bold" title="{% trans 'inactivate'|capfirst %} {% trans 'user' %}" rel="tooltip"><i class="btn-icon-only fa fa-flag"></i></a>
+
+                    {% else %}
+
+                    <a href="/sad/user/state/rea/{{d.pk|key:'user_rea'}}/" class="btn btn-info btn-sm text-bold" title="{% trans 'reactivate'|capfirst %} {% trans 'user' %}" rel="tooltip"><i class="btn-icon-only fa fa-flag"></i></a>
+
+                    {% endif %}
+                    
+                    <a href="/sad/user/delete/{{d.pk|key:'user_del'}}/" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="{% trans 'Delete' %} {% trans 'user' %}?." msg="{% trans 'Are you sure?' %}<br/>{% trans 'Remember that this operation can not be reversed.' %}" title="{% trans 'Delete' %} {% trans 'user' %}" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

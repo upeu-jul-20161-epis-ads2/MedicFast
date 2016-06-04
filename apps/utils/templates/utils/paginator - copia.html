@@ -1,0 +1,71 @@
+{%
+  '''
+  No usar
+  '''
+  %}
+
+  {% load i18n %}
+  {% load paginator %}
+  <p class="paginator">
+    {% for i in page_numbers %}
+    {% paginator_number cx i %}
+    {% endfor %}
+
+  </p>
+
+
+  <div>
+    <p>
+      {% trans "Total records found" %}: <b>{{ page_obj.paginator.count }}</b>
+      ({% blocktrans with page_obj.number as number count paginator.num_pages as num_pages %}{{number}}/{{num_pages}} page{% plural %}{{number}}/{{num_pages}} pages{% endblocktrans %})
+    </p>
+  </div>
+
+
+  <ul class="pagination">
+   {% if has_previous %}
+   <li class="">
+    <a class="dw-spinner" href="?f={{f}}&q={{q}}&o={{o}}&page={{ previous }}" role="button">&lt; {% trans "previous" %}</a>
+  </li>
+  {% else %}
+  <li class="disabled">
+    <a class="disabled" role="button">&lt; {% trans "previous" %}</a>
+  </li>
+  {% endif %}
+
+  {% if show_first %}
+  <li class=""><a class="dw-spinner" href="?f={{f}}&q={{q}}&o={{o}}&page=1" role="button">1</a></li>
+
+  {% endif %}
+  {% for linkpage in page_numbers %}
+  {% if linkpage %}
+  {% ifequal linkpage page %}
+  <li class="active"><a role="button">{{ page }}</a></li>
+  {% else %}
+  {% ifequal linkpage '.' %}
+  <li><a class="disabled" role="button">...</a></li>
+  {% else %}
+  <li class=""><a class="dw-spinner" href="?f={{f}}&q={{q}}&o={{o}}&page={{ linkpage }}" role="button"
+   >{{ linkpage }}</a></li>
+   {% endifequal %}
+   {% endifequal %}
+   {% else %}
+   
+   {% endif %}
+   {% endfor %}
+   {% if show_last %}
+   
+   <li class=""><a class="dw-spinner" href="?f={{f}}&q={{q}}&o={{o}}&page={{ page_obj.paginator.num_pages }}" role="button">{{ pages }}</a></li>
+   {% endif %}
+   {% if has_next %}
+   <li class=""><a class="dw-spinner" href="?f={{f}}&q={{q}}&o={{o}}&page={{ next }}" role="button">{% trans "next" %} &gt;</a></li>
+   {% else %}
+   <li class="disabled">
+    <a class="disabled" role="button">{% trans "next" %} &gt;</a>
+  </li>
+  {% endif %}
+</ul>
+
+
+
+

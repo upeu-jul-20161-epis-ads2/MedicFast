@@ -1,0 +1,36 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Create/Update group
+-->
+{% load i18n crispy_forms_tags staticfiles %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo;
+<a href="/sad/user/index/">{{opts.verbose_name_plural|capfirst}}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+
+{% crispy form %}
+
+{% endblock %}
+
+{% block extrajs %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+
+});
+</script>
+{% endblock extrajs %}

@@ -1,0 +1,73 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     sad
+
+Descripcion: Create/Update group
+-->
+{% load i18n crispy_forms_tags staticfiles %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo;
+<a href="/sad/user/index/">{{opts.verbose_name_plural|capfirst}}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+
+{% crispy form %}
+
+{% endblock %}
+
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'custom/css/admin.css' %}">
+{% endblock extrastyle %}
+
+
+{% block extrajs %}
+{{ block.super }}
+<script src="{% static 'admin/js/core.js' %}"></script>
+<script src="{% static 'admin/js/jquery.js' %}"></script> 
+<script src="{% static 'admin/js/jquery.init.js' %}"></script>
+
+<script src="{% static 'admin/js/SelectBox.js' %}"></script>
+<script src="{% static 'admin/js/SelectFilter2.js' %}"></script>
+
+<script type="text/javascript">
+$(function(){
+	$('#id_photo').fileinput({
+		showUpload: false,
+		showRemove: false,
+		initialCaption: '{{ form.photo.value }}',
+		initialPreview: ['<img src="{{ MEDIA_URL }}{{ form.photo.value }}">',],
+		browseClass: 'btn btn-warning',
+		browseLabel: '<span class="hidden-xs">{% trans "Pick image" %}</span>',
+		browseIcon: '<i class="btn-icon-only glyphicon glyphicon-picture"></i>',
+	});
+
+	jQuery.each($('#id_hgroups'), function () {
+        // "Locations" can be any label you want
+        SelectFilter.init('id_hgroups', "{% trans 'groups'|capfirst %}", false, '/static/admin/');
+    });
+	jQuery.each($('#id_egroups'), function () {
+        // "Locations" can be any label you want
+        SelectFilter.init('id_egroups', "{% trans 'groups'|capfirst %}", false, '/static/admin/');
+    });
+    jQuery.each($('#id_agroups'), function () {
+        // "Locations" can be any label you want
+        SelectFilter.init('id_agroups', "{% trans 'groups'|capfirst %}", false, '/static/admin/');
+    });
+
+
+});
+</script>
+{% endblock extrajs %}

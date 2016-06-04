@@ -1,0 +1,16 @@
+{% load i18n staticfiles %}
+
+<footer class="navbar navbar-inverse navbar-fixed-bottom hidden-xs">
+    <div class="container">
+        <div class="pull-right hidden-xs">
+            <p>Versión: 1.0b2 Power by <a href="http://djangoproject.com/"  target="_blank" >Django</a> |
+				<a href="http://www.dailyscript.com.co/contacto/"  target="_blank" >DS</a>
+			</p>          
+        </div>
+        <div>
+            <p class="visible-xs">&copy; Copyright x{% now 'Y' %}.</p>
+            <p class="visible-xs">Todos los derechos reservados.x</p>
+            <p class="hidden-xs">Backengo &copy; {% now 'Y' %} <a href="#"  target="_blank">Submit Consulting</a>. Todos los derechos reservados.</p>
+        </div>                
+    </div>        
+</footer>

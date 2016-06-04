@@ -1,0 +1,105 @@
+{% extends "accounts/base_authenticated.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     space
+
+Descripcion: Lista solutions
+-->
+{% load i18n app_security %}
+{% load l10n humanize %}
+
+{% block breadcrumbs %}
+<a href="{% url 'home:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '/accounts/?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '/accounts/?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+
+
+<div class="btn-toolbar btn-toolbar-top">
+    <div class="row">
+        <div class="btn-actions">
+            {% if user.is_superuser %}
+            <a href="/mod_backend/dashboard/" class="btn btn-primary text-bold" title="{% trans 'Go' %} {% trans 'Admin' %}"><i class="fa fa-key"></i> <span class="hidden-xs"> {% trans 'Go'  %} {% trans 'Admin'  %}</span></a>
+            {% endif %}
+            <a href="/accounts/add_enterprise/" class="btn btn-warning text-bold" title="{% trans 'Add' %} {% trans 'Solution' %}"><i class="fa fa-plus"></i> <span class="hidden-xs"> {% trans 'Add'  %} {% trans 'Enterprise'  %}</span></a> 
+
+        </div>            
+    </div>
+</div>
+<div class="container-overflow">
+    <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-hidden" data-search="association__name" data-order="association__name">{% trans 'Association' %}</th>
+                <th class="col-hidden" data-search="enterprise__name" data-order="enterprise__name">{% trans 'Enterprise' %}</th>
+                <th class="col-hidden">{% trans 'Sede' %}</th>
+                <th class="col-hidden">{% trans 'Profile'|capfirst %}</th>
+                <th class="col-blocked text-center">{% trans 'Module' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in object_list %}       
+            <tr class="{{ d.headquar.is_active|yesno:',danger' }}">
+                <td>{% if is_paginated %}
+                    {{ page_obj.start_index|add:forloop.counter0 }}
+                    {% else %}
+                    {{ forloop.counter }}
+                    {% endif %}
+                </td>
+                <td>{{ d.association.name }} 
+                    <span class="label label-success">{{ d.association.is_active|yesno:',off' }}</span>
+                </td>
+                <td>
+                	{{ d.enterprise.name }} 
+                    <span class="label label-success">{{ d.enterprise.is_active|yesno:',off' }}</span>
+                </td>
+                <td>
+                	{{ d.headquar.name }} 
+                    <span class="label label-success">{{ d.headquar.is_active|yesno:',off' }}</span>
+                </td>
+                <td>{{ d.groups|join:', ' }} </td>
+                <td class="text-center">
+                	{% for d2 in d.modules %}
+                    <a href="/accounts/load_access/{{ d.headquar.id}}/{{ d2.id }}" class="btn btn-info btn-sm text-bold" title="{% trans "Elegir." %}" rel="tooltip"> {{ d2.name }} </a>
+
+                    {% endfor %}
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

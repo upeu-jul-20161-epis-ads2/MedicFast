@@ -1,0 +1,119 @@
+{% extends "mod_backend/base_mod_backend.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     space
+
+Descripcion: Lista solutions
+-->
+{% load i18n app_security %}
+{% load l10n humanize %}
+
+{% block breadcrumbs %}
+<a href="{% url 'accounts:index' %}">{% trans 'Home' %}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name_plural|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '/space/solution/index/?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '/space/solution/index/?f={{f}}&q={{q}}',
+    });
+});
+</script>
+{% trans 'active' %}
+{% trans 'Type' %}
+{% trans 'Image' %}
+{% trans 'title' %}
+{% trans 'Text' %}
+
+{% trans 'Help' %}
+{% trans 'help' %}
+
+
+
+<div class="btn-toolbar btn-toolbar-top">
+    <div class="row">
+        <div class="btn-actions">
+            <a href="/space/solution/create/" class="btn btn-primary text-bold" title="{% trans 'Add' %} {% trans 'Solution' %}"><i class="fa fa-plus"></i> <span class="hidden-xs"> {% trans 'Add'  %}</span></a> 
+        </div>            
+    </div>
+</div>
+<div class="container-overflow">
+    <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th class="col-hidden" data-search="name" data-order="name">{% trans 'name'|capfirst %}</th>
+                <th class="col-hidden" data-search="description" data-order="description">{% trans 'Description' %}</th>
+                <th class="col-hidden" data-search="price" data-order="price">{% trans 'Price' %}</th>
+                <th >{% trans 'date joined'|capfirst %}</th>
+                <th class="col-hidden">{% trans 'active'|capfirst %}</th>
+                <th class="btn-actions col-blocked text-center">{% trans 'Action' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for d in object_list %}       
+            <tr class="{{ d.is_active|yesno:',danger' }}">
+                <td>{% if is_paginated %}
+                    {{ page_obj.start_index|add:forloop.counter0 }}
+                    {% else %}
+                    {{ forloop.counter }}
+                    {% endif %}
+                </td>
+                <td>{{ d.name }} </td>
+                <td>{{ d.description }} </td>
+                <td>{{ d.price|unlocalize|intcomma  }} </td>
+                <td>{{ d.created_at }} </td>
+                <td>
+                    <span class="label label-{{ d.is_active|yesno:'primary,success' }}">
+                        {% if d.is_active %}{% trans 'Yes'|upper %} {% else %} {% trans 'No'|upper %} {% endif %}
+                    </span>
+                </td>
+                <td class="text-center">
+                    <a href="/space/solution/update/{{d.pk|key:'solution_upd'}}/" class="btn btn-info btn-sm text-bold" title="{% trans 'Change' %} {% trans 'Solution' %}" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+
+                    {% if d.is_active %}
+
+                    <a href="/space/solution/state/ina/{{d.pk|key:'solution_ina'}}/" class="btn btn-success btn-sm text-bold" title="{% trans 'inactivate'|capfirst %} {% trans 'Solution' %}" rel="tooltip"><i class="btn-icon-only fa fa-flag"></i></a>
+
+                    {% else %}
+
+                    <a href="/space/solution/state/rea/{{d.pk|key:'solution_rea'}}/" class="btn btn-info btn-sm text-bold" title="{% trans 'reactivate'|capfirst %} {% trans 'Solution' %}" rel="tooltip"><i class="btn-icon-only fa fa-flag"></i></a>
+
+                    {% endif %}
+
+                    
+                    <a href="/space/solution/delete/{{d.pk|key:'solution_del'}}/" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="{% trans 'Delete' %} {% trans 'Solution' %}?." msg="{% trans 'Are you sure?' %}<br/>{% trans 'Remember that this operation can not be reversed.' %}" title="{% trans 'Delete' %} {% trans 'Solution' %}" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+
+                    
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</div>
+<div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

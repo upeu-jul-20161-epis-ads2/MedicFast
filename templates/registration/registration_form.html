@@ -1,0 +1,47 @@
+{% extends "home/base_home.html" %}
+<!--
+@copyright   Copyright (c) 2014 Submit Consulting
+@author      Angel Sullon (@asullom)
+@package     account
+
+Descripcion: Registra usuarios
+-->
+
+{% load i18n crispy_forms_tags notify %}
+
+{% block rootcontainer %}
+
+<div id="shell-load">
+  <div id="shell-content" class="container-fluid" >
+    <div class="container shell-view">
+
+
+    <div class="page-header">
+        <h3>{% trans 'Register' %}</h3>
+    </div>
+    {% get_notify request %}
+
+    {% crispy form %}
+
+</div>
+</div>
+</div> <!-- /dw-shell-load -->
+{% endblock %}
+
+
+{% block extrajs %}
+{{ block.super }}
+
+<script type="text/javascript">
+$('#id_photo').fileinput({
+	showUpload: false,
+	showRemove: false,
+	initialCaption: '{{ form.photo.value }}',
+	initialPreview: ['<img src="{{ MEDIA_URL }}{{ form.photo.value }}">',],
+	browseClass: 'btn btn-warning',
+	browseLabel: '<span class="hidden-xs">{% trans "Pick image" %}</span>',
+	browseIcon: '<i class="btn-icon-only glyphicon glyphicon-picture"></i>',
+});
+
+</script>
+{% endblock extrajs %}

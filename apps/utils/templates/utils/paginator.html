@@ -1,0 +1,18 @@
+{% load i18n %}
+{% load paginator %}
+<div class="col-md-12" >
+  <ul class="breadcrumbpag pagination" >
+    <span></span>
+    {% for i in page_numbers %}
+    {% paginator_number page_obj i f q o %}
+    {% endfor %}
+    <span>&nbsp;&nbsp;
+      {{ page_obj.paginator.count }} {% ifequal page_obj.paginator.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
+      ({% blocktrans with page_obj.number as number count paginator.num_pages as num_pages %}{{number}}/{{num_pages}} page{% plural %}{{number}}/{{num_pages}} pages{% endblocktrans %})
+
+
+      {% if show_all_url %}&nbsp;&nbsp;<a href="?f={{f}}&q={{q}}&o={{o}}&all=">{% trans 'Show all' %}</a>{% endif %}
+
+    </span>
+  </ul>
+</div>

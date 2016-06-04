@@ -1,0 +1,17 @@
+Django==1.7
+
+django-crispy-forms==1.4.0
+Pillow==2.5.1
+# developing and testing
+docutils==0.12
+#django-any>=0.2.0
+#django-jenkins>=0.16.2
+
+
+# optional packages
+#pep8>=1.5.7
+#pytz>=2014.7
+
+# favorite db
+#mysql-python>=1.2.5
+

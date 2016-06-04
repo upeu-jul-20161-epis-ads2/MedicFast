@@ -1,0 +1,70 @@
+<!-- Base para apps con bootstrap-3 -->
+{% load i18n staticfiles %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"es-pe" }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block extrahead %}
+        {% endblock extrahead %}
+        <title>{% block title %}base{% endblock title %}</title>
+
+        <link href="{% static 'bootstrap-3.1.1-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'datetimepicker/css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+        <link href="{% static 'typehead/typehead.css' %}" rel="stylesheet">
+        <link href="{% static 'font-awesome-4.2.0/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-table/css/jquery.bdt.css' %}" rel="stylesheet">
+        <link href="{% static 'bootstrap-table/css/style.css' %}" rel="stylesheet">
+    
+         <script src="{% static 'jquery/jquery.min.js' %}"></script>
+         
+        {% block extrastyle %}
+        {% endblock extrastyle %}
+
+        {% block headjs %}
+        {% endblock headjs %}
+
+    </head>
+    <body>
+
+        {% block header %}
+        {% endblock header %}
+
+        <div class="container-fluid" id="wrapper">
+
+            <div  id="page-content-wrapper">
+                <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>-->
+                <div class="container-fluid">
+
+                    {% block rootcontainer %}
+                    {% endblock rootcontainer %}
+
+                    {% block footer %}
+                    {% endblock footer %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <script type="text/javascript" src="{% url 'django.views.i18n.javascript_catalog' %}"></script>
+       
+        <script src="{% static 'bootstrap-3.1.1-dist/js/bootstrap.min.js' %}"></script>
+        <!-- http://www.jsdelivr.com/#!momentjs http://momentjs.com/timezone/-->
+        <script src="{% static 'moment/moment-with-locales.min.js' %}"></script>
+        <script src="{% static 'datetimepicker/js/bootstrap-datetimepicker.min.js' %}"></script>
+        <script src="{% static 'custom/js/utils-system.js' %}"></script>
+        <script src="{% static 'bootstrap-table/js/jquery.bdt.js' %}"></script>
+        <script src="{% static 'bootstrap-table/js/vendor/jquery.sortelements.js' %}"></script>
+
+
+        {% block extrajs %}
+        {% endblock extrajs %}
+        
+        {% block customjs %}
+        {% endblock customjs %}
+
+
+    </body>
+</html>
