@@ -29,21 +29,21 @@ from django.http import HttpResponseRedirect
 from apps.utils.forms import empty
 import json
 from django.utils.text import capfirst, get_text_list
-from .forms.DistritoForm import (DistritoForm)
+from .forms.PersonaForm import (PersonaForm)
 from .models import (
-    Distrito)
+    Persona)
 
 
-# class Distrito
+# class Persona
 
-class DistritoListView(ListView):
-    model = Distrito
-    template_name = 'distrito/distrito_list.html'
+class PersonaListView(ListView):
+    model = Persona
+    template_name = 'persona/persona_list.html'
     paginate_by = settings.PER_PAGE
 
     @method_decorator(permission_resource_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(DistritoListView, self).dispatch(request, *args, **kwargs)
+        return super(PersonaListView, self).dispatch(request, *args, **kwargs)
 
     def get_paginate_by(self, queryset):
         if 'all' in self.request.GET:
@@ -60,10 +60,10 @@ class DistritoListView(ListView):
 
 
     def get_context_data(self, **kwargs):
-        context = super(DistritoListView, self).get_context_data(**kwargs)
+        context = super(PersonaListView, self).get_context_data(**kwargs)
         context['opts'] = self.model._meta
-        context['cmi'] = 'distrito'
-        context['title'] = _('Select %s to change') % capfirst(_('Distrito'))
+        context['cmi'] = 'persona'
+        context['title'] = _('Select %s to change') % capfirst(_('Persona'))
 
         context['o'] = self.o
         context['f'] = self.f
@@ -72,21 +72,21 @@ class DistritoListView(ListView):
         return context
 
 
-class DistritoCreateView(CreateView):
-    model = Distrito
-    form_class = DistritoForm
-    template_name = 'distrito/distrito_add.html'
-    success_url = reverse_lazy('atencion:distrito_list')
+class PersonaCreateView(CreateView):
+    model = Persona
+    form_class = PersonaForm
+    template_name = 'persona/persona_add.html'
+    success_url = reverse_lazy('atencion:persona_list')
 
     @method_decorator(permission_resource_required )
     def dispatch(self, request, *args, **kwargs):
-        return super(DistritoCreateView, self).dispatch(request, *args, **kwargs)
+        return super(PersonaCreateView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(DistritoCreateView, self).get_context_data(**kwargs)
+        context = super(PersonaCreateView, self).get_context_data(**kwargs)
         context['opts'] = self.model._meta
-        context['cmi'] = 'distrito'
-        context['title'] = ('Agregar %s') % ('Distrito')
+        context['cmi'] = 'persona'
+        context['title'] = ('Agregar %s') % ('Persona')
         return context
 
 
@@ -103,25 +103,25 @@ class DistritoCreateView(CreateView):
         if self.object.id:
             messages.success(self.request, msg)
             log.warning(msg, extra=log_params(self.request))
-        return super(DistritoCreateView, self).form_valid(form)
+        return super(PersonaCreateView, self).form_valid(form)
 
 
 
-class DistritoUpdateView(UpdateView):
-    model = Distrito
-    template_name = 'distrito/distrito_add.html'
-    form_class = DistritoForm
-    success_url = reverse_lazy('atencion:distrito_list')
+class PersonaUpdateView(UpdateView):
+    model = Persona
+    template_name = 'persona/persona_add.html'
+    form_class = PersonaForm
+    success_url = reverse_lazy('atencion:persona_list')
 
     @method_decorator(permission_resource_required )
     def dispatch(self, request, *args, **kwargs):
-        return super(DistritoUpdateView, self).dispatch(request, *args, **kwargs)
+        return super(PersonaUpdateView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(DistritoUpdateView, self).get_context_data(**kwargs)
+        context = super(PersonaUpdateView, self).get_context_data(**kwargs)
         context['opts'] = self.model._meta
-        context['cmi'] = 'distrito'
-        context['title'] = _('Add %s') % _('Distrito')
+        context['cmi'] = 'persona'
+        context['title'] = _('Add %s') % _('Persona')
         return context
 
 
@@ -138,12 +138,12 @@ class DistritoUpdateView(UpdateView):
         if self.object.id:
             messages.success(self.request, msg)
             log.warning(msg, extra=log_params(self.request))
-        return super(DistritoUpdateView, self).form_valid(form)
+        return super(PersonaUpdateView, self).form_valid(form)
 
 
-class DistritoDeleteView(DeleteView):
-    model = Distrito
-    success_url = reverse_lazy('atencion:distrito_list')
+class PersonaDeleteView(DeleteView):
+    model = Persona
+    success_url = reverse_lazy('atencion:persona_list')
 
 
     @method_decorator(permission_resource_required)
@@ -155,7 +155,7 @@ class DistritoDeleteView(DeleteView):
             messages.error(self.request, e)
             log.warning(force_text(e), extra=log_params(self.request))
             return HttpResponseRedirect(self.success_url)
-        return super(DistritoDeleteView, self).dispatch(request, *args, **kwargs)
+        return super(PersonaDeleteView, self).dispatch(request, *args, **kwargs)
 
 
     def delete(self, request, *args, **kwargs):
