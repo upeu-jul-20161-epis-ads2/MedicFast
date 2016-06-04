@@ -1,0 +1,27 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+
+{% block content %}
+    <div class="busqueda">
+        
+    <form action="{% url 'atencion:historia_busqueda' %}" method="get">
+        <input type="text" name="codigo" id="codigo" value="{{ request.GET.codigo }}" class="form form-input">
+        <button type="submit" class="btn btn-search">Buscar</button>
+    </form>
+
+    </div>
+
+    <div class="resultado">
+        
+        <label for="">Nombre</label>{{persona.nombres}}
+        
+        {% if historial %}
+        historial
+            
+            {% else %}
+            <h2>No tiene historial</h2>
+            <button>CREAR
+            </button>
+        {% endif %}
+    </div>
+
+{% endblock content %}

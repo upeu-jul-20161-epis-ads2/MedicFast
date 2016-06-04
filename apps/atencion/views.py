@@ -185,3 +185,25 @@ class PersonaDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+
+
+class HitoriaBusquedaTemplateView(TemplateView):
+    """Historia Template View.
+
+    Clase usada para buscar el historial de una persona.
+    """
+
+    template_name = "historial/busqueda.html"
+
+    def get(self, request, *args, **kwargs):
+        try:
+            codigo = request.GET['codigo']
+            print(codigo)
+        except Exception as e:
+            pass
+
+        context = {}
+
+
+        return self.render_to_response(context)
+
