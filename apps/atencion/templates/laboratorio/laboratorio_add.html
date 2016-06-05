@@ -1,0 +1,33 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+
+{% load i18n crispy_forms_tags %}
+{% load l10n %}
+
+{% block breadcrumbs %}
+
+&rsaquo;
+<a href="{% url 'atencion:laboratorio_list' %}">{{ opts.verbose_name_plural|capfirst }}</a>
+&rsaquo; {{ title }}
+{% endblock breadcrumbs %}
+
+{% block content_title %}
+{{ opts.verbose_name|capfirst }} | <small>{{ title }}</small>
+{% endblock content_title %}
+
+{% block content %}
+    <form action="" method="post">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit" class="btn  btn-primary">Agregar</button>
+    <a href="{% url 'atencion:laboratorio_list' %}" class="btn btn-danger">Cancelar</a>
+    </form>
+{% endblock content %}
+
+{% block extrajs %}
+{{ block.super }}
+
+<script type="text/javascript">
+
+</script>
+{% endblock extrajs %}
+

@@ -33,9 +33,9 @@ $(function() {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th class="" data-search="nombre" data-order="nombres">Nombres</th>
-                    <th class="" data-search="nombre" data-order="apellido_paterno">Apellido Paterno</th>
-                    <th class="" data-search="nombre" data-order="apellido_materno">Apellido Materno</th>
+                    <th class="" data-search="nombres" data-order="nombres">Nombres</th>
+                    <th class="" data-search="apellido_paterno" data-order="apellido_paterno">Apellido Paterno</th>
+                    <th class="" data-search="apellido_materno" data-order="apellido_materno">Apellido Materno</th>
                     
                     <th class="btn-actions col-block text-center">Dni</th>
                     <th class="btn-actions col-block text-center">Fecha Nacimiento</th>
@@ -64,8 +64,8 @@ $(function() {
                    
                     <td class="text-center">
                         
-                         <a href="{% url 'atencion:persona_update' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Distrito" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
-                         <a href="{% url 'atencion:persona_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Distrito?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Distrito" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+                         <a href="{% url 'atencion:persona_update' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Persona" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+                         <a href="{% url 'atencion:persona_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Persona?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Persona" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
                     </td>
 
                 </tr>

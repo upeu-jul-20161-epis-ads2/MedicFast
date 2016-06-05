@@ -1,6 +1,6 @@
 {% extends "mod_hotel/base_mod_backend.html" %}
 {% block title %}
-Lista de Distritos
+
 {% endblock %}
 {% block rootcontainer %}
 
@@ -8,9 +8,9 @@ Lista de Distritos
 $(function() {
     $('table').kgrid({
         form_data : ['{{f}}', '{{q}}'],
-        form_to   : '{% url "atencion:distrito_list" %}?f={{f}}&q={{q}}',
+        form_to   : '{% url "atencion:laboratorio_list" %}?f={{f}}&q={{q}}',
         order_attr: 'class=""',
-        order_to  : '{% url "atencion:distrito_list" %}?f={{f}}&q={{q}}',
+        order_to  : '{% url "atencion:laboratorio_list" %}?f={{f}}&q={{q}}',
     });
 });
 </script>
@@ -18,10 +18,10 @@ $(function() {
     <div class="btn-toolbar btn-toolbar-top">
         <div class="row">
             <div class="btn-actions">
-                <a href="{% url 'atencion:distrito_add' %}" class="btn btn-primary text-bold" title="Agregar distrito">
+                <a href="{% url 'atencion:laboratorio_add' %}" class="btn btn-primary text-bold" title="Agregar Laboratorio">
                     <i class="fa fa-plus">
                     </i>
-                    <span class="hidden-xs"> Agregar distrito
+                    <span class="hidden-xs"> Agregar Laboratorio
                     </span>
                 </a>
             </div>
@@ -33,8 +33,12 @@ $(function() {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th class="" data-search="nombre" data-order="nombre">nombre</th>
-                    
+                    <th class="" data-search="hemoglobina" data-order="hemoglobina">Hemoglobina</th>
+                    <th class="btn-actions col-block text-center">Endocritos</th>
+                    <th class="btn-actions col-block text-center">Globulos Rojos</th>
+                    <th class="btn-actions col-block text-center">Globulos Blancos</th>
+                    <th class="" data-search="hemoglobina" data-order="hemoglobina">Tipo de Sangre</th>
+                   
                     <th class="btn-actions col-block text-center">opcion</th>
                 </tr>
             </thead>
@@ -48,12 +52,16 @@ $(function() {
                             {{ forloop.counter }}
                         {% endif %}
                     </td>
-                    <td>{{ d.nombre }}</td>
+                    <td>{{ d.hemoglobina }}</td>
+                    <td>{{ d.endocritos }}</td>
+                    <td>{{ d.globulos_rojos }}</td>
+                    <td>{{ d.globulos_blancos }}</td>
+                    <td>{{ d.tipo_sangre }}</td>
                    
                     <td class="text-center">
                         
-                         <a href="{% url 'atencion:distrito_update' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Distrito" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
-                         <a href="{% url 'atencion:distrito_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Distrito?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Distrito" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+                         <a href="{% url 'atencion:laboratorio_update' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Laboratorio" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+                         <a href="{% url 'atencion:laboratorio_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Laboratorio?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Laboratorio" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
                     </td>
 
                 </tr>
@@ -85,10 +93,10 @@ $(function() {
 {% block customjs %}
     <script>
      $('#delmodal').on('hidden.bs.modal', function () {
-        $(location).attr('href', '{% url "atencion:distrito_list" %}');
+        $(location).attr('href', '{% url "atencion:laboratorio_list" %}');
      });
     $('#updmodal').on('hidden.bs.modal', function () {
-        $(location).attr('href', '{% url "atencion:distrito_list" %}');
+        $(location).attr('href', '{% url "atencion:laboratorio_list" %}');
      });
 
     </script>

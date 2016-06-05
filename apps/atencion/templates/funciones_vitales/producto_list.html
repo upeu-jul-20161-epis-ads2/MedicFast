@@ -1,0 +1,110 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+{% block title %}
+
+{% endblock %}
+{% block rootcontainer %}
+
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '{% url "atencion:funcionesvitales_list" %}?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '{% url "atencion:funcionesvitales_list" %}?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+    <div class="btn-toolbar btn-toolbar-top">
+        <div class="row">
+            <div class="btn-actions">
+                <a href="{% url 'atencion:funcionesvitales_add' %}" class="btn btn-primary text-bold" title="Agregar Funciones Vitales">
+                    <i class="fa fa-plus">
+                    </i>
+                    <span class="hidden-xs"> Agregar Funciones Vitales
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-overflow">
+        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="btn-actions col-block text-center">Frecuencia Cardiaca</th>
+                    <th class="btn-actions col-block text-center">Frecuencia Respiratoria</th>
+                    <th class="btn-actions col-block text-center">Presion Arterial</th>
+                    <th class="btn-actions col-block text-center">Temperatura</th>
+                    <th class="btn-actions col-block text-center">Peso</th>
+                    <th class="btn-actions col-block text-center">Talla</th>
+                    <th class="btn-actions col-block text-center">Masa Corporal</th>
+                    <th class="" data-search="diagnostico_mc" data-order="diagnostico_mc">Diagnostico de Masa Corporal</th>
+                    <th class="btn-actions col-block text-center">Consulta</th>
+                    <th class="btn-actions col-block text-center">opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in object_list %}
+                <tr>
+                    <td>
+                        {% if is_paginated %}
+                            {{ page_obj.start_index|add:forloop.counter0 }}
+                        {% else %}
+                            {{ forloop.counter }}
+                        {% endif %}
+                    </td>
+                    <td>{{ f.frecuencia_cardiaca }}</td>
+                    <td>{{ f.frecuencia_respiratoria }}</td>
+                    <td>{{ f.presion_arterial }}</td>
+                    <td>{{ f.temperatura }}</td>
+                    <td>{{ f.peso }}</td>
+                    <td>{{ f.talla }}</td>
+                    <td>{{ f.masa_corporal }}</td>
+                    <td>{{ f.diagnostico_mc }}</td>
+                    <td>opcion</td>
+                   
+                    <td class="text-center">
+                        
+                         <a href="{% url 'atencion:funcionesvitales_update' f.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Funciones Vitales" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+                         <a href="{% url 'atencion:funcionesvitales_delete' f.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Funciones Vitales?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Funciones Vitales" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+   <div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }}
+            {% ifequal object_list.count 1 %}
+                {{ opts.verbose_name|capfirst }}
+            {% else %}{{ opts.verbose_name_plural|title }}
+            {% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+{% block customjs %}
+    <script>
+     $('#delmodal').on('hidden.bs.modal', function () {
+        $(location).attr('href', '{% url "atencion:funcionesvitales_list" %}');
+     });
+    $('#updmodal').on('hidden.bs.modal', function () {
+        $(location).attr('href', '{% url "atencion:funcionesvitales_list" %}');
+     });
+
+    </script>
+{% endblock %}
