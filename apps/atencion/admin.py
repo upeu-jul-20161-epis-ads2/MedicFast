@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Distrito, Provincia, Departamento,  FuncionesVitales, Diagnostico, Producto, UnidadMedida
-from .models import DetalleReceta, Tratamiento, Consulta, Laboratorio, Historia, ConsultaEmergencia
+from .models import DetalleReceta, Tratamiento, Consulta, Laboratorio, Historia, ConsultaEmergencia, Persona
 # Register your models here.
 
 admin.site.register(Distrito)
@@ -16,3 +16,4 @@ admin.site.register(Consulta)
 admin.site.register(Laboratorio)
 admin.site.register(Historia)
 admin.site.register(ConsultaEmergencia)
+admin.site.register(Persona)

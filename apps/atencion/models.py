@@ -87,8 +87,9 @@ class Persona(models.Model):
     nombres = models.CharField(max_length=40)
     apellido_paterno = models.CharField(max_length=40)
     apellido_materno = models.CharField(max_length=40)
-    dni = models.IntegerField(unique=True)
+    dni = models.CharField(max_length=8, unique=True)
     fecha_nacimiento = models.DateField()
+    codigo = models.CharField(max_length=9, unique=True,blank=True, null=True)
     edad = models.IntegerField()
     estado_civil = models.CharField(max_length=20, choices=estado_civil)
     sexo = models.CharField(max_length=20, choices=sexo)
@@ -97,11 +98,12 @@ class Persona(models.Model):
     direccion_actual = models.CharField(max_length=100)
     distrito = models.ForeignKey(Distrito)
     contacto = models.CharField(max_length=10)
+    es_matriculado = models.BooleanField(default=True)
     class Meta:
         verbose_name = "Persona"
         verbose_name_plural = "Personas"
     def __str__(self):
-        return "%s" %(self.nombres, self.apellido_paterno,self.apellido_materno)
+        return "%s %s %s" %(self.nombres, self.apellido_paterno,self.apellido_materno)
 
 class Historia(models.Model):
     persona = models.OneToOneField(Persona)

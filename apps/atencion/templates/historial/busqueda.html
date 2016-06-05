@@ -1,0 +1,43 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+
+{% block content %}
+    <div class="busqueda">
+        
+    <form action="{% url 'atencion:historia_busqueda' %}" method="get">
+        <input type="text" name="codigo" id="codigo" value="{{ request.GET.codigo }}" class="form form-input">
+        <button type="submit" class="btn btn-search">Buscar</button>
+    </form>
+
+    </div>
+
+    <div class="resultado">
+        
+        {% if persona %}
+            <label for="">Nombres: </label>{{persona.nombres}} <br>
+            <label for="">Apellido: </label>{{persona.apellido_paterno}} {{persona.apellido_materno}}<br>
+            <label for="">C&oacute;digo: </label>{{persona.codigo}}<br>
+            <label for="">Fecha Nacimiento: </label>{{persona.fecha_nacimiento}}<br>
+            <label for="">Sexo: </label>{{ persona.sexo }}<br>
+            <label for="">Estado Civil: </label>{{ persona.estado_civil }}<br>
+
+
+
+        <div class="historial">
+            {% if historia %}
+            <button>Laboratioro</button>
+            <button>Funciones Vitales</button>
+            <button>Consulta</button>
+            <button>Estado</button>
+
+            {% else %}
+            <h2>No tiene historial</h2>
+            <button >CREAR
+            </button>
+        {% endif %}
+        </div>
+            {% else %}
+            <h2>No existe la persona</h2>
+        {% endif %}
+    </div>
+
+{% endblock content %}fa

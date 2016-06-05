@@ -32,7 +32,11 @@ from django.utils.text import capfirst, get_text_list
 from .forms.PersonaForm import PersonaForm
 from .forms.LaboratorioForm import LaboratorioForm
 from .forms.ProductoForm import ProductoForm
+<<<<<<< HEAD
 from .models import (Persona, Producto, Laboratorio)
+=======
+from .models import (Persona, Producto, Historia)
+>>>>>>> e8ff258c681880c41714de6a596c89966d9321b6
 
 
 # class Persona==============================================================================
@@ -187,6 +191,34 @@ class PersonaDeleteView(DeleteView):
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
 
+class HitoriaBusquedaTemplateView(TemplateView):
+    """Historia Template View.
+
+    Clase usada para buscar el historial de una persona.
+    """
+
+    template_name = "historial/busqueda.html"
+
+    def get(self, request, *args, **kwargs):
+        try:
+            codigo = request.GET['codigo']
+            
+            persona = Persona.objects.get(dni=codigo)
+
+
+        except Exception as e:
+            persona = ''
+
+        try:
+            historia = Historia.objects.get(persona__dni=codigo)
+
+        except Exception as e:
+            historia = ''
+
+        context = {'persona': persona, 'historia': historia}
+
+
+        return self.render_to_response(context)
 
 # class Producto==============================================================================
 class ProductoListView(ListView):
@@ -339,6 +371,7 @@ class ProductoDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+<<<<<<< HEAD
 
 # class Laboratorio==============================================================================
 class LaboratorioListView(ListView):
@@ -627,3 +660,5 @@ class FuncionesVitalesDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+=======
+>>>>>>> e8ff258c681880c41714de6a596c89966d9321b6
