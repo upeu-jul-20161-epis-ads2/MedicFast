@@ -12,15 +12,31 @@
 
     <div class="resultado">
         
-        <label for="">Nombre</label>{{persona.nombres}}
-        
-        {% if historial %}
-        historial
-            
+        {% if persona %}
+            <label for="">Nombres: </label>{{persona.nombres}} <br>
+            <label for="">Apellido: </label>{{persona.apellido_paterno}} {{persona.apellido_materno}}<br>
+            <label for="">C&oacute;digo: </label>{{persona.codigo}}<br>
+            <label for="">Fecha Nacimiento: </label>{{persona.fecha_nacimiento}}<br>
+            <label for="">Sexo: </label>{{ persona.sexo }}<br>
+            <label for="">Estado Civil: </label>{{ persona.estado_civil }}<br>
+
+
+
+        <div class="historial">
+            {% if historia %}
+            <button>Laboratioro</button>
+            <button>Funciones Vitales</button>
+            <button>Consulta</button>
+            <button>Estado</button>
+
             {% else %}
             <h2>No tiene historial</h2>
-            <button>CREAR
+            <button >CREAR
             </button>
+        {% endif %}
+        </div>
+            {% else %}
+            <h2>No existe la persona</h2>
         {% endif %}
     </div>
 

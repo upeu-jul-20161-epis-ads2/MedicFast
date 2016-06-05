@@ -31,7 +31,7 @@ import json
 from django.utils.text import capfirst, get_text_list
 from .forms.PersonaForm import (PersonaForm)
 from .forms.ProductoForm import ProductoForm
-from .models import (Persona, Producto)
+from .models import (Persona, Producto, Historia)
 
 
 # class Persona
@@ -186,8 +186,6 @@ class PersonaDeleteView(DeleteView):
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
 
-
-<<<<<<< HEAD
 class HitoriaBusquedaTemplateView(TemplateView):
     """Historia Template View.
 
@@ -199,16 +197,24 @@ class HitoriaBusquedaTemplateView(TemplateView):
     def get(self, request, *args, **kwargs):
         try:
             codigo = request.GET['codigo']
-            print(codigo)
-        except Exception as e:
-            pass
+            
+            persona = Persona.objects.get(dni=codigo)
 
-        context = {}
+
+        except Exception as e:
+            persona = ''
+
+        try:
+            historia = Historia.objects.get(persona__dni=codigo)
+
+        except Exception as e:
+            historia = ''
+
+        context = {'persona': persona, 'historia': historia}
 
 
         return self.render_to_response(context)
 
-=======
 # class Producto
 class ProductoListView(ListView):
     model = Producto
@@ -360,4 +366,3 @@ class ProductoDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
->>>>>>> 9ee0fe2161baf4f24f7cf1924cbda8b41f77c0b2
