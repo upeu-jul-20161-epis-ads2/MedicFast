@@ -30,4 +30,55 @@
 
 </script>
 {% endblock extrajs %}
+{% block customjs %}
+    <script type="text/javascript">
+  $(function() {
+    $('#id_fecha_nacimiento').datetimepicker({
+        format: 'YYYY-MM-DD',
+      pickTime: false
+    });
+    $("#id_distrito").html("");
+    $("#id_distrito").trigger("change");
+     $("#id_provincia").html("");
+    $("#id_provincia").trigger("change");
+  });
+
+  $('#id_provincia').on('change',distrito);
+    function distrito(){
+        var id = $(this).val();
+        $.ajax({
+            data:{'id':id},
+            url:'{% url 'atencion:busqueda_distrito' %}',
+            type: 'get',
+            success: function(data){
+
+                $("#id_distrito").html(data.distritos);
+                $("#id_distrito").trigger("change");
+            },
+            failure: function (errMsg) {
+            $('#errorMessage').text(errMsg);
+                }
+        });
+    }
+
+    $('#id_departamento').on('change',provincia);
+    function provincia(){
+        var id = $(this).val();
+        $.ajax({
+            data:{'id':id},
+            url:'{% url 'atencion:busqueda_provincia' %}',
+            type: 'get',
+            success: function(data){
+
+                $("#id_provincia").html(data.provincias);
+                $("#id_provincia").trigger("change");
+            },
+            failure: function (errMsg) {
+            $('#errorMessage').text(errMsg);
+                }
+        });
+    }
+</script>
+
+{% endblock customjs %}
 

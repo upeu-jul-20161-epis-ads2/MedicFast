@@ -31,7 +31,7 @@ import json
 from django.utils.text import capfirst, get_text_list
 from .forms.PersonaForm import (PersonaForm)
 from .forms.ProductoForm import ProductoForm
-from .models import (Persona, Producto, Historia)
+from .models import (Persona, Producto, Historia, Departamento, Provincia, Distrito)
 
 
 # class Persona
@@ -71,6 +71,54 @@ class PersonaListView(ListView):
         return context
 
 
+class ProvinciaAjax(TemplateView):
+    """docstring for BusquedaAjaxView"""
+    def get(self, request, *args, **kwargs):
+        options = '<option value="" selected="selected">---------</option>'
+
+        id_departamento = request.GET.get('id')
+        if id_departamento:
+
+            provincias = Provincia.objects.filter(departamento__id=id_departamento)
+
+        else:
+            provincias = Provincia.objects.filter(departamento__id=0)
+        # data = serializers.serialize('json', distritos, fields=('id', 'distrito'))
+        for provincia in provincias:
+            options += '<option value="%s">%s</option>' % (
+                provincia.pk,
+                provincia.nombre
+            )
+        response = {}
+        response['provincias'] = options
+
+        return http.JsonResponse(response)
+
+class DistritoAjax(TemplateView):
+    """docstring for BusquedaAjaxView"""
+    def get(self, request, *args, **kwargs):
+
+        options = '<option value="" selected="selected">---------</option>'
+
+        id_provincia = request.GET.get('id')
+        if id_provincia:
+
+            distritos = Distrito.objects.filter(provincia__id=id_provincia)
+            
+        else:
+            distritos = Distrito.objects.filter(provincia__id=0)
+        # data = serializers.serialize('json', distritos, fields=('id', 'distrito'))
+        for distrito in distritos:
+            options += '<option value="%s">%s</option>' % (
+                distrito.pk,
+                distrito.nombre
+            )
+        response = {}
+        response['distritos'] = options
+
+        return http.JsonResponse(response)
+
+
 class PersonaCreateView(CreateView):
     model = Persona
     form_class = PersonaForm
@@ -95,7 +143,7 @@ class PersonaCreateView(CreateView):
         self.object.usuario = self.request.user
 
         
-        msg = _(' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
+        msg = (' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
             'name': capfirst(force_text(self.model._meta.verbose_name)),
             'obj': force_text(self.object)
         }
