@@ -101,7 +101,6 @@ class Persona(models.Model):
     telefono = models.IntegerField()
     ocupacion = models.CharField(max_length=20, choices=ocupacion)
     direccion_actual = models.CharField(max_length=100)
-    distrito = models.ForeignKey(Distrito,blank=True, null=True)
     contacto = models.CharField(max_length=10)
     es_matriculado = models.BooleanField(default=True)
     class Meta:
