@@ -36,4 +36,4 @@ def index(request):
         'page_module': _('Home'),
         'page_title': _('Home Page.'),
     }
-    return render(request, 'home/index_hotel.html', c)
+    return render(request, 'home/index_principal.html', c)

@@ -1,0 +1,95 @@
+{% extends "mod_hotel/base_mod_backend.html" %}
+{% block title %}
+Lista de Distritos
+{% endblock %}
+{% block rootcontainer %}
+
+<script type="text/javascript">
+$(function() {
+    $('table').kgrid({
+        form_data : ['{{f}}', '{{q}}'],
+        form_to   : '{% url "atencion:unidadmedida_list" %}?f={{f}}&q={{q}}',
+        order_attr: 'class=""',
+        order_to  : '{% url "atencion:unidadmedida_list" %}?f={{f}}&q={{q}}',
+    });
+});
+</script>
+
+    <div class="btn-toolbar btn-toolbar-top">
+        <div class="row">
+            <div class="btn-actions">
+                <a href="{% url 'atencion:unidadmedida_add' %}" class="btn btn-primary text-bold" title="Agregar Unidad de Medida">
+                    <i class="fa fa-plus">
+                    </i>
+                    <span class="hidden-xs"> Agregar Unidad de Medida
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-overflow">
+        <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="" data-search="nombre" data-order="nombre">nombre</th>
+                    
+                    <th class="btn-actions col-block text-center">opcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in object_list %}
+                <tr>
+                    <td>
+                        {% if is_paginated %}
+                            {{ page_obj.start_index|add:forloop.counter0 }}
+                        {% else %}
+                            {{ forloop.counter }}
+                        {% endif %}
+                    </td>
+                    <td>{{ d.nombre }}</td>
+                   
+                    <td class="text-center">
+                        
+                         <a href="{% url 'atencion:unidadmedidaupdate' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Unidad de Medida" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+                         <a href="{% url 'atencion:unidadmedida_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Unidad de Medida?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Unidad de Medida" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+   <div  class="row" >
+    {% if is_paginated %}
+    {% load paginator %}
+    {% paginator %}
+    {% else %}
+    <div class="col-md-12" >
+        <ul class="breadcrumbpag" >
+            {{ object_list.count }}
+            {% ifequal object_list.count 1 %}
+                {{ opts.verbose_name|capfirst }}
+            {% else %}{{ opts.verbose_name_plural|title }}
+            {% endifequal %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+
+{% block customjs %}
+    <script>
+     $('#delmodal').on('hidden.bs.modal', function () {
+        $(location).attr('href', '{% url "atencion:unidadmedida_list" %}');
+     });
+    $('#updmodal').on('hidden.bs.modal', function () {
+        $(location).attr('href', '{% url "atencion:unidadmedida_list" %}');
+     });
+
+    </script>
+{% endblock %}

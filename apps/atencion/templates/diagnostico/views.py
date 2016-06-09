@@ -34,10 +34,8 @@ from .forms.LaboratorioForm import LaboratorioForm
 from .forms.ProductoForm import ProductoForm
 from .forms.PeriodoForm import PeriodoForm
 from .forms.FuncionesVitalesForm import FuncionesVitalesForm
-from .forms.UnidadMedidaForm import UnidadMedidaForm
-from .forms.DiagnosticoForm import DiagnosticoForm
 
-from .models import (Persona, Producto, Laboratorio, FuncionesVitales, Periodo, Diagnostico,UnidadMedida)
+from .models import (Persona, Producto, Laboratorio, FuncionesVitales, Periodo)
 
 
 # class Persona==============================================================================
@@ -875,7 +873,7 @@ class DiagnosticoListView(ListView):
 class DiagnosticoCreateView(CreateView):
     model = Diagnostico
     form_class = DiagnosticoForm
-    template_name = 'diagnostico/diagnostico_add.html'
+    template_name = 'diagnostio/diagnostico_add.html'
     success_url = reverse_lazy('atencion:diagnostico_list')
 
     @method_decorator(permission_resource_required )
@@ -943,159 +941,6 @@ class DiagnosticoUpdateView(UpdateView):
 
 class DiagnosticoDeleteView(DeleteView):
     model = Diagnostico
-    success_url = reverse_lazy('atencion:pdiagnostico_list')
-
-
-    @method_decorator(permission_resource_required)
-    def dispatch(self, request, *args, **kwargs):
-        
-        try:
-            self.get_object()
-        except Exception as e:
-            messages.error(self.request, e)
-            log.warning(force_text(e), extra=log_params(self.request))
-            return HttpResponseRedirect(self.success_url)
-        return super(DiagnosticoDeleteView, self).dispatch(request, *args, **kwargs)
-
-
-    def delete(self, request, *args, **kwargs):
-        try:
-            d = self.get_object()
-            deps, msg = get_dep_objects(d)
-            print(deps)
-            if deps:
-                messages.warning(self.request,  ('No se puede Eliminar %(name)s') % {
-                    "name": capfirst(force_text(self.model._meta.verbose_name))
-                    + ' "' + force_text(d) + '"'
-                })
-                raise Exception(msg)
-
-
-            d.delete()
-            msg = _(' %(name)s "%(obj)s" fue eliminado satisfactoriamente.') % {
-                'name': capfirst(force_text(self.model._meta.verbose_name)),
-                'obj': force_text(d)
-            }
-            if not d.id:
-                messages.success(self.request, msg)
-                log.warning(msg, extra=log_params(self.request))
-        except Exception as e:
-            messages.error(request, e)
-            log.warning(force_text(e), extra=log_params(self.request))
-        return HttpResponseRedirect(self.success_url)
-
-    def get(self, request, *args, **kwargs):
-        return self.delete(request, *args, **kwargs)
-
-# UnidadMedida==============================================================================
-
-class UnidadMedidaListView(ListView):
-    model = UnidadMedida
-    template_name = 'unidad_medida/unidadmedida_list.html'
-    paginate_by = settings.PER_PAGE
-
-    @method_decorator(permission_resource_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(UnidadMedidaListView, self).dispatch(request, *args, **kwargs)
-
-    def get_paginate_by(self, queryset):
-        if 'all' in self.request.GET:
-            return None
-        return ListView.get_paginate_by(self, queryset)
-
-    def get_queryset(self):
-        self.o = empty(self.request, 'o', '-id')
-        self.f = empty(self.request, 'f', 'codigo')
-        self.q = empty(self.request, 'q', '')
-        column_contains = u'%s__%s' % (self.f, 'contains')
-
-        return self.model.objects.filter(**{column_contains: self.q}).order_by(self.o)
-
-
-    def get_context_data(self, **kwargs):
-        context = super(UnidadMedidaListView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'unidadmedida'
-        context['title'] = _('Select %s to change') % capfirst(_('UnidadMedida'))
-
-        context['o'] = self.o
-        context['f'] = self.f
-        context['q'] = self.q.replace('/', '-')
-
-        return context
-
-
-class UnidadMedidaCreateView(CreateView):
-    model = UnidadMedida
-    form_class = UnidadMedidaForm
-    template_name = 'unidad_medida/unidadmedida_add.html'
-    success_url = reverse_lazy('atencion:unidadmedida_list')
-
-    @method_decorator(permission_resource_required )
-    def dispatch(self, request, *args, **kwargs):
-        return super(UnidadMedidaCreateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(UnidadMedidaCreateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'unidadmedida'
-        context['title'] = ('Agregar %s') % ('UnidadMedida')
-        return context
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        
-        self.object.usuario = self.request.user
-
-        
-        msg = _(' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
-        return super(UnidadMedidaCreateView, self).form_valid(form)
-
-
-
-class UnidadMedidaUpdateView(UpdateView):
-    model = UnidadMedida
-    template_name = 'unidad_medida/unidadmedida_add.html'
-    form_class = UnidadMedidaForm
-    success_url = reverse_lazy('atencion:unidadmedida_list')
-
-    @method_decorator(permission_resource_required )
-    def dispatch(self, request, *args, **kwargs):
-        return super(UnidadMedidaUpdateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(UnidadMedidaUpdateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'unidadmedida'
-        context['title'] = _('Add %s') % _('UnidadMedida')
-        return context
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-
-        self.object.usuario = self.request.user
-
-
-        msg = _('%(name)s "%(obj)s" fue cambiado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
-        return super(UnidadMedidaUpdateView, self).form_valid(form)
-
-
-class UnidadMedidaDeleteView(DeleteView):
-    model = UnidadMedida
     success_url = reverse_lazy('atencion:periodo_list')
 
 
@@ -1108,159 +953,6 @@ class UnidadMedidaDeleteView(DeleteView):
             messages.error(self.request, e)
             log.warning(force_text(e), extra=log_params(self.request))
             return HttpResponseRedirect(self.success_url)
-        return super(UnidadMedidaDeleteView, self).dispatch(request, *args, **kwargs)
-
-
-    def delete(self, request, *args, **kwargs):
-        try:
-            d = self.get_object()
-            deps, msg = get_dep_objects(d)
-            print(deps)
-            if deps:
-                messages.warning(self.request,  ('No se puede Eliminar %(name)s') % {
-                    "name": capfirst(force_text(self.model._meta.verbose_name))
-                    + ' "' + force_text(d) + '"'
-                })
-                raise Exception(msg)
-
-
-            d.delete()
-            msg = _(' %(name)s "%(obj)s" fue eliminado satisfactoriamente.') % {
-                'name': capfirst(force_text(self.model._meta.verbose_name)),
-                'obj': force_text(d)
-            }
-            if not d.id:
-                messages.success(self.request, msg)
-                log.warning(msg, extra=log_params(self.request))
-        except Exception as e:
-            messages.error(request, e)
-            log.warning(force_text(e), extra=log_params(self.request))
-        return HttpResponseRedirect(self.success_url)
-
-    def get(self, request, *args, **kwargs):
-        return self.delete(request, *args, **kwargs)
-
-# class Consulta==============================================================================
-"""
-class ConsultaListView(ListView):
-    model = Consulta
-    template_name = 'consulta/consulta_list.html'
-    paginate_by = settings.PER_PAGE
-
-    @method_decorator(permission_resource_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(ConsultaListView, self).dispatch(request, *args, **kwargs)
-
-    def get_paginate_by(self, queryset):
-        if 'all' in self.request.GET:
-            return None
-        return ListView.get_paginate_by(self, queryset)
-
-    def get_queryset(self):
-        self.o = empty(self.request, 'o', '-id')
-        self.f = empty(self.request, 'f', 'fecha')
-        self.q = empty(self.request, 'q', '')
-        column_contains = u'%s__%s' % (self.f, 'contains')
-
-        return self.model.objects.filter(**{column_contains: self.q}).order_by(self.o)
-
-
-    def get_context_data(self, **kwargs):
-        context = super(DiagnosticoListView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'diagnostio'
-        context['title'] = _('Select %s to change') % capfirst(_('Diagnostico'))
-
-        context['o'] = self.o
-        context['f'] = self.f
-        context['q'] = self.q.replace('/', '-')
-
-        return context
-
-
-class DiagnosticoCreateView(CreateView):
-    model = Diagnostico
-    form_class = DiagnosticoForm
-    template_name = 'diagnostico/diagnostico_add.html'
-    success_url = reverse_lazy('atencion:diagnostico_list')
-
-    @method_decorator(permission_resource_required )
-    def dispatch(self, request, *args, **kwargs):
-        return super(DiagnosticoCreateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(DiagnosticoCreateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'diagnostico'
-        context['title'] = ('Agregar %s') % ('Diagnostico')
-        return context
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        
-        self.object.usuario = self.request.user
-
-        
-        msg = _(' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
-        return super(DiagnosticoCreateView, self).form_valid(form)
-
-
-
-class DiagnosticoUpdateView(UpdateView):
-    model = Diagnostico
-    template_name = 'diagnostico/diagnostico_add.html'
-    form_class = DiagnosticoForm
-    success_url = reverse_lazy('atencion:diagnostico_list')
-
-    @method_decorator(permission_resource_required )
-    def dispatch(self, request, *args, **kwargs):
-        return super(DiagnosticoUpdateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(DiagnosticoUpdateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'diagnostico'
-        context['title'] = _('Add %s') % _('Diagnostico')
-        return context
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-
-        self.object.usuario = self.request.user
-
-
-        msg = _('%(name)s "%(obj)s" fue cambiado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
-        return super(DiagnosticoUpdateView, self).form_valid(form)
-
-
-class DiagnosticoDeleteView(DeleteView):
-    model = Diagnostico
-    success_url = reverse_lazy('atencion:pdiagnostico_list')
-
-
-    @method_decorator(permission_resource_required)
-    def dispatch(self, request, *args, **kwargs):
-        
-        try:
-            self.get_object()
-        except Exception as e:
-            messages.error(self.request, e)
-            log.warning(force_text(e), extra=log_params(self.request))
-            return HttpResponseRedirect(self.success_url)
         return super(DiagnosticoDeleteView, self).dispatch(request, *args, **kwargs)
 
 
@@ -1292,4 +984,3 @@ class DiagnosticoDeleteView(DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
-"""

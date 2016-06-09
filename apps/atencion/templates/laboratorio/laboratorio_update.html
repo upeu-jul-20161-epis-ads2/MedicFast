@@ -1,9 +1,9 @@
 <div class="modal-header text-center">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-    <h3 class="modal-title title-panel" id="myModalLabel">Editar Laboratorio</h3>
+    <h3 class="modal-title title-panel" id="myModalLabel">Editar Prueba de Laboratorio</h3>
 </div>
 <div class="modal-body">
-    <form action="{% url 'atencion:persona_update' object.id %}" method="post">
+    <form action="{% url 'atencion:laboratorio_update' object.id %}" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <div class="text-center">

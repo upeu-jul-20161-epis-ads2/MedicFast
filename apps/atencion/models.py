@@ -90,13 +90,13 @@ class Persona(models.Model):
     dni = models.CharField(max_length=8, unique=True)
     fecha_nacimiento = models.DateField()
     codigo = models.CharField(max_length=9, unique=True,blank=True, null=True)
-    edad = models.IntegerField()
+    edad = models.IntegerField(blank=True, null=True)
     estado_civil = models.CharField(max_length=20, choices=estado_civil)
     sexo = models.CharField(max_length=20, choices=sexo)
     telefono = models.IntegerField()
     ocupacion = models.CharField(max_length=20, choices=ocupacion)
     direccion_actual = models.CharField(max_length=100)
-    distrito = models.ForeignKey(Distrito)
+    distrito = models.ForeignKey(Distrito,blank=True, null=True)
     contacto = models.CharField(max_length=10)
     es_matriculado = models.BooleanField(default=True)
     class Meta:
@@ -152,12 +152,22 @@ class FuncionesVitales(models.Model):
 class Diagnostico(models.Model):
     codigo = models.CharField(max_length=10)
     nombre = models.CharField(max_length=100)
-    consulta =models.ForeignKey(Consulta)
     class Meta:
         verbose_name = "Diagnostico"
         verbose_name_plural = "Diagnosticos"
     def __str__(self):
         return self.nombre
+
+class DiagnosticoConsulta(models.Model):
+    diagnostico = models.ManyToManyField(Diagnostico)
+    consulta =models.ManyToManyField(Consulta)
+    class Meta:
+        verbose_name = "Diagnostico por Consulta"
+        verbose_name_plural = "Diagnostico Consultas"
+
+    def __str__(self):
+        return "%s - %s" %(self.diagnostico,consulta)
+    
 
 class Producto(models.Model):
     codigo = models.IntegerField(unique=True)
@@ -212,11 +222,12 @@ class DetalleReceta(models.Model):
 
 class Periodo(models.Model):
     ciclo = models.CharField(unique=True, max_length=10)
+    fecha = models.DateField()
     class Meta:
         verbose_name = "Periodo"
         verbose_name_plural = "Periodos"
-    def __unicode__(self):
-        return self.ciclo
+    def __str__(self):
+        return "%s" %self.ciclo
 
 
 class Laboratorio(models.Model):

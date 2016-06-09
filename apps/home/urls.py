@@ -14,8 +14,8 @@ urlpatterns = [
 
     # url(r'^$', TemplateView.as_view(template_name='home/base_home.html')),
 
-    url(r'^', home_views.index, name='index'),
-    url(r'^index/', home_views.index, name='index'),
+    #url(r'^', home_views.index, name='index'),
+    url(r'^', home_views.index, name='inicio'),
 
 
 ]

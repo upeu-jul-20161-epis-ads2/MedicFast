@@ -180,7 +180,7 @@ body{
 }
 
 .info-maps{
-    background:#BA4624!important;
+    background:#15A07A!important;
     height:480px;
     width:100%;
     color:#FFFFFF;
@@ -236,7 +236,7 @@ body{
 }
 
 .dropdown-menu li a:hover{
-    background:#BA4624!important;
+    background:#15A07A!important;
     color:#FFFFFF;
 }
 
@@ -261,3 +261,7 @@ h1{
     font-size:3.5em;
 }
 
+.menu-list {
+    background:#555;
+    border-color:#000;
+}

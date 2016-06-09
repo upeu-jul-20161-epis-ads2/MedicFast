@@ -7,7 +7,7 @@ from django.contrib.auth import views as auth_views
 
 
 accounts_patterns = [
-    url(r'^', index, name='index'),
+    url(r'^', index, name='inicio'),
 ]
 
 urlpatterns = [

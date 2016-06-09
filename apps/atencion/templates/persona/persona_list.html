@@ -33,19 +33,19 @@ $(function() {
             <thead>
                 <tr>
                     <th>#</th>
+                    <th class="btn-actions col-block text-center">codigo</th>
                     <th class="" data-search="nombres" data-order="nombres">Nombres</th>
                     <th class="" data-search="apellido_paterno" data-order="apellido_paterno">Apellido Paterno</th>
                     <th class="" data-search="apellido_materno" data-order="apellido_materno">Apellido Materno</th>
-                    
                     <th class="btn-actions col-block text-center">Dni</th>
-                    <th class="btn-actions col-block text-center">Fecha Nacimiento</th>
+                    <th class="btn-actions col-block text-center">Fecha de Nacimiento</th>
                     <th class="btn-actions col-block text-center">Estado Civil</th>
                     <th class="btn-actions col-block text-center">Sexo</th>
                     <th class="btn-actions col-block text-center">Telefono</th>
                     <th class="btn-actions col-block text-center">Ocupacion</th>
                     <th class="btn-actions col-block text-center">Direccion Actual</th>
-                    <th class="btn-actions col-block text-center">Distrito</th>
-                    <th class="btn-actions col-block text-center">Contacto</th>
+                    <th class="btn-actions col-block text-center">Distrito de Procedencia</th>         
+                    <th class="btn-actions col-block text-center">Numero de Contacto</th>         
 
                     <th class="btn-actions col-block text-center">opcion</th>
                 </tr>
@@ -60,7 +60,20 @@ $(function() {
                             {{ forloop.counter }}
                         {% endif %}
                     </td>
-                    <td>{{ d.nombre }}</td>
+                    <td>{{ d.codigo }}</td>
+                    <td>{{ d.nombres }}</td>
+                    <td>{{ d.apellido_paterno }}</td>
+                    <td>{{ d.apellido_materno }}</td>
+                    <td>{{ d.dni }}</td>
+                    <td>{{ d.fecha_nacimiento }}</td>
+                    <td>{{ d.estado_civil }}</td>
+                    <td>{{ d.sexo }}</td>
+                    <td>{{ d.telefono }}</td>
+                    <td>{{ d.ocupacion }}</td>
+                    <td>{{ d.direccion_actual }}</td>
+                    <td>{{ d.distrito }}</td>
+                    <td>{{ d.contacto }}</td>
+
                    
                     <td class="text-center">
                         
