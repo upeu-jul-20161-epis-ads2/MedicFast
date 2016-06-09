@@ -8,6 +8,9 @@ from .views import FuncionesVitalesListView, FuncionesVitalesCreateView, Funcion
 from .views import PeriodoListView, PeriodoCreateView, PeriodoDeleteView, PeriodoUpdateView
 from .views import DiagnosticoListView,DiagnosticoCreateView,DiagnosticoDeleteView,DiagnosticoUpdateView
 from .views import UnidadMedidaCreateView,UnidadMedidaListView,UnidadMedidaUpdateView,UnidadMedidaDeleteView
+from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
+    ProvinciaAjax, DistritoAjax
+    )
 from .views import HitoriaBusquedaTemplateView
 
 urlpatterns = [
@@ -20,7 +23,8 @@ urlpatterns = [
     url(r'^persona/crear/$', PersonaCreateView.as_view(), name="persona_add"),
     url(r'^persona/eliminar/(?P<pk>\d+)$', PersonaDeleteView.as_view(), name="persona_delete"),
     url(r'^persona/editar/(?P<pk>\d+)$', PersonaUpdateView.as_view(), name="persona_update"),
-
+    url(r'^distrito_ajax/$', DistritoAjax.as_view(), name='busqueda_distrito'),
+    url(r'^provincia_ajax/$', ProvinciaAjax.as_view(), name='busqueda_provincia'),
     #Producto
     url(r'^producto/lista$', ProductoListView.as_view(), name="producto_list"),
     url(r'^producto/crear/$', ProductoCreateView.as_view(), name="producto_add"),

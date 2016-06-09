@@ -49,6 +49,7 @@ class Usuario(models.Model):
     telefono = models.CharField(max_length=10)
     estado = models.BooleanField()
 
+
     def __str__(self):
         return self.nombre
 
@@ -83,10 +84,14 @@ class Distrito(models.Model):
     def __str__(self):
         return self.nombre
 
+
 class Persona(models.Model):
     nombres = models.CharField(max_length=40)
     apellido_paterno = models.CharField(max_length=40)
     apellido_materno = models.CharField(max_length=40)
+    departamento = models.ForeignKey(Departamento, blank=True, null=True)
+    provincia = models.ForeignKey(Provincia, blank=True, null=True)
+    distrito = models.ForeignKey(Distrito, blank=True, null=True)
     dni = models.CharField(max_length=8, unique=True)
     fecha_nacimiento = models.DateField()
     codigo = models.CharField(max_length=9, unique=True,blank=True, null=True)

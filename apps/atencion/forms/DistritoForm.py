@@ -9,22 +9,8 @@ from unicodedata import normalize
 from ..models import Distrito
 
 
-def validate_unique_nombre(self):
-    """validacion de campo unico"""
-    if normalize('NFKD', self).encode('ascii', 'ignore').lower() in list(
-            normalize('NFKD', c['nombre']).encode('ascii', 'ignore').lower()
-            for c in Distrito.objects.values('nombre')
-    ):
-        raise forms.ValidationError(
-            _(u'%(model_name)s with this %(field_label)s already exists.') % {
-                'model_name': capfirst(_('group')),
-                'field_label': capfirst(_('nombre')),
-            })
-
 class DistritoForm(forms.ModelForm):
     """Class DistritoForm."""
     class Meta:
         model = Distrito
-        exclude = ('',)
-        widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese nombre'}),}
+        exclude = ('es_matriculado',)

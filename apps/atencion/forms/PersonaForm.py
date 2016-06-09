@@ -26,6 +26,8 @@ class PersonaForm(forms.ModelForm):
             'telefono': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Telefono/Celular'}),
             'ocupacion': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
             'direccion_actual': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Direccion Actual'}),
+            'departamento': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+            'provincia': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
             'distrito': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
             'contacto': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Numero de Contacto'}),
 }
