@@ -3,7 +3,7 @@
 {% block content %}
     <div class="busqueda">
         
-    <form action="{% url 'atencion:historia_busqueda' %}" method="get">
+    <form action="{% url 'atencion:historia_search' %}" method="get">
         <input type="text" name="codigo" id="codigo" value="{{ request.GET.codigo }}" class="form form-input">
         <button type="submit" class="btn btn-search">Buscar</button>
     </form>
@@ -20,18 +20,32 @@
             <label for="">Sexo: </label>{{ persona.sexo }}<br>
             <label for="">Estado Civil: </label>{{ persona.estado_civil }}<br>
 
+            <label for="">Estudiante</label>{% if estudiante %}SI
+            {% else %}No
+                
+            {% endif %} <br>
+            <label for="">Matriculado</label> {% if matriculado %}
+                                    Si
+                                    {% else %}No
+                
+            {% endif %}
 
 
         <div class="historial">
             {% if historia %}
-            <button>Laboratioro</button>
-            <button>Funciones Vitales</button>
-            <button>Consulta</button>
-            <button>Estado</button>
+            
+            <a href="{% url 'atencion:historia_detail' historia.id %}" class="btn btn-success"> Abir Historial</a>
 
             {% else %}
             <h2>No tiene historial</h2>
-            <button ><a href="/admin">CREAR</a>
+
+            <form action="{% url 'atencion:historia_add' %}" method="POST">
+                {% csrf_token %}
+
+                <input type="hidden" name="persona" id="id_persona" value="{{persona.id}}">
+
+                <button type="submit" class="btn btn-primary">Crear Historial</button>
+            </form>
             </button>
         {% endif %}
         </div>
@@ -40,4 +54,4 @@
         {% endif %}
     </div>
 
-{% endblock content %}fa
+{% endblock content %}

@@ -13,7 +13,7 @@ class FuncionesVitalesForm(forms.ModelForm):
     """Class FuncionesVitalesForm."""
     class Meta:
         model = FuncionesVitales
-        exclude = ('',)
+        exclude = ('consulta',)
         widgets = {
             'frecuencia_cardiaca': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese frecuencia cardiaca'}),
             'frecuencia_respiratoria': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese frecuencia respiratoria'}),
@@ -22,4 +22,5 @@ class FuncionesVitalesForm(forms.ModelForm):
             'peso': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese peso'}),
             'talla': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese talla'}),
             'masa_corporal': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese masa corporal'}),
-            'diagnostico_mc': forms.TextInput(attrs={'class': 'form-control', 'required':'true'})}
+            'diagnostico_mc': forms.TextInput(attrs={'class': 'form-control', 'required':'true'})
+        }

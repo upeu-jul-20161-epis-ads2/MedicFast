@@ -3,6 +3,7 @@
 <link href="{% static 'custom/css/base.css' %}" rel="stylesheet">
 <link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
 <link href="{% static 'bootstrap-fileinput/css/fileinput.css' %}" rel="stylesheet">
+<<<<<<< HEAD
 <link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet"> {% endblock extrastyle%} {% block header %} {% include "mod_backend/partials/header.html" %} {% endblock header %} {% block rootcontainer %}
 <div id="shell-load" >
     <div id="shell-content" class="col-md-12 container-fluid" style="padding-left:0px !important;padding-right:0px !important;" > 
@@ -54,6 +55,43 @@
              
             {% block sidebar %} {% endblock sidebar %}
         </div>
+=======
+<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet">
+
+{% endblock extrastyle%}
+
+{% block header %}
+{% load_menu request 'BACKEND' %}
+
+{% include "mod_backend/partials/header.html" %}
+{% endblock header %}
+
+
+{% block rootcontainer %}
+<div id="shell-load">
+  <div class="breadcrumbs">
+    {% block breadcrumbs %}
+
+    {% endblock breadcrumbs %}
+  </div>
+  <div id="shell-content" class="container-fluid" >
+
+    <div class="container shell-view">
+
+      
+
+      <div class="page-header">
+        <h3>{% block content_title %}{% endblock content_title %}</h3>
+      </div>
+      {% block messages %}
+      {% load notify %}
+      {% get_notify request %}
+      {% endblock messages %}
+      {% block content %}{% endblock content %}
+      {% block sidebar %}{% endblock sidebar %}
+
+      
+>>>>>>> 816871efbfe2e4536f5ab8afc2e000ef3f5d15e8
     </div>
 </div>
 <!-- /dw-shell-load -->

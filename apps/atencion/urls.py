@@ -9,14 +9,14 @@ from .views import PeriodoListView, PeriodoCreateView, PeriodoDeleteView, Period
 from .views import DiagnosticoListView,DiagnosticoCreateView,DiagnosticoDeleteView,DiagnosticoUpdateView
 from .views import UnidadMedidaCreateView,UnidadMedidaListView,UnidadMedidaUpdateView,UnidadMedidaDeleteView
 from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
-    ProvinciaAjax, DistritoAjax
-    )
-from .views import HitoriaBusquedaTemplateView
+    ProvinciaAjax, DistritoAjax, HitoriaDetailView)
+from .views import HitoriaBusquedaTemplateView, HitoriaCreateView
 
 urlpatterns = [
 
-    
-    url(r'^historia/busqueda$', HitoriaBusquedaTemplateView.as_view(), name="historia_busqueda"),
+    url(r'^historia/busqueda$', HitoriaBusquedaTemplateView.as_view(), name="historia_search"),
+    url(r'^historia/crear$', HitoriaCreateView.as_view(), name="historia_add"),
+    url(r'^historia/detalle/(?P<pk>\d+)$', HitoriaDetailView.as_view(), name="historia_detail"),
 
     # persona
     url(r'^persona/lista$', PersonaListView.as_view(), name="persona_list"),
