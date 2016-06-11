@@ -3,18 +3,18 @@
 {% load i18n crispy_forms_tags %}
 {% load l10n %}
 
-{% block breadcrumbs %}
-
-&rsaquo;
-<a href="{% url 'atencion:persona_list' %}">{{ opts.verbose_name_plural|capfirst }}</a>
-&rsaquo; {{ title }}
-{% endblock breadcrumbs %}
 
 {% block content_title %}
 {{ opts.verbose_name|capfirst }} | <small>{{ title }}</small>
 {% endblock content_title %}
 
+
 {% block content %}
+<div class="page-header">
+        </h4><a href="{% url 'atencion:persona_add' %}">Personas</a></h4>
+    </div>
+    <h2  >Crear Persona</h2> 
+
     <form action="" method="post">
     {{ form }}
     {% csrf_token %}

@@ -1,0 +1,37 @@
+{% block aside %}
+    <div>
+                    <h2>Menu</h2>
+                    <ul class="side-nav nav nav-second-level col-xs-2 col-md-2">
+                        <li>
+                            <a href="{% url 'atencion:persona_list' %}"><h4>Pacientes</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:producto_list' %}"><h4>Medicamentos</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:periodo_list' %}"><h4>Periodo</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:laboratorio_list' %}"><h4>Prueba de Laboratorio</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:funcionesvitales_list' %}"><h4>Funciones Vitales</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:unidadmedida_list' %}"><h4>Unidad de Medida</h4></a>
+                        </li>
+                        <li>
+                            <a href="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
+                        </li>
+                        <li>
+                            <a hhref="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
+                        </li>
+                    </ul>
+                </div>
+{% endblock aside %}

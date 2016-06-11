@@ -1,74 +1,64 @@
-{% extends "accounts/base_authenticated.html" %}
-{% load i18n app_security %}
-{% load l10n humanize %}
-
-{% block breadcrumbs %}
-<a href="{% url 'home:inicio' %}">{% trans 'Inicio' %}</a>
-&rsaquo; {{ title }}
-{% endblock breadcrumbs %}
-
-
-
-{% block content %}
+{% extends "accounts/base_authenticated.html" %} {% load i18n app_security %} 
+{% load l10n humanize %} 
+{{% block content %}
 <script type="text/javascript">
 $(function() {
     $('table').kgrid({
-        form_data : ['{{f}}', '{{q}}'],
-        form_to   : '/accounts/?f={{f}}&q={{q}}',
+        form_data: ['{{f}}', '{{q}}'],
+        form_to: '/accounts/?f={{f}}&q={{q}}',
         order_attr: 'class=""',
-        order_to  : '/accounts/?f={{f}}&q={{q}}',
+        order_to: '/accounts/?f={{f}}&q={{q}}',
     });
 });
 </script>
-<div class="col-xs-12 col-md-12"></div>
+<div>
     <h2>Menu</h2>
-    <div id="nav-bar" class="col-xs-2 col-md-2" >
-
-            <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:persona_list' %}"><h4>Pacientes</h4></a>
-            <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:producto_list' %}"><h4>Medicamentos</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:periodo_list' %}"><h4>Periodo</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:laboratorio_list' %}"><h4>Prueba de Laboratorio</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:funcionesvitales_list' %}"><h4>Funciones Vitales</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:unidadmedida_list' %}"><h4>Unidad de Medida</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
-    <a class="menu-list col-xs-12 col-md-12" style="background:#ddd;height: 31px;
-    text-align: center;border-radius:5px;" href="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
-
-        </div>    
-    
-    
-    </div>
-
-
-
+    <ul class="side-nav nav nav-second-level col-xs-2 col-md-2">
+        <li>
+            <a href="{% url 'atencion:persona_list' %}"><h4>Pacientes</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:producto_list' %}"><h4>Medicamentos</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:periodo_list' %}"><h4>Periodo</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:laboratorio_list' %}"><h4>Prueba de Laboratorio</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:funcionesvitales_list' %}"><h4>Funciones Vitales</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:unidadmedida_list' %}"><h4>Unidad de Medida</h4></a>
+        </li>
+        <li>
+            <a href="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
+        </li>
+        <li>
+            <a hhref="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
+        </li>
+    </ul>
+</div>
 <div class="btn-toolbar btn-toolbar-top">
     <div class="row">
-               
     </div>
 </div>
 <div class="container-overflow">
-   
 </div>
-<div  class="row" >
-    {% if is_paginated %}
-    {% load paginator %}
-    {% paginator %}
-    {% else %}
-    <div class="col-md-12" >
-        <ul class="breadcrumbpag" >
+<div class="row">
+    {% if is_paginated %} {% load paginator %} {% paginator %} {% else %}
+    <div class="col-md-12">
+        <ul class="breadcrumbpag">
             {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
         </ul>
     </div>
     {% endif %}
 </div>
-
 {% endblock content %}

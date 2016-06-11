@@ -97,7 +97,7 @@
                             </li>
                            
                             <li>{% if user.is_authenticated %}
-                                <a href="{% url 'accounts:inicio' %}"><span class="glyphicon glyphicon-wrench">&nbsp;</span>Ingresar</a>
+                                <a href="{% url 'accounts:index' %}"><span class="glyphicon glyphicon-wrench">&nbsp;</span>Ingresar</a>
                                 {% else %}
                                 <a href="#" data-toggle="modal" data-target="#openLogin"><span
                                         class="glyphicon glyphicon-wrench">&nbsp;</span>Ingresar</a>

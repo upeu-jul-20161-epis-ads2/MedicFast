@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^mod_backend/',
         include('apps.mod_backend.urls', namespace='mod_backend')),
 
-    url(r'^menu/', include('apps.accounts.urls')),
+    url(r'^accounts/', include('apps.accounts.urls')),
 
 
     # http://stackoverflow.com/questions/19625102/django-javascript-translation-not-working

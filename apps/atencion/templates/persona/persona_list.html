@@ -2,7 +2,7 @@
 {% block title %}
 
 {% endblock %}
-{% block rootcontainer %}
+{% block content %}
 
 <script type="text/javascript">
 $(function() {
@@ -15,6 +15,10 @@ $(function() {
 });
 </script>
 
+    <div class="page-header">
+        </h4><a href="{% url 'atencion:persona_list' %}">Personas</a></h4>
+    </div>
+    <h2  >Lista de Personas</h2> 
     <div class="btn-toolbar btn-toolbar-top">
         <div class="row">
             <div class="btn-actions">
@@ -28,7 +32,7 @@ $(function() {
         </div>
     </div>
 
-    <div class="container-overflow">
+    <div class="container-overflow table-responsive">
         <table class="table table-bordered table-hover table-striped table-condensed table-responsive">
             <thead>
                 <tr>
@@ -60,7 +64,7 @@ $(function() {
                             {{ forloop.counter }}
                         {% endif %}
                     </td>
-<<<<<<< HEAD
+
                     <td>{{ d.codigo }}</td>
                     <td>{{ d.nombres }}</td>
                     <td>{{ d.apellido_paterno }}</td>
@@ -75,16 +79,6 @@ $(function() {
                     <td>{{ d.distrito }}</td>
                     <td>{{ d.contacto }}</td>
 
-=======
-                    <td>{{ d.nombres }}</td>
-                    <td>{{ d.apellido_paterno }}</td>
-                    <td>{{ d.apellido_materno }}</td>
-                    <td>{{ d.departamento }}</td>
-                    <td>{{ d.provincia }}</td>
-                    <td>{{ d.distrito }}</td>
-                    <td>{{ d.ubigeo }}</td>
-                    <td>{{ d.fecha_nacimiento }}</td>
->>>>>>> a7fb8c60be977790ac1f2463868362d67a8f4414
                    
                     <td class="text-center">
                         

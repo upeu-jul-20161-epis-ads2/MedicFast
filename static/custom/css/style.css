@@ -15,7 +15,7 @@ License
 #spinner { color: white; width: 80px; height: 80px; background: #666; position: fixed; z-index: 9999; opacity: 1; display: none; }
 #shell-content { font-size: 12px !important;}
 #shell-content div.container { width: 100%; padding-left: 0%; padding-right: 0%;}
-#shell-content div.page-header { margin: 0px 0px 5px;  padding-bottom: 2px;}
+#shell-content div.page-header { margin-top: 15px;  padding-bottom: 2px;}
 .shell-view { /*padding-bottom: 50px; min-height: 200px*/}
 .shell-view .btn-toolbar-top .row { width: 100%; margin: 0 auto;}
 .shell-view .btn-toolbar-top .row .btn-actions { margin-left: 1%;}

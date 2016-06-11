@@ -582,7 +582,7 @@ class FuncionesVitalesListView(ListView):
 
     @method_decorator(permission_resource_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(FuncionesVitalesVitalesListView, self).dispatch(request, *args, **kwargs)
+        return super(FuncionesVitalesListView, self).dispatch(request, *args, **kwargs)
 
     def get_paginate_by(self, queryset):
         if 'all' in self.request.GET:
@@ -1213,10 +1213,10 @@ class ConsultaListView(ListView):
 
 
     def get_context_data(self, **kwargs):
-        context = super(DiagnosticoListView, self).get_context_data(**kwargs)
+        context = super(ConsultaListView, self).get_context_data(**kwargs)
         context['opts'] = self.model._meta
-        context['cmi'] = 'diagnostio'
-        context['title'] = _('Select %s to change') % capfirst(_('Diagnostico'))
+        context['cmi'] = 'consulta'
+        context['title'] = _('Select %s to change') % capfirst(_('Consulta'))
 
         context['o'] = self.o
         context['f'] = self.f
@@ -1225,20 +1225,20 @@ class ConsultaListView(ListView):
         return context
 
 
-class DiagnosticoCreateView(CreateView):
-    model = Diagnostico
-    form_class = DiagnosticoForm
-    template_name = 'diagnostico/diagnostico_add.html'
-    success_url = reverse_lazy('atencion:diagnostico_list')
+class ConsultaCreateView(CreateView):
+    model = Consulta
+    form_class = ConsultaForm
+    template_name = 'consulta/dconsulta_add.html'
+    success_url = reverse_lazy('atencion:consulta_list')
 
     @method_decorator(permission_resource_required )
     def dispatch(self, request, *args, **kwargs):
-        return super(DiagnosticoCreateView, self).dispatch(request, *args, **kwargs)
+        return super(ConsultaCreateView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(DiagnosticoCreateView, self).get_context_data(**kwargs)
         context['opts'] = self.model._meta
-        context['cmi'] = 'diagnostico'
+        context['cmi'] = 'consulta'
         context['title'] = ('Agregar %s') % ('Diagnostico')
         return context
 

@@ -97,7 +97,7 @@ class Persona(models.Model):
     codigo = models.CharField(max_length=9, unique=True,blank=True, null=True)
     edad = models.IntegerField(blank=True, null=True)
     estado_civil = models.CharField(max_length=20, choices=estado_civil)
-    sexo = models.CharField(max_length=20, choices=sexo)
+    sexo = models.CharField(max_length=19, choices=sexo)
     telefono = models.IntegerField()
     ocupacion = models.CharField(max_length=20, choices=ocupacion)
     direccion_actual = models.CharField(max_length=100)

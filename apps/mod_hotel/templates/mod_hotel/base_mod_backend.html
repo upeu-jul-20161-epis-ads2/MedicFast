@@ -1,70 +1,70 @@
-{% extends "mod_hotel/base.html" %}
-
-{% load i18n staticfiles user_menu %}
-
-{% block title %} {{ title }} | {{ site_title|default:_('Backend site admin') }} {% endblock title %}
-
-{% block extrastyle %}
+{% extends "mod_hotel/base.html" %} {% load i18n staticfiles user_menu %} {% block title %} {{ title }} | {{ site_title|default:_('Backend site admin') }} {% endblock title %} {% block extrastyle %}
 <link href="{% static 'jasny-bootstrap/css/jasny-bootstrap.css' %}" rel="stylesheet">
-
 <link href="{% static 'custom/css/base.css' %}" rel="stylesheet">
 <link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
 <link href="{% static 'bootstrap-fileinput/css/fileinput.css' %}" rel="stylesheet">
-<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet">
+<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet"> {% endblock extrastyle%} {% block header %} {% include "mod_backend/partials/header.html" %} {% endblock header %} {% block rootcontainer %}
+<div id="shell-load" >
+    <div id="shell-content" class="col-md-12 container-fluid" style="padding-left:0px !important;padding-right:0px !important;" > 
+            {% block messages %} {% load notify %} {% get_notify request %} {% endblock messages %}
+           
+              <div class="col-md-2" style="background:#333;text-align:center;">
+                <h2>Menu</h2>
+                <ul class="side-nav nav nav-second-level">
+                    <li>
+                        <a href="{% url 'atencion:persona_list' %}"><h4>Pacientes</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:producto_list' %}"><h4>Medicamentos</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:periodo_list' %}"><h4>Periodo</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:laboratorio_list' %}"><h4>Prueba de Laboratorio</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:funcionesvitales_list' %}"><h4>Funciones Vitales</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:unidadmedida_list' %}"><h4>Unidad de Medida</h4></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
+                    </li>
+                    <li>
+                        <a hhref="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
+                    </li>
+                </ul>
+              </div>
+              <div class="col-md-10">
+                
+                {% block content %} 
 
-{% endblock extrastyle%}
+                {% endblock content %}
+              </div>
 
-{% block header %}
-{% load_menu request 'BACKEND' %}
-
-{% include "mod_backend/partials/header.html" %}
-{% endblock header %}
-
-
-{% block rootcontainer %}
-<div id="shell-load">
-  <div class="breadcrumbs">
-    {% block breadcrumbs %}
-
-    {% endblock breadcrumbs %}
-  </div>
-  <div id="shell-content" class="container-fluid" >
-
-    <div class="container shell-view">
-
-      
-
-      <div class="page-header">
-        <h3>{% block content_title %}{% endblock content_title %}</h3>
-      </div>
-      {% block messages %}
-      {% load notify %}
-      {% get_notify request %}
-      {% endblock messages %}
-
-      {% block content %}{% endblock content %}
-      {% block sidebar %}{% endblock sidebar %}
-
-      
+            
+             
+            {% block sidebar %} {% endblock sidebar %}
+        </div>
     </div>
-  </div>
-</div> <!-- /dw-shell-load -->
-{% endblock rootcontainer %}
-
-
-{% block footer %}
-{% include "mod_backend/partials/footer.html" %}
-{% endblock footer %}
-
+</div>
+<!-- /dw-shell-load -->
+{% endblock rootcontainer %} {% block footer %} {% include "mod_backend/partials/footer.html" %} {% endblock footer %}
 <div id="loading-content" class="alpha60"></div>
 <div id="spinner" class="preview corner-all shadow-dark"></div>
-
 {% block extrajs %}
 <!--
 <script src="{% static 'jquery/jquery.spinx.js' %}"></script>
 -->
 <script src="{% static 'jasny-bootstrap/js/jasny-bootstrap.js' %}"></script>
-
 <script src="{% static 'custom/js/jquery.kumbiaphp.js' %}"></script>
 <script src="{% static 'custom/js/jquery.kgrid.js' %}"></script>
 <!--
