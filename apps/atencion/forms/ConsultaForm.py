@@ -2,7 +2,7 @@ from django import forms
 from crispy_forms.helper import FormHelper, Layout
 from crispy_forms.layout import Field, Div, Row, HTML
 from crispy_forms.bootstrap import FormActions, TabHolder, Tab
-from ..models.atencion import Consulta
+from ..models import Consulta
 from django.utils.translation import ugettext_lazy as _
 from apps.utils.forms import smtSave, btnCancel, btnReset
 from django.utils.text import capfirst, get_text_list
@@ -20,3 +20,4 @@ class ConsultaForm(forms.ModelForm):
             'examen_fisico': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese examen fisico'}),
             'funciones_vitales': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
             'tratamiento': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+        }

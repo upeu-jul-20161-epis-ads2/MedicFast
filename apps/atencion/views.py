@@ -1,4 +1,7 @@
 import logging
+
+from apps.atencion.models import Consulta
+
 log = logging.getLogger(__name__)
 from apps.utils.security import SecurityKey, log_params, UserToken, get_dep_objects
 from django import http
@@ -35,8 +38,10 @@ from .forms.ProductoForm import ProductoForm
 from .forms.PeriodoForm import PeriodoForm
 from .forms.FuncionesVitalesForm import FuncionesVitalesForm
 from .forms.UnidadMedidaForm import UnidadMedidaForm
+from .forms.HistoriaForm import HistoriaForm
 from .forms.DiagnosticoForm import DiagnosticoForm
-from .models import (Persona, Producto, Laboratorio, FuncionesVitales, Periodo, Diagnostico,UnidadMedida)
+from .models import (Persona, Producto, Laboratorio, FuncionesVitales,
+                    Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito)
 
 
 # class Persona==============================================================================
@@ -246,27 +251,97 @@ class HitoriaBusquedaTemplateView(TemplateView):
     """
 
     template_name = "historial/busqueda.html"
+    formulario = HistoriaForm
+
+    def get_context_data(self, **kwargs):
+        context = super(HitoriaBusquedaTemplateView, self).get_context_data(**kwargs)
+        context['form'] = self.formulario
 
     def get(self, request, *args, **kwargs):
-        try:
-            codigo = request.GET['codigo']
-            
-            persona = Persona.objects.get(dni=codigo)
 
-
-        except Exception as e:
-            persona = ''
+        codigo = request.GET.get('codigo')
+        estudiante = None
+        persona = None
+        matriculado = None
 
         try:
-            historia = Historia.objects.get(persona__dni=codigo)
+            personaes = Persona.objects.get(codigo=codigo)  # Busca por el codigo de estudiante
 
         except Exception as e:
-            historia = ''
+            personaes = None
 
-        context = {'persona': persona, 'historia': historia}
+        try:
+            personaex = Persona.objects.get(dni=codigo)
+
+        except Exception as e:
+            personaex = None
+
+        if personaes:
+            persona = personaes
+
+            if persona.es_matriculado:
+                matriculado = "Matriculado"
+
+            if persona.es_estudiante:
+                estudiante = "Estudiante"
+
+        if personaex:
+            persona = personaex
+
+            if persona.es_estudiante:
+                estudiante = "Estudiante"
+
+            if persona.es_matriculado:
+                matriculado = 'Matriculado'
+
+        try:
+            historia = Historia.objects.get(persona__id=persona.id)
+            print(historia)
+        except Exception as e:
+            historia = None
 
 
+        context = {'persona': persona, 'historia': historia, 'estudiante': estudiante, 'matriculado': matriculado }
         return self.render_to_response(context)
+
+
+class HitoriaCreateView(CreateView):
+    model = Historia
+    form_class = HistoriaForm
+    template_name = 'historial/historia_add.html'
+
+    def get_success_url(self):
+        return reverse('atencion:historia_detail', kwargs={'pk': self.object.pk})
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        persona = Persona.objects.get(id=self.request.POST['persona'])
+
+        if persona.es_estudiante:
+            self.object.numero = persona.codigo
+
+        else:
+            self.object.numero = persona.dni
+
+        return super(HitoriaCreateView, self).form_valid(form)    
+
+class HitoriaDetailView(DetailView):
+    model = Historia
+
+    form_f_vitales = FuncionesVitalesForm
+
+    template_name = 'historial/historia_detail.html'
+
+
+
+    def get_context_data(self, **kwargs):
+
+        context = super(HitoriaDetailView, self).get_context_data(**kwargs)
+
+        context['form'] = self.form_f_vitales
+
+        return context
+
 
 # class Producto==============================================================================
 class ProductoListView(ListView):
@@ -582,7 +657,7 @@ class FuncionesVitalesListView(ListView):
 
     @method_decorator(permission_resource_required)
     def dispatch(self, request, *args, **kwargs):
-        return super(FuncionesVitalesVitalesListView, self).dispatch(request, *args, **kwargs)
+        return super(FuncionesVitalesListView, self).dispatch(request, *args, **kwargs)
 
     def get_paginate_by(self, queryset):
         if 'all' in self.request.GET:
@@ -615,33 +690,26 @@ class FuncionesVitalesCreateView(CreateView):
     model = FuncionesVitales
     form_class = FuncionesVitalesForm
     template_name = 'funciones_vitales/funcionesvitales_add.html'
-    success_url = reverse_lazy('atencion:funcionesvitales_list')
 
     @method_decorator(permission_resource_required )
     def dispatch(self, request, *args, **kwargs):
         return super(FuncionesVitalesCreateView, self).dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(FuncionesVitalesCreateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'funcionesvitales'
-        context['title'] = ('Agregar %s') % ('FuncionesVitales')
-        return context
+    def get_success_url(self):
+        return reverse('atencion:historia_detail', kwargs={'pk': self.object.consulta.historia.pk})
 
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        
-        self.object.usuario = self.request.user
+        historiaid = self.request.POST['historia']
+        historia = Historia.objects.get(id=historiaid)
+        consulta = Consulta()
+        consulta.historia = historia
+        consulta.save()
 
-        
-        msg = _(' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
+        self.object.consulta = consulta
+
+
         return super(FuncionesVitalesCreateView, self).form_valid(form)
 
 

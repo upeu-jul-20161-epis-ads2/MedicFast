@@ -31,11 +31,11 @@ ocupacion = (
     ('Visitas', 'V'),
 )
 IMC = (
-    ('PesoBajo', 'B'),
-    ('PesoNormal', 'N'),
-    ('Sobrepeso', 'S'),
-    ('Obesidad', 'O'),
-    ('ObesidadSevera', 'OS')
+    ('PesoBajo', 'PesoBajo'),
+    ('PesoNormal', 'PesoNormal'),
+    ('Sobrepeso', 'Sobrepeso'),
+    ('Obesidad', 'Obesidad'),
+    ('ObesidadSevera', 'ObesidadSevera')
 )
 
 class Usuario(models.Model):
@@ -102,7 +102,9 @@ class Persona(models.Model):
     ocupacion = models.CharField(max_length=20, choices=ocupacion)
     direccion_actual = models.CharField(max_length=100)
     contacto = models.CharField(max_length=10)
+    es_estudiante = models.BooleanField(default=True)
     es_matriculado = models.BooleanField(default=True)
+
     class Meta:
         verbose_name = "Persona"
         verbose_name_plural = "Personas"
@@ -121,19 +123,22 @@ class Historia(models.Model):
         return "%s" %self.numero
 
 class Consulta(models.Model):
-    #usuario = models.ForeignKey(Usuario)
+    # usuario = models.ForeignKey(Usuario)
     fecha = models.DateTimeField(auto_now_add=True)
-    antecedentes = models.TextField()
-    enfermedad_actual = models.TextField()
-    examen_fisico = models.TextField()
+    antecedentes = models.TextField(blank=True, null=True)
+    enfermedad_actual = models.TextField(blank=True, null=True)
+    examen_fisico = models.TextField(blank=True, null=True)
     historia = models.ForeignKey(Historia)
+    estado = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Consulta"
         verbose_name_plural = "Consultas"
+
     def __str__(self):
-        return self.enfermedad_actual
+        return "%s" % self.enfermedad_actual
         
+
 class FuncionesVitales(models.Model):
     frecuencia_cardiaca = models.IntegerField()
     frecuencia_respiratoria = models.IntegerField()
@@ -151,8 +156,6 @@ class FuncionesVitales(models.Model):
         return self.diagnostico_mc
 
 
-
-
 class Diagnostico(models.Model):
     codigo = models.CharField(max_length=10)
     nombre = models.CharField(max_length=100)
@@ -164,13 +167,13 @@ class Diagnostico(models.Model):
 
 class DiagnosticoConsulta(models.Model):
     diagnostico = models.ManyToManyField(Diagnostico)
-    consulta =models.ManyToManyField(Consulta)
+    consulta =models.ForeignKey (Consulta)
     class Meta:
         verbose_name = "Diagnostico por Consulta"
         verbose_name_plural = "Diagnostico Consultas"
 
     def __str__(self):
-        return "%s - %s" %(self.diagnostico,consulta)
+        return "%s - %s" %(self.diagnostico,self.consulta)
     
 
 class Producto(models.Model):
