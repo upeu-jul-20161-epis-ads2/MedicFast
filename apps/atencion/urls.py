@@ -1,6 +1,7 @@
 
 from django.conf.urls import url
 
+from apps.atencion.views import DiagnosticoBuscar
 from .views import PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView
 from .views import ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView
 from .views import LaboratorioListView, LaboratorioCreateView, LaboratorioDeleteView, LaboratorioUpdateView
@@ -55,6 +56,7 @@ urlpatterns = [
     url(r'^diagnostico/crear/$', DiagnosticoCreateView.as_view(), name="diagnostico_add"),
     url(r'^diagnostico/eliminar/(?P<pk>\d+)$', DiagnosticoDeleteView.as_view(), name="diagnostico_delete"),
     url(r'^diagnostico/editar/(?P<pk>\d+)$', DiagnosticoUpdateView.as_view(), name="diagnostico_update"),
+    url(r'^diagnostico/buscarajax$', DiagnosticoBuscar.as_view(), name="diagnostico_search"),
 
     # UnidadMedida
     url(r'^unidadmedida/lista$', UnidadMedidaListView.as_view(), name="unidadmedida_list"),

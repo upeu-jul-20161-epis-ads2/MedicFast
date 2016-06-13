@@ -1,5 +1,6 @@
 import logging
 
+from apps.atencion.forms.ConsultaForm import ConsultaForm
 from apps.atencion.models import Consulta
 
 log = logging.getLogger(__name__)
@@ -336,15 +337,38 @@ class HitoriaDetailView(DetailView):
 
     template_name = 'historial/historia_detail.html'
 
-
+    form_consulta = ConsultaForm
 
     def get_context_data(self, **kwargs):
 
         context = super(HitoriaDetailView, self).get_context_data(**kwargs)
 
+
         context['form'] = self.form_f_vitales
 
+        context['form_consulta'] = self.form_consulta
+
+        consulta = Consulta.objects.filter(historia=self.object).filter(estado=False).last()
+
+        context['consulta'] = consulta
+
+        try:
+            context['proceso'] = Consulta.objects.get(estado=True, historia=self.object)
+        except Exception as e:
+            context['proceso'] = None
+
         return context
+
+class DiagnosticoBuscar(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        codigo = request.GET.get('codigo')
+        diagnostico = Diagnostico.objects.get(codigo=codigo)
+
+        data = serializers.serialize('json', [diagnostico,])
+
+        return HttpResponse(data, content_type='application/json')
+
 
 
 # class Producto==============================================================================
@@ -991,7 +1015,7 @@ class DiagnosticoListView(ListView):
         return context
 
 
-class DiagnosticoCreateView(CreateView):
+class DiagnosticoCreateView(TemplateView):
     model = Diagnostico
     form_class = DiagnosticoForm
     template_name = 'diagnostico/diagnostico_add.html'
