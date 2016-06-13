@@ -1,6 +1,7 @@
  {% extends "mod_hotel/base_mod_backend.html" %}
 
 {% block content %}
+    <h2 class="text-center"><span>Nro. Historia</span>{{ historia.numero }}</h2>
     <div class="persona text-center" >
         <label for="">Nombre</label>{{object.persona.nombres}} {{object.persona.apellido_paterno}} {{object.persona.apellido_materno}} <br>
         <label for="">Codigo</label>  {{object.persona.codigo}} <br>
@@ -8,34 +9,109 @@
     </div>    
 
     <div class="atencion text-center">
-        <div class="consulta">
+        <div class="consulta_anterior">
 
-        {% if object.consulta_set.all %}
-            {% for consulta in object.consulta_set.all %}
-           <p> {{consulta.fecha}}</p>
-             <p>{{consulta.antecedentes}}</p>
-            <p> {{consulta.enfermedad_actual}}</p>
-             <p>{{consulta.examen_fisico}}</p>
+        {% if consulta %}
+            <div class="">
+            <h2>Ultima Consulta</h2>
+            <p>{{ consulta.fecha }}</p>
+            <p>{{ consulta.antecedentes }}</p>
+            <p>{{ consulta.enfermedad_actual }}</p>
+            <p>{{ consulta.examen_fisico }}</p>
 
-        {% endfor %}
-
-        {% else %}
-            <p class="text-info">No hay Consultas Anteriores</p>
-
+            </div>
+            {% else %}
+            <h2>No hay consultas anteriores</h2>
         {% endif %}
 
-
-
-
-
     </div>
+    <div class="consulta_actual">
+        {% if proceso %}
 
-    <div class="nueva-consulta">
+
+
+            <h3>Consulta en Proceso</h3>
+            <div class="consulta_proceso">
+            <h4>Consulta</h4>
+            <p>{{ proceso.fecha }}</p>
+            <p>{{ proceso.antecedentes }}</p>
+            <p>{{ proceso.enfermedad_actual }}</p>
+            <p>{{ proceso.examen_fisico }}</p>
+            </div>
+            <div class="fvitales_prceso">
+            <h4>Funciones Vitales</h4>
+            {% for funciones in proceso.funcionesvitales_set.all %}
+                <p><label for="">Frecuencia Cardiaca: </label><strong>{{ funciones.frecuencia_cardiaca }}</strong></p>
+            <p><label for="">Frecuencia Respiratoria: </label><strong>{{ funciones.frecuencia_respiratoria }}</strong></p>
+                <p><label for="">Presi&oacute;n Arterial: </label><strong>{{ funciones.presion_arterial }}</strong></p>
+                <p><label for="">Temparatura: </label><strong>{{ funciones.temperatura }}</strong></p>
+
+                <p><label for="">Masa Corporal: </label><strong>{{ funciones.masa_corporal }}</strong></p>
+                <p><label for="">Diagnostico Mc: </label><strong>{{ funciones.diagnostico_mc }}</strong></p>
+            {% endfor %}
+
+            </div>
+            {% else %}
+            <h3>No hay nada en Proceso</h3>
+            <div class="nueva-consulta">
        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
   Cargar Funciones Vitales
-</button>   </div>
+</button>
+            </div>
+        {% endif %}
+    <button class="btn" id="consulta-add">
+                Ver consulta
+            </button>
+    </div>
+
+    <div class="form-consulta">
+
+       <div class="col-xs-6">
+
+            {{ form_consulta }}
+
+       </div>
+     <div class="col-xs-6">
+         <input type="text" class="form-control" placeholder="Bucar Malestar" id="diagnostico_id" name="diagnostico">
+         <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
+       <div id="diagnostico">
+            <div id="resultado-consulta">
 
 
+        </div>
+           <button class="btn btn-success" id="agregar-diagnostico">Agregar Diagnostico</button>
+
+           <table id="tb-diagnostico">
+               <thead>
+               <tr>
+                   <th colspan="2">Diagnosticos</th>
+               </tr>
+               <tr>
+                   <th>#</th>
+                   <th>C&oacute;digo</th>
+                   <th>Nombre</th>
+               </tr>
+               </thead>
+               <tbody>
+
+               </tbody>
+           </table>
+
+       </div>
+     </div>
+
+        <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="consultaUp">
+
+            {% csrf_token %}
+            <input type="hidden" id="consulta" name="consulta">
+            <button class="btn btn-actions">
+                <i class="glyphicon glyphicon-floppy-save"></i>
+                Guardar Tratamiento</button>
+
+
+        </form>
+
+    </div>
 
     </div>
 
@@ -74,3 +150,84 @@
 
 
 {% endblock content %}
+
+{% block customjs %}
+
+    <script>
+    var consulta = new Object();
+    consulta.diagnostico = new Array();
+    var table = new Array();
+
+    $(document).ready(function(){
+       $("#diagnostico").hide();
+    });
+
+    $("#buscar-diagnostico").click(function (){
+       diagnostico = $("#diagnostico_id").val();
+        console.log(diagnostico);
+        $.ajax({
+
+            type:'get',
+            url : '{% url "atencion:diagnostico_search" %}',
+            data: {'codigo':diagnostico},
+
+            success: function(data){
+                var html = '';
+                html += '<dl>';
+                html += '<dt>';
+                html += 'Codigo';
+                html += '</dt>';
+                html += '<dd>';
+                html += data[0].fields.codigo;
+                html += '</dd>';
+                html += '<dt>';
+                html += 'Malestar';
+                html += '</dt>';
+                html += '<dd>';
+                html += data[0].fields.nombre;
+                html += '</dd>';
+
+                html += '</dl>';
+                var fila = new Object();
+                            fila.id = data[0].pk;
+                            fila.codigo = data[0].fields.codigo;
+                            fila.nombre = data[0].fields.nombre;
+
+                            table.push(fila);
+                $("#diagnostico").show();
+                $("#resultado-consulta").html(html);
+            },
+            error: function (err){
+                console.log(err);
+            }
+
+
+
+        });
+    });
+
+    $("#agregar-diagnostico").click(function (){
+
+        var d = table;
+
+        var t = document.getElementById("tb-diagnostico").getElementsByTagName('tbody')[0];
+
+        var rowCount = t.rows.length;
+        var row = t.insertRow(rowCount);
+
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+
+        cell1.innerHTML = rowCount +1;
+        cell2.innerHTML = d[d.length - 1].codigo;
+        cell3.innerHTML = d[d.length - 1].nombre;
+
+        consulta.diagnostico.push({'pkey': d[d.length - 1].id, 'codigo':d[d.length - 1].codigo, 'nombre':d[d.length - 1].nombre })
+
+    });
+
+    </script>
+
+
+{% endblock %}

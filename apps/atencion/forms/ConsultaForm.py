@@ -13,11 +13,11 @@ class ConsultaForm(forms.ModelForm):
     """Class ConsultaForm."""
     class Meta:
         model = Consulta
-        exclude = ('usuario',)
+        exclude = ('usuario', 'historia', 'estado')
         widgets = {
-            'antecedentes': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese antecedentes'}),
-            'enfermedad_actual': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese enfermedad actual'}),
-            'examen_fisico': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese examen fisico'}),
-            'funciones_vitales': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
-            'tratamiento': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
+            'antecedentes': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese antecedentes', 'rows': '2'}),
+            'enfermedad_actual': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese enfermedad actual', 'rows': '2'}),
+            'examen_fisico': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese examen fisico', 'rows': '2'}),
+            'funciones_vitales': forms.Select(attrs={'class': 'form-control', 'required':'true', 'rows': '2'}),
+            'tratamiento': forms.Select(attrs={'class': 'form-control', 'required':'true', 'rows': '2'}),
         }

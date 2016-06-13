@@ -166,7 +166,7 @@ class Diagnostico(models.Model):
         return self.nombre
 
 class DiagnosticoConsulta(models.Model):
-    diagnostico = models.ManyToManyField(Diagnostico)
+    diagnostico = models.ForeignKey(Diagnostico)
     consulta =models.ForeignKey (Consulta)
     class Meta:
         verbose_name = "Diagnostico por Consulta"
