@@ -269,6 +269,7 @@ class HitoriaBusquedaTemplateView(TemplateView):
 
         except Exception as e:
             personaes = None
+            #msg =("La persona no Existe)
 
         try:
             personaex = Persona.objects.get(dni=codigo)
@@ -302,7 +303,10 @@ class HitoriaBusquedaTemplateView(TemplateView):
 
 
         context = {'persona': persona, 'historia': historia, 'estudiante': estudiante, 'matriculado': matriculado }
+        #messages.success(self.request, msg)
+        #log.warning(msg, extra=log_params(self.request))
         return self.render_to_response(context)
+        
 
 
 class HitoriaCreateView(CreateView):

@@ -35,7 +35,8 @@ $(function() {
             <thead>
                 <tr>
                     <th>#</th>
-                    <th class="" data-search="nombre" data-order="nombre">nombre</th>
+                    <th class="" data-search="codigo" data-order="codigo">Código</th>
+                    <th class="" data-search="nombre" data-order="nombre">Nombre</th>
                     
                     <th class="btn-actions col-block text-center">opcion</th>
                 </tr>
@@ -50,11 +51,12 @@ $(function() {
                             {{ forloop.counter }}
                         {% endif %}
                     </td>
+                    <td>{{ d.codigo }}</td>
                     <td>{{ d.nombre }}</td>
                    
                     <td class="text-center">
                         
-                         <a href="{% url 'atencion:unidadmedidaupdate' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Unidad de Medida" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
+                         <a href="{% url 'atencion:unidadmedida_update' d.id %}" class="btn btn-info btn-sm text-bold" title="Cambiar Unidad de Medida" rel="tooltip"><i class="btn-icon-only fa fa-edit"></i></a>
                          <a href="{% url 'atencion:unidadmedida_delete' d.id %}" class="btn btn-danger btn-sm js-confirm text-bold" msg-title="Eliminar Unidad de Medida?." msg="Estas seguro que quiere eliminar <br/> Recuerde que esta acción no se puede deshacer." title="Eliminar Unidad de Medida" rel="tooltip"><i class="btn-icon-only fa fa-trash-o"></i></a>
                     </td>
 

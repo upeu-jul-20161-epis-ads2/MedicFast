@@ -3,96 +3,72 @@
 <link href="{% static 'custom/css/base.css' %}" rel="stylesheet">
 <link href="{% static 'custom/css/style.css' %}" rel="stylesheet">
 <link href="{% static 'bootstrap-fileinput/css/fileinput.css' %}" rel="stylesheet">
-<<<<<<< HEAD
-<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet"> {% endblock extrastyle%} {% block header %} {% include "mod_backend/partials/header.html" %} {% endblock header %} {% block rootcontainer %}
-<div id="shell-load" >
-    <div id="shell-content" class="col-md-12 container-fluid" style="padding-left:0px !important;padding-right:0px !important;" > 
-            {% block messages %} {% load notify %} {% get_notify request %} {% endblock messages %}
-           
-              <div class="col-md-2" style="background:#333;text-align:center;">
-                <h2>Menu</h2>
-                <ul class="side-nav nav nav-second-level">
-                    <li>
-                        <a href="{% url 'atencion:persona_list' %}"><h5>Pacientes</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:historia_busqueda' %}"><h5>Buscar Paciente</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:historia_busqueda' %}"><h5>Buscar Paciente</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:producto_list' %}"><h5>Medicamentos</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:periodo_list' %}"><h5>Periodo</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:laboratorio_list' %}"><h5>Prueba de Laboratorio</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:funcionesvitales_list' %}"><h5>Funciones Vitales</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:unidadmedida_list' %}"><h5>Unidad de Medida</h5></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'atencion:diagnostico_list' %}"><h5>CIE10</h5></a>
-                    </li>
-                    <li>
-                        <a hhref="{% url 'atencion:diagnostico_list' %}"><h5>CIE10</h5></a>
-                    </li>
-                </ul>
-              </div>
-              <div class="col-md-10">
-                
-                {% block content %} 
+<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet">
+<style>
+a.colortext {
+    color: #fff;
+}
 
-                {% endblock content %}
-              </div>
+a:hover {
+    color: #000;
+}
+</style>
+{% endblock extrastyle%} {% block header %} {% include "mod_backend/partials/header.html" %} {% endblock header %} {% block rootcontainer %}
+<div id="shell-load">
+    <div id="shell-content" class="col-md-12 container-fluid" style="padding-left:0px !important;padding-right:0px !important;">
+        {% block messages %} {% load notify %} {% get_notify request %} {% endblock messages %}
+        <div class="col-md-2" style="background:#333;text-align:center;padding-left:0px !important;padding-right:0px !important;">
+            
+            <div class="col-md-12" style="background:#252525 !important;">
+            <div>
+                &nbsp;
+            </div> 
+                <img src="{% static 'custom/img/galeria/user.jpg' %}" alt="" style="width:100px;height:100px;border-radius:50%;">
+                <div>
+                &nbsp;
+            </div>
+            </div>
 
             
-             
-            {% block sidebar %} {% endblock sidebar %}
+            <ul class="side-nav nav nav-second-level col-md-12" style="font-variant:small-caps;font-weight:900;">
+                <li>
+                    <a href="{% url 'atencion:persona_list' %}" class="colortext"><h5>Pacientes</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:historia_search' %}" class="colortext"><h5>Buscar Paciente</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:historia_search' %}" class="colortext"><h5>Buscar Paciente</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:producto_list' %}" class="colortext"><h5>Medicamentos</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:periodo_list' %}" class="colortext"><h5>Periodo</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:laboratorio_list' %}" class="colortext"><h5>Prueba de Laboratorio</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:funcionesvitales_list' %}" class="colortext"><h5>Funciones Vitales</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:unidadmedida_list' %}" class="colortext"><h5>Unidad de Medida</h5></a>
+                </li>
+                <li>
+                    <a href="{% url 'atencion:diagnostico_list' %}" class="colortext"><h5>CIE10</h5></a>
+                </li>
+                <li>
+                    <a hhref="{% url 'atencion:diagnostico_list' %}" class="colortext"><h5>CIE10</h5></a>
+                </li>
+            </ul>
         </div>
-=======
-<link href="{% static 'custom/css/navbar-fixed-top.css' %}" rel="stylesheet">
-
-{% endblock extrastyle%}
-
-{% block header %}
-{% load_menu request 'BACKEND' %}
-
-{% include "mod_backend/partials/header.html" %}
-{% endblock header %}
-
-
-{% block rootcontainer %}
-<div id="shell-load">
-  <div class="breadcrumbs">
-    {% block breadcrumbs %}
-
-    {% endblock breadcrumbs %}
-  </div>
-  <div id="shell-content" class="container-fluid" >
-
-    <div class="container shell-view">
-
-      
-
-      <div class="page-header">
-        <h3>{% block content_title %}{% endblock content_title %}</h3>
-      </div>
-      {% block messages %}
-      {% load notify %}
-      {% get_notify request %}
-      {% endblock messages %}
-      {% block content %}{% endblock content %}
-      {% block sidebar %}{% endblock sidebar %}
-
-      
->>>>>>> 816871efbfe2e4536f5ab8afc2e000ef3f5d15e8
+        <div class="col-md-10">
+            {% block content %} {% endblock content %}
+        </div>
+        {% block sidebar %} {% endblock sidebar %}
     </div>
+</div>
 </div>
 <!-- /dw-shell-load -->
 {% endblock rootcontainer %} {% block footer %} {% include "mod_backend/partials/footer.html" %} {% endblock footer %}

@@ -1,64 +1,55 @@
-{% extends "accounts/base_authenticated.html" %} {% load i18n app_security %} 
-{% load l10n humanize %} 
-{{% block content %}
-<script type="text/javascript">
-$(function() {
-    $('table').kgrid({
-        form_data: ['{{f}}', '{{q}}'],
-        form_to: '/accounts/?f={{f}}&q={{q}}',
-        order_attr: 'class=""',
-        order_to: '/accounts/?f={{f}}&q={{q}}',
-    });
-});
-</script>
+{% extends "mod_hotel/base_mod_backend.html" %} {% block content %}
 <div>
-    <h2>Menu</h2>
-    <ul class="side-nav nav nav-second-level col-xs-2 col-md-2">
-        <li>
-            <a href="{% url 'atencion:persona_list' %}"><h4>Pacientes</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:historia_busqueda' %}"><h4>Buscar Paciente</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:producto_list' %}"><h4>Medicamentos</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:periodo_list' %}"><h4>Periodo</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:laboratorio_list' %}"><h4>Prueba de Laboratorio</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:funcionesvitales_list' %}"><h4>Funciones Vitales</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:unidadmedida_list' %}"><h4>Unidad de Medida</h4></a>
-        </li>
-        <li>
-            <a href="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
-        </li>
-        <li>
-            <a hhref="{% url 'atencion:diagnostico_list' %}"><h4>CIE10</h4></a>
-        </li>
-    </ul>
+    &nbsp;
 </div>
-<div class="btn-toolbar btn-toolbar-top">
-    <div class="row">
+<h1>Bienvenido al Sistema del Centro medico!</h1>
+<div>
+    &nbsp;
+</div>
+<div class="busqueda">
+    <form action="{% url 'atencion:historia_search' %}" method="get">
+        <div class="col-md-6" >
+            <input type="text" name="codigo" id="codigo" value="{{ request.GET.codigo }}" class="form form-control" >
+        </div>
+       
+        <div class="col-md-6" style="padding-left:0;">
+            <button type="submit" class="btn btn-search" ">Buscar</button>
+        </div>
+        
+        
+    </form>
+</div>
+<div class="resultado">
+    {% if persona %}
+    <label for="">Nombres: </label>{{persona.nombres}}
+    <br>
+    <label for="">Apellido: </label>{{persona.apellido_paterno}} {{persona.apellido_materno}}
+    <br>
+    <label for="">C&oacute;digo: </label>{{persona.codigo}}
+    <br>
+    <label for="">Fecha Nacimiento: </label>{{persona.fecha_nacimiento}}
+    <br>
+    <label for="">Sexo: </label>{{ persona.sexo }}
+    <br>
+    <label for="">Estado Civil: </label>{{ persona.estado_civil }}
+    <br>
+    <label for="">Estudiante</label>{% if estudiante %}SI {% else %}No {% endif %}
+    <br>
+    <label for="">Matriculado</label> {% if matriculado %} Si {% else %}No {% endif %}
+    <div class="historial">
+        {% if historia %}
+        <a href="{% url 'atencion:historia_detail' historia.id %}" class="btn btn-success"> Abir Historial</a> {% else %}
+        <h2>No tiene historial</h2>
+        <form action="{% url 'atencion:historia_add' %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="persona" id="id_persona" value="{{persona.id}}">
+            <button type="submit" class="btn btn-primary">Crear Historia</button>
+        </form>
+        </button>
+        {% endif %}
     </div>
-</div>
-<div class="container-overflow">
-</div>
-<div class="row">
-    {% if is_paginated %} {% load paginator %} {% paginator %} {% else %}
-    <div class="col-md-12">
-        <ul class="breadcrumbpag">
-            {{ object_list.count }} {% ifequal object_list.count 1 %}{{ opts.verbose_name|capfirst }}{% else %}{{ opts.verbose_name_plural|capfirst }}{% endifequal %}
-        </ul>
-    </div>
-    {% endif %}
+    {% else %}
+    <h4 class="col-md-12" style="color:#D42C2C;"> La Persona no Existe</h4> {% endif %}
 </div>
 {% endblock content %}
+</div>
