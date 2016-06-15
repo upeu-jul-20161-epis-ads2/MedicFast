@@ -4,38 +4,38 @@ from django.db import models
 
 
 estado_civil = (
-    ('soltero', 'S'),
-    ('casado', 'C'),
-    ('divorciado', 'D'),
-    ('viudo', 'V'),
-    ('conviviente', 'Cn'),
+    ('Soltero', 'Soltero'),
+    ('Casado', 'Casado'),
+    ('Divorciado', 'Divorciado'),
+    ('Viudo', 'Viudo'),
+    ('Conviviente', 'Conviviente'),
 )
 
 sexo = (
-    ('Femenino', 'F'),
-    ('Masculino', 'M'),
+    ('Femenino', 'Femenino'),
+    ('Masculino', 'Masculino'),
 )
 
 ocupacion = (
-    ('EstudianteFIA', 'EF'),
-    ('EstudianteFCE', 'ECE'),
-    ('EstudianteSALUD', 'ES'),
-    ('EstudianteFACIHED', 'EED'),
-    ('DocenteFIA', 'DF'),
-    ('DocenteFCE', 'DCE'),
-    ('DocenteSALUD', 'DS'),
-    ('DocenteFACIHED', 'DED'),
-    ('PersonalAdministrativo', 'PAd'),
-    ('EstudianteCAT', 'EC'),
-    ('DocenteCAT', 'DC'),
-    ('Visitas', 'V'),
+    ('EstudianteFIA', 'Estudiante FIA'),
+    ('EstudianteFCE', 'Estudiante FCE'),
+    ('EstudianteSALUD', 'Estudiante SALUD'),
+    ('EstudianteFACIHED', 'Estudiante FACIHED'),
+    ('DocenteFIA', 'Docente FIA'),
+    ('DocenteFCE', 'Docente FCE'),
+    ('DocenteSALUD', 'Docente SALUD'),
+    ('DocenteFACIHED', 'Docente FACIHED'),
+    ('PersonalAdministrativo', 'Personal Administrativo'),
+    ('EstudianteCAT', 'Estudiante CAT'),
+    ('DocenteCAT', 'Docente CAT'),
+    ('Visitas', 'Visitas'),
 )
 IMC = (
-    ('PesoBajo', 'PesoBajo'),
-    ('PesoNormal', 'PesoNormal'),
-    ('Sobrepeso', 'Sobrepeso'),
+    ('PesoBajo', 'Peso Bajo'),
+    ('PesoNormal', 'Peso Normal'),
+    ('Sobrepeso', 'Sobre peso'),
     ('Obesidad', 'Obesidad'),
-    ('ObesidadSevera', 'ObesidadSevera')
+    ('ObesidadSevera', 'Obesidad Severa')
 )
 
 class Usuario(models.Model):
@@ -147,7 +147,7 @@ class FuncionesVitales(models.Model):
     peso = models.IntegerField()
     talla = models.IntegerField()
     masa_corporal = models.IntegerField()
-    diagnostico_mc = models.CharField(max_length=15, choices=IMC, default='N')
+    diagnostico_mc = models.CharField(max_length=15, choices=IMC, default='PesoNormal')
     consulta = models.ForeignKey(Consulta)
     class Meta:
         verbose_name = "Funciones Vitales"
