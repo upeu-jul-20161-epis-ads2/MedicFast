@@ -1,4 +1,4 @@
- {% extends "mod_hotel/base_mod_backend.html" %} {% block content %}
+{% extends "mod_hotel/base_mod_backend.html" %} {% block content %}
 <div class="col-md-12 page-header">
     <div class="col-md-6">
         <h2 for="">{{object.persona.nombres}} {{object.persona.apellido_paterno}} {{object.persona.apellido_materno}} - [{{objects.persona.edad}}]</h2>
@@ -76,16 +76,15 @@
             </button>
         </div>
         {% endif %}
-        <button class="btn" id="consulta-add">
-            Ver consulta
-        </button>
+
     </div>
     <div class="form-consulta">
-{% if antecedente %}
-
 
 <div class="row">
-<div class="col-md-12">
+
+{% if antecedente %}
+
+<div class="col-md-6">
     <fieldset>
         <legend>Antecedentes Medicos</legend>
         <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
@@ -98,11 +97,10 @@
         <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
 
     </fieldset>
-</div>
-</div>
+
     {% else %}
-     <div class="row">
-            <div class="col-md-12">
+
+
                 <fieldset>
                     <legend>Formulario antecedentes medicos</legend>
                 <form action="{% url 'atencion:antecedente_add' %}" method="post">
@@ -113,17 +111,30 @@
                         <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
                 </form>
                 </fieldset>
-            </div>
-        </div>
+
+
 {% endif %}
+</div>
+
+<div class="col-md-6">
+
+</div>
+
+</div>
         <fieldset>
-            <legend>Formulario Consulta</legend>
+            <legend>Consulta</legend>
             <div class="row">
-            <div class="col-xs-6">
-            {{ form_consulta }}
+        <div class="col-xs-6">
+
+    <fieldset>
+        <legend>Formulario Consulta</legend>
+        {{ form_consulta }}
+    </fieldset>
         </div>
         <div class="col-xs-6">
-            <input type="text" class="form-control" placeholder="Bucar Malestar" id="diagnostico_id" name="diagnostico">
+            <fieldset>
+                <legend>Diagnosticos</legend>
+                <input type="text" class="form-control" placeholder="Bucar Malestar" id="diagnostico_id" name="diagnostico">
             <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
             <div id="diagnostico">
                 <div id="resultado-consulta">
@@ -144,10 +155,48 @@
                     </tbody>
                 </table>
             </div>
+            </fieldset>
         </div>
         </div>
 
 
+            <div class="row">
+                <fieldset>
+                    <legend>Tratamiento</legend>
+                <div class="col-md-6">
+                    <fieldset>
+                    <legend>Formulario Tratamiendo</legend>
+                        {{ form_tratamiento }}
+                </fieldset>
+                </div>
+                    <div class="col-md-6">
+                        <fieldset>
+                            <legend>Receta</legend>
+                            <input type="text" class="form-control" placeholder="Bucar Medicamento" id="medicamento_id" name="medicamento">
+                            <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
+                        <div id="diagnostico">
+                    <div id="resultado-medicamento">
+                    </div>
+                <button class="btn btn-success" id="agregar-medicamento">Agregar Medicamento</button>
+                <table id="tb-medicamento">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Diagnosticos</th>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>C&oacute;digo</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
 
 
             <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="enviar()">
@@ -197,22 +246,18 @@
 var consulta = new Object();
 consulta.diagnostico = new Array();
 var table = new Array();
-
 $(document).ready(function() {
     $("#diagnostico").hide();
 });
-
 $("#buscar-diagnostico").click(function() {
     diagnostico = $("#diagnostico_id").val();
     console.log(diagnostico);
     $.ajax({
-
         type: 'get',
         url: '{% url "atencion:diagnostico_search" %}',
         data: {
             'codigo': diagnostico
         },
-
         success: function(data) {
             var html = '';
             html += '<dl>';
@@ -228,13 +273,11 @@ $("#buscar-diagnostico").click(function() {
             html += '<dd>';
             html += data[0].fields.nombre;
             html += '</dd>';
-
             html += '</dl>';
             var fila = new Object();
             fila.id = data[0].pk;
             fila.codigo = data[0].fields.codigo;
             fila.nombre = data[0].fields.nombre;
-
             table.push(fila);
             $("#diagnostico").show();
             $("#resultado-consulta").html(html);
@@ -242,46 +285,32 @@ $("#buscar-diagnostico").click(function() {
         error: function(err) {
             console.log(err);
         }
-
-
-
     });
 });
-
 $("#agregar-diagnostico").click(function() {
-
     var d = table;
-
     var t = document.getElementById("tb-diagnostico").getElementsByTagName('tbody')[0];
-
     var rowCount = t.rows.length;
     var row = t.insertRow(rowCount);
-
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
-
     cell1.innerHTML = rowCount + 1;
     cell2.innerHTML = d[d.length - 1].codigo;
     cell3.innerHTML = d[d.length - 1].nombre;
-
     consulta.diagnostico.push({
         'pkey': d[d.length - 1].id,
         'codigo': d[d.length - 1].codigo,
         'nombre': d[d.length - 1].nombre
     })
     console.log(consulta);
-
 });
-
 function enviar() {
                     consulta.historia = $("#histro_ac").val();
                     consulta.enfermedad = $("#id_enfermedad_actual").val();
                     consulta.examen = $("#id_examen_fisico").val();
-
                     console.log(JSON.stringify(consulta));
                     document.getElementById("proceso").value = JSON.stringify(consulta);
-
             }
 </script>
 {% endblock %}

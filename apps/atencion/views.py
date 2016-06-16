@@ -1,6 +1,7 @@
 import logging
 
 from apps.atencion.forms.ConsultaForm import ConsultaForm
+from apps.atencion.forms.TratamientoForm import TratamientoForm
 from apps.atencion.models import Consulta, AntecedenteMedico, DiagnosticoConsulta
 
 log = logging.getLogger(__name__)
@@ -339,6 +340,9 @@ class HitoriaDetailView(DetailView):
     template_name = 'historial/historia_detail.html'
 
     form_consulta = ConsultaForm
+
+    form_tratamiento = TratamientoForm
+
     form_antecedente = AntecedenteMedicoForm
 
     def get_context_data(self, **kwargs):
@@ -355,6 +359,7 @@ class HitoriaDetailView(DetailView):
         context['form_antecedente'] = self.form_antecedente
 
         context['form_consulta'] = self.form_consulta
+        context['form_tratamiento'] = self.form_tratamiento
 
         consulta = Consulta.objects.filter(historia=self.object).filter(estado=False).last()
 
