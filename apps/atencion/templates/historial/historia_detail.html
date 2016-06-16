@@ -48,7 +48,27 @@
     
 </div>
 <div class="col-md-12" style="text-align:center;">
-    <div class="consulta_actual page-header ">
+    
+    <div class="form-consulta">
+{% if antecedente %}
+
+
+<div class="row">
+<div class="col-md-12">
+    <fieldset>
+        <legend>Antecedentes Medicos</legend>
+        <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
+        <p><label for="">Antecedentes ginecoobstétricos: </label>{{ antecedente.antecedente_ginecoobstetrico }}</p>
+        <p><label for="">Hábitos: </label>{{ antecedente.habito }}</p>
+        <p><label for="">Antecedente sobre uso de medicamentos: </label>{{ antecedente.antecedente_medicamento }}</p>
+        <p><label for="">Alergias: </label>{{ antecedente.alergia }}</p>
+        <p><label for="">Antecedentes sociales y personales: </label>{{ antecedente.antecedente_personal_social }}</p>
+        <p><label for="">Antecedentes familiares: </label>{{ antecedente.atecedente_familiar }}</p>
+        <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
+
+    </fieldset>
+</div>
+<div class="consulta_actual page-header ">
         {% if proceso %}
         <h3>Consulta en Proceso</h3>
         <div class="consulta_proceso">
@@ -76,37 +96,19 @@
             Ver consulta
         </button>
     </div>
-    <div class="form-consulta">
-{% if antecedente %}
-
-
-<div class="row">
+</div>
 <div class="col-md-12">
-    <fieldset>
-        <legend>Antecedentes Medicos</legend>
-        <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
-        <p><label for="">Antecedentes ginecoobstétricos: </label>{{ antecedente.antecedente_ginecoobstetrico }}</p>
-        <p><label for="">Hábitos: </label>{{ antecedente.habito }}</p>
-        <p><label for="">Antecedente sobre uso de medicamentos: </label>{{ antecedente.antecedente_medicamento }}</p>
-        <p><label for="">Alergias: </label>{{ antecedente.alergia }}</p>
-        <p><label for="">Antecedentes sociales y personales: </label>{{ antecedente.antecedente_personal_social }}</p>
-        <p><label for="">Antecedentes familiares: </label>{{ antecedente.atecedente_familiar }}</p>
-        <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
-
-    </fieldset>
-</div>
-</div>
     {% else %}
      <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <fieldset>
                     <legend>Formulario antecedentes medicos</legend>
-                <form action="{% url 'atencion:antecedente_add' %}" method="post">
+                <form  action="{% url 'atencion:antecedente_add' %}" method="post">
                     {% csrf_token %}
                     {{ form_antecedente }}
                     <input type="hidden" name="historia" value="{{ historia.id }}">
 
-                        <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
+                        <button class="btn btn-primary"><i class="fa fa-upload">Guardar Antecedentes</i></button>
                 </form>
                 </fieldset>
             </div>
@@ -115,7 +117,7 @@
         <fieldset>
             <legend>Formulario Consulta</legend>
             <div class="row">
-            <div class="col-xs-6">
+            <div class="col-md-6">
             {{ form_consulta }}
         </div>
         <div class="col-xs-6">
@@ -265,7 +267,7 @@ function enviar() {
 
                     console.log(JSON.stringify(consulta));
                     document.getElementById("proceso").value = JSON.stringify(consulta);
-           alert('ss');
+        
             }
 </script>
 {% endblock %}
