@@ -146,6 +146,8 @@
         </div>
 
 
+
+
             <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="enviar()">
             {% csrf_token %}
               <input type="hidden" id="proceso" name="proceso">
