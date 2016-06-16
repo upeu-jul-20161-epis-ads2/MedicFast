@@ -12,9 +12,8 @@ class TratamientoForm(forms.ModelForm):
     """Class TratamientoForm."""
     class Meta:
         model = Tratamiento
-        exclude = ('fecha',)
+        exclude = ('consulta',)
         widgets = {
-            'recomendacion': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese recomendacion'}),
-            'diagnostico': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
-            'detalle': forms.Select(attrs={'class': 'form-control'})
+            'recomendacion': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese recomendacion', 'rows': '2'}),
+
         }
