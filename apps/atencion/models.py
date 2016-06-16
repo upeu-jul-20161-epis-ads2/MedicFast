@@ -125,7 +125,6 @@ class Historia(models.Model):
 class Consulta(models.Model):
     # usuario = models.ForeignKey(Usuario)
     fecha = models.DateTimeField(auto_now_add=True)
-    antecedentes = models.TextField(blank=True, null=True)
     enfermedad_actual = models.TextField(blank=True, null=True)
     examen_fisico = models.TextField(blank=True, null=True)
     historia = models.ForeignKey(Historia)
