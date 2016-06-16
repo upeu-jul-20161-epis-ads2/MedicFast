@@ -13,7 +13,7 @@ class ConsultaForm(forms.ModelForm):
     """Class ConsultaForm."""
     class Meta:
         model = Consulta
-        exclude = ('usuario', 'historia', 'estado')
+        exclude = ('usuario', 'historia', 'estado', 'hecho')
         widgets = {
             'antecedentes': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese antecedentes', 'rows': '2'}),
             'enfermedad_actual': forms.Textarea(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese enfermedad actual', 'rows': '2'}),
