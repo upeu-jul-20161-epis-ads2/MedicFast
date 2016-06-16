@@ -16,4 +16,5 @@ class UnidadMedidaForm(forms.ModelForm):
         exclude = ('',)
         widgets = {
             'codigo': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese codigo'}),
-            'nombre': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese nombre'})}
+            'nombre': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese nombre'})
+        }

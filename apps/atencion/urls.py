@@ -10,7 +10,7 @@ from .views import PeriodoListView, PeriodoCreateView, PeriodoDeleteView, Period
 from .views import DiagnosticoListView,DiagnosticoCreateView,DiagnosticoDeleteView,DiagnosticoUpdateView
 from .views import UnidadMedidaCreateView,UnidadMedidaListView,UnidadMedidaUpdateView,UnidadMedidaDeleteView
 from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
-    ProvinciaAjax, DistritoAjax, HitoriaDetailView)
+    ProvinciaAjax, DistritoAjax, HitoriaDetailView, AntecedenteCreateView, DiagnosticoConsultaCreate)
 from .views import HitoriaBusquedaTemplateView, HitoriaCreateView
 
 urlpatterns = [
@@ -53,7 +53,7 @@ urlpatterns = [
 
     #Diagnostico
     url(r'^diagnostico/lista$', DiagnosticoListView.as_view(), name="diagnostico_list"),
-    url(r'^diagnostico/crear/$', DiagnosticoCreateView.as_view(), name="diagnostico_add"),
+    url(r'^diagnostico/crear/$', DiagnosticoConsultaCreate.as_view(), name="diagnostico_add"),
     url(r'^diagnostico/eliminar/(?P<pk>\d+)$', DiagnosticoDeleteView.as_view(), name="diagnostico_delete"),
     url(r'^diagnostico/editar/(?P<pk>\d+)$', DiagnosticoUpdateView.as_view(), name="diagnostico_update"),
     url(r'^diagnostico/buscarajax$', DiagnosticoBuscar.as_view(), name="diagnostico_search"),
@@ -63,5 +63,10 @@ urlpatterns = [
     url(r'^unidadmedida/crear/$', UnidadMedidaCreateView.as_view(), name="unidadmedida_add"),
     url(r'^unidadmedida/eliminar/(?P<pk>\d+)$', UnidadMedidaDeleteView.as_view(), name="unidadmedida_delete"),
     url(r'^unidadmedida/editar/(?P<pk>\d+)$', UnidadMedidaUpdateView.as_view(), name="unidadmedida_update"),
+
+    # Antecedentes
+    url(r'^antecedente/crear/$', AntecedenteCreateView.as_view(), name="antecedente_add"),
+
+
 
 ]

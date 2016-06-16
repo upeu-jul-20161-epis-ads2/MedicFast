@@ -1,7 +1,7 @@
 import logging
 
 from apps.atencion.forms.ConsultaForm import ConsultaForm
-from apps.atencion.models import Consulta
+from apps.atencion.models import Consulta, AntecedenteMedico, DiagnosticoConsulta
 
 log = logging.getLogger(__name__)
 from apps.utils.security import SecurityKey, log_params, UserToken, get_dep_objects
@@ -26,7 +26,7 @@ from django.utils.encoding import force_text
 from django.contrib.messages.views import SuccessMessageMixin
 from apps.utils.decorators import permission_resource_required
 from django.utils.decorators import method_decorator
-from django.utils.translation import ugettext as _ 
+from django.utils.translation import ugettext as _
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -41,6 +41,7 @@ from .forms.FuncionesVitalesForm import FuncionesVitalesForm
 from .forms.UnidadMedidaForm import UnidadMedidaForm
 from .forms.HistoriaForm import HistoriaForm
 from .forms.DiagnosticoForm import DiagnosticoForm
+from .forms.AntecendeMedicoForm import AntecedenteMedicoForm
 from .models import (Persona, Producto, Laboratorio, FuncionesVitales,
                     Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito)
 
@@ -115,7 +116,7 @@ class DistritoAjax(TemplateView):
         if id_provincia:
 
             distritos = Distrito.objects.filter(provincia__id=id_provincia)
-            
+
         else:
             distritos = Distrito.objects.filter(provincia__id=0)
         # data = serializers.serialize('json', distritos, fields=('id', 'distrito'))
@@ -150,10 +151,10 @@ class PersonaCreateView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        
+
         self.object.usuario = self.request.user
 
-        
+
         msg = (' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
             'name': capfirst(force_text(self.model._meta.verbose_name)),
             'obj': force_text(self.object)
@@ -206,7 +207,7 @@ class PersonaDeleteView(DeleteView):
 
     @method_decorator(permission_resource_required)
     def dispatch(self, request, *args, **kwargs):
-        
+
         try:
             self.get_object()
         except Exception as e:
@@ -307,7 +308,7 @@ class HitoriaBusquedaTemplateView(TemplateView):
         #messages.success(self.request, msg)
         #log.warning(msg, extra=log_params(self.request))
         return self.render_to_response(context)
-        
+
 
 
 class HitoriaCreateView(CreateView):
@@ -328,7 +329,7 @@ class HitoriaCreateView(CreateView):
         else:
             self.object.numero = persona.dni
 
-        return super(HitoriaCreateView, self).form_valid(form)    
+        return super(HitoriaCreateView, self).form_valid(form)
 
 class HitoriaDetailView(DetailView):
     model = Historia
@@ -338,26 +339,60 @@ class HitoriaDetailView(DetailView):
     template_name = 'historial/historia_detail.html'
 
     form_consulta = ConsultaForm
+    form_antecedente = AntecedenteMedicoForm
 
     def get_context_data(self, **kwargs):
 
         context = super(HitoriaDetailView, self).get_context_data(**kwargs)
 
+        try:
+            antecedente = AntecedenteMedico.objects.get(historia=self.object)
+        except Exception as e:
+            antecedente = None
 
         context['form'] = self.form_f_vitales
+
+        context['form_antecedente'] = self.form_antecedente
 
         context['form_consulta'] = self.form_consulta
 
         consulta = Consulta.objects.filter(historia=self.object).filter(estado=False).last()
 
         context['consulta'] = consulta
-
+        context['antecedente'] = antecedente
         try:
             context['proceso'] = Consulta.objects.get(estado=True, historia=self.object)
         except Exception as e:
             context['proceso'] = None
 
         return context
+
+class DiagnosticoConsultaCreate(TemplateView):
+
+    def post(self, request):
+
+        sid = transaction.savepoint()
+        try:
+            proceso = json.loads(request.POST.get('proceso'))
+            historiaid = proceso['historia']
+            historia = Historia.objects.get(id=historiaid)
+            consulta = Consulta.objects.get(historia=historia, estado=True)
+
+            consulta.examen_fisico = proceso['examen']
+            consulta.enfermedad_actual = proceso['examen']
+
+            for c in proceso['diagnostico']:
+                diagonostico = Diagnostico.objects.get(id=c['pkey'])
+                diag = DiagnosticoConsulta()
+                diag.diagnostico = diagonostico
+                diag.consulta = consulta
+                diag.save()
+
+        except Exception as e:
+            print(e)
+
+        return HttpResponse(content_type='application/json')
+
 
 class DiagnosticoBuscar(TemplateView):
 
@@ -371,7 +406,25 @@ class DiagnosticoBuscar(TemplateView):
 
 
 
+class AntecedenteCreateView(CreateView):
+    model = AntecedenteMedico
+    form_class = AntecedenteMedicoForm
+
+    def get_success_url(self):
+        return reverse('atencion:historia_detail', kwargs={'pk': self.object.historia.pk})
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        historiaid = self.request.POST['historia']
+        historia = Historia.objects.get(id=historiaid)
+        self.object.historia = historia
+
+        return super(AntecedenteCreateView, self).form_valid(form)
+
+
+
 # class Producto==============================================================================
+
 class ProductoListView(ListView):
     model = Producto
     template_name = 'producto/producto_list.html'

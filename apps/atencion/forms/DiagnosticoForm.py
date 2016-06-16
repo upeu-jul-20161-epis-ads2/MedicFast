@@ -8,17 +8,7 @@ from apps.utils.forms import smtSave, btnCancel, btnReset
 from django.utils.text import capfirst, get_text_list
 from unicodedata import normalize
 
-def validate_unique_codigo(self):
-    """validacion de campo unico"""
-    if normalize('NFKD', self).encode('ascii', 'ignore').lower() in list(
-            normalize('NFKD', c['codigo']).encode('ascii', 'ignore').lower()
-            for c in Distrito.objects.values('codigo')
-    ):
-        raise forms.ValidationError(
-            _(u'%(model_name)s with this %(field_label)s already exists.') % {
-                'model_name': capfirst(_('group')),
-                'field_label': capfirst(_('codigo')),
-            })
+
 
 class DiagnosticoForm(forms.ModelForm):
     """Class DiagnosticoForm."""
