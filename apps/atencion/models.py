@@ -128,6 +128,7 @@ class Consulta(models.Model):
     enfermedad_actual = models.TextField(blank=True, null=True)
     examen_fisico = models.TextField(blank=True, null=True)
     historia = models.ForeignKey(Historia)
+    hecho = models.BooleanField(default=False)
     estado = models.BooleanField(default=True)
 
     class Meta:

@@ -379,7 +379,9 @@ class DiagnosticoConsultaCreate(TemplateView):
             consulta = Consulta.objects.get(historia=historia, estado=True)
 
             consulta.examen_fisico = proceso['examen']
-            consulta.enfermedad_actual = proceso['examen']
+            consulta.enfermedad_actual = proceso['enfermedad']
+            consulta.hecho = True
+            consulta.save()
 
             for c in proceso['diagnostico']:
                 diagonostico = Diagnostico.objects.get(id=c['pkey'])
@@ -391,8 +393,7 @@ class DiagnosticoConsultaCreate(TemplateView):
         except Exception as e:
             print(e)
 
-        return HttpResponse(content_type='application/json')
-
+        return HttpResponseRedirect(reverse('atencion:historia_detail', kwargs={'pk': historia.pk}))
 
 class DiagnosticoBuscar(TemplateView):
 
