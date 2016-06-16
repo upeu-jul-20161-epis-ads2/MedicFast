@@ -137,7 +137,25 @@ class Consulta(models.Model):
 
     def __str__(self):
         return "%s" % self.enfermedad_actual
-        
+
+class AntecedenteMedico(models.Model):
+    consulta = models.ForeignKey(Consulta)
+    antecedente_morbidos = models.TextField(blank=True, null=True, verbose_name='Antecedentes mórbidos')
+    antecedente_ginecoobstetrico = models.TextField(blank=True, null=True, verbose_name='Antecedentes ginecoobstétricos')
+    habito = models.TextField(blank=True, null=True, verbose_name='Hábitos')
+    antecedente_medicamento = models.TextField(blank=True, null=True, verbose_name='Antecedentes sobre uso de medicamentos.')
+    alergia = models.TextField(blank=True, null=True, verbose_name='Alergias')
+    antecedente_personal_social = models.TextField(blank=True, null=True, verbose_name='Antecedentes sociales y personales.')
+    atecedente_familiar = models.TextField(blank=True, null=True, verbose_name='Antecedentes familiares')
+    inmunizacion = models.TextField(blank=True, null=True, verbose_name='Inmunizaciones')
+
+    class Meta:
+        verbose_name = "AntecedenteMedico"
+        verbose_name_plural = "AntecedenteMedicos"
+
+    def __str__(self):
+        return self.alergia
+
 
 class FuncionesVitales(models.Model):
     frecuencia_cardiaca = models.IntegerField()
