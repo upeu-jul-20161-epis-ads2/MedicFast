@@ -1,7 +1,7 @@
  {% extends "mod_hotel/base_mod_backend.html" %} {% block content %}
 <div class="col-md-12 page-header">
     <div class="col-md-6">
-        <h2 for="">{{object.persona.nombres}} {{object.persona.apellido_paterno}} {{object.persona.apellido_materno}} - [{{objects.persona.edad}}]<h2>
+        <h2 for="">{{object.persona.nombres}} {{object.persona.apellido_paterno}} {{object.persona.apellido_materno}} - [{{objects.persona.edad}}]</h2>
        
   </div>
   <div class="persona text-center col-md-6" >
@@ -11,6 +11,14 @@
 <div class="atencion text-center col-md-12  page-header">
     <div class="consulta_anterior col-md-6" style="background:#9E9E9E;border-radius:10px;">
         {% if consulta %}
+
+            {% for ss in consulta.tratamiento_set.all %}
+                {% for foo in ss.tratemiento_set.all %}
+                
+                {% endfor %}
+                
+            {% endfor %}
+
         <div class="">
             <h2>Ultima Consulta</h2>
             <p>{{ consulta.fecha }}</p>
@@ -47,9 +55,16 @@
         <div class="consulta_proceso">
             <h4>Consulta</h4>
             <p>{{ proceso.fecha }}</p>
-            <p>{{ proceso.antecedentes }}</p>
-            <p>{{ proceso.enfermedad_actual }}</p>
-            <p>{{ proceso.examen_fisico }}</p>
+            {% if proceso.enfermedad_actual %}
+                 <p><label for="">Malestar Actual</label> {{ proceso.enfermedad_actual }}</p>
+            {% else %}
+            <p><label for="">Malestar Actual</label> En Proceso</p>
+            {% endif %}
+            {% if proceso.examen_fisico %}
+               <p><label for="">Examen Fisico</label> {{ proceso.examen_fisico }}</p>
+                {% else %}
+                <p> <label for="">Examen Fisico</label> En Proceso</p>
+            {% endif %}
         </div>
         {% else %}
         <h3>No hay nada en Proceso</h3>
@@ -64,7 +79,45 @@
         </button>
     </div>
     <div class="form-consulta">
-        <div class="col-xs-6">
+{% if antecedente %}
+
+
+<div class="row">
+<div class="col-md-12">
+    <fieldset>
+        <legend>Antecedentes Medicos</legend>
+        <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
+        <p><label for="">Antecedentes ginecoobstétricos: </label>{{ antecedente.antecedente_ginecoobstetrico }}</p>
+        <p><label for="">Hábitos: </label>{{ antecedente.habito }}</p>
+        <p><label for="">Antecedente sobre uso de medicamentos: </label>{{ antecedente.antecedente_medicamento }}</p>
+        <p><label for="">Alergias: </label>{{ antecedente.alergia }}</p>
+        <p><label for="">Antecedentes sociales y personales: </label>{{ antecedente.antecedente_personal_social }}</p>
+        <p><label for="">Antecedentes familiares: </label>{{ antecedente.atecedente_familiar }}</p>
+        <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
+
+    </fieldset>
+</div>
+</div>
+    {% else %}
+     <div class="row">
+            <div class="col-md-12">
+                <fieldset>
+                    <legend>Formulario antecedentes medicos</legend>
+                <form action="{% url 'atencion:antecedente_add' %}" method="post">
+                    {% csrf_token %}
+                    {{ form_antecedente }}
+                    <input type="hidden" name="historia" value="{{ historia.id }}">
+
+                        <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
+                </form>
+                </fieldset>
+            </div>
+        </div>
+{% endif %}
+        <fieldset>
+            <legend>Formulario Consulta</legend>
+            <div class="row">
+            <div class="col-xs-6">
             {{ form_consulta }}
         </div>
         <div class="col-xs-6">
@@ -90,12 +143,16 @@
                 </table>
             </div>
         </div>
-        <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="consultaUp">
+        </div>
+
+
+            <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="enviar()">
             {% csrf_token %}
-            <input type="hidden" id="consulta" name="consulta">
-            <button class="btn btn-actions">
-                <i class="glyphicon glyphicon-floppy-save"></i> Guardar Tratamiento</button>
+              <input type="hidden" id="proceso" name="proceso">
+                <input type="hidden" id="histro_ac" name="historia_ac" value="{{ historia.id }}">
+                <button  class="btn btn-save" id="rentar"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Registrar Consulta</button>
         </form>
+        </fieldset>
     </div>
 </div>
 <!-- Button trigger modal -->
@@ -199,7 +256,18 @@ $("#agregar-diagnostico").click(function() {
         'codigo': d[d.length - 1].codigo,
         'nombre': d[d.length - 1].nombre
     })
+    console.log(consulta);
 
 });
+
+function enviar() {
+                    consulta.historia = $("#histro_ac").val();
+                    consulta.enfermedad = $("#id_enfermedad_actual").val();
+                    consulta.examen = $("#id_examen_fisico").val();
+
+                    console.log(JSON.stringify(consulta));
+                    document.getElementById("proceso").value = JSON.stringify(consulta);
+           alert('ss');
+            }
 </script>
 {% endblock %}

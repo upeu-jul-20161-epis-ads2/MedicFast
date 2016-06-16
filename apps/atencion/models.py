@@ -138,7 +138,7 @@ class Consulta(models.Model):
         return "%s" % self.enfermedad_actual
 
 class AntecedenteMedico(models.Model):
-    consulta = models.ForeignKey(Consulta)
+    historia = models.ForeignKey(Historia)
     antecedente_morbidos = models.TextField(blank=True, null=True, verbose_name='Antecedentes mórbidos')
     antecedente_ginecoobstetrico = models.TextField(blank=True, null=True, verbose_name='Antecedentes ginecoobstétricos')
     habito = models.TextField(blank=True, null=True, verbose_name='Hábitos')
