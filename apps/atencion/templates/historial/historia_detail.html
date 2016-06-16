@@ -9,7 +9,7 @@
     </div>
 </div>
 <div class="atencion text-center col-md-12  page-header">
-    <div class="consulta_anterior col-md-6" style="background:#9E9E9E;border-radius:10px;">
+    <div class="consulta_anterior col-md-6" style="background:rgba(158, 158, 158, 0.3);border-radius:5px;width:520px">
         {% if consulta %}
 
             {% for ss in consulta.tratamiento_set.all %}
@@ -29,8 +29,7 @@
         {% else %}
         <h3>No hay consultas anteriores</h3> {% endif %}
     </div>
-    <div class="col-md-6">
-        <div class="fvitales_prceso" style="background:#9E9E9E;border-radius:10px;">
+    <div class="fvitales_prceso col-md-6" style="background:rgba(158, 158, 158, 0.3);border-radius:5px;float:right;width:520px;">
             <h3>Funciones Vitales</h3> {% for funciones in proceso.funcionesvitales_set.all %}
             <p>
                 <label for="">Frecuencia Cardiaca: </label><strong>{{ funciones.frecuencia_cardiaca }}</strong></p>
@@ -46,14 +45,33 @@
                 <label for="">Diagnostico Mc: </label><strong>{{ funciones.diagnostico_mc }}</strong></p>
             {% endfor %}
         </div>
-    </div>
+    
 </div>
+<div class="col-md-12" style="text-align:center;">
+    
+    <div class="form-consulta">
+{% if antecedente %}
+
+
+<div class="row">
 <div class="col-md-12">
-    <div class="consulta_actual page-header ">
+    <fieldset>
+        <legend>Antecedentes Medicos</legend>
+        <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
+        <p><label for="">Antecedentes ginecoobstétricos: </label>{{ antecedente.antecedente_ginecoobstetrico }}</p>
+        <p><label for="">Hábitos: </label>{{ antecedente.habito }}</p>
+        <p><label for="">Antecedente sobre uso de medicamentos: </label>{{ antecedente.antecedente_medicamento }}</p>
+        <p><label for="">Alergias: </label>{{ antecedente.alergia }}</p>
+        <p><label for="">Antecedentes sociales y personales: </label>{{ antecedente.antecedente_personal_social }}</p>
+        <p><label for="">Antecedentes familiares: </label>{{ antecedente.atecedente_familiar }}</p>
+        <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
+
+    </fieldset>
+</div>
+<div class="consulta_actual page-header ">
         {% if proceso %}
         <h3>Consulta en Proceso</h3>
         <div class="consulta_proceso">
-            <h4>Consulta</h4>
             <p>{{ proceso.fecha }}</p>
             {% if proceso.enfermedad_actual %}
                  <p><label for="">Malestar Actual</label> {{ proceso.enfermedad_actual }}</p>
@@ -78,49 +96,31 @@
             Ver consulta
         </button>
     </div>
-    <div class="form-consulta">
-{% if antecedente %}
-
-
-<div class="row">
+</div>
 <div class="col-md-12">
-    <fieldset>
-        <legend>Antecedentes Medicos</legend>
-        <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
-        <p><label for="">Antecedentes ginecoobstétricos: </label>{{ antecedente.antecedente_ginecoobstetrico }}</p>
-        <p><label for="">Hábitos: </label>{{ antecedente.habito }}</p>
-        <p><label for="">Antecedente sobre uso de medicamentos: </label>{{ antecedente.antecedente_medicamento }}</p>
-        <p><label for="">Alergias: </label>{{ antecedente.alergia }}</p>
-        <p><label for="">Antecedentes sociales y personales: </label>{{ antecedente.antecedente_personal_social }}</p>
-        <p><label for="">Antecedentes familiares: </label>{{ antecedente.atecedente_familiar }}</p>
-        <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
-
-    </fieldset>
-</div>
-</div>
     {% else %}
      <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <fieldset>
                     <legend>Formulario antecedentes medicos</legend>
-                <form action="{% url 'atencion:antecedente_add' %}" method="post">
+                <form  action="{% url 'atencion:antecedente_add' %}" method="post">
                     {% csrf_token %}
                     {{ form_antecedente }}
                     <input type="hidden" name="historia" value="{{ historia.id }}">
 
-                        <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
+                        <button class="btn btn-primary"><i class="fa fa-upload">Guardar Antecedentes</i></button>
                 </form>
                 </fieldset>
             </div>
-        </div>
-{% endif %}
-        <fieldset>
-            <legend>Formulario Consulta</legend>
-            <div class="row">
-            <div class="col-xs-6">
+        
+{% endif %}      
+    
+        <div class="col-md-6">
+          <h3>Formulario Consulta</h3>
             {{ form_consulta }}
-        </div>
-        <div class="col-xs-6">
+        
+
+          <div>
             <input type="text" class="form-control" placeholder="Bucar Malestar" id="diagnostico_id" name="diagnostico">
             <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
             <div id="diagnostico">
@@ -142,11 +142,18 @@
                     </tbody>
                 </table>
             </div>
+        </div>  
+
         </div>
+
+
         </div>
+</div>
+          
 
 
 
+        </div>
 
             <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="enviar()">
             {% csrf_token %}
@@ -154,9 +161,14 @@
                 <input type="hidden" id="histro_ac" name="historia_ac" value="{{ historia.id }}">
                 <button  class="btn btn-save" id="rentar"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Registrar Consulta</button>
         </form>
+<<<<<<< HEAD
+        
+        </div>
+=======
         </fieldset>
 
 
+>>>>>>> 5ddac5ccbb1cfaf3e76f00cbf0b2dbb3a7bd035a
     </div>
 </div>
 
@@ -279,7 +291,11 @@ function enviar() {
 
                     console.log(JSON.stringify(consulta));
                     document.getElementById("proceso").value = JSON.stringify(consulta);
+<<<<<<< HEAD
+        
+=======
 
+>>>>>>> 5ddac5ccbb1cfaf3e76f00cbf0b2dbb3a7bd035a
             }
 </script>
 {% endblock %}
