@@ -394,7 +394,7 @@ class DiagnosticoConsultaCreate(TemplateView):
             consulta.save()
 
             tratamiento = Tratamiento()
-            tratamiento.recomendacion = historiaid = proceso['recomendacion']
+            tratamiento.recomendacion = proceso['recomendacion']
             tratamiento.consulta = consulta
             tratamiento.save()
 
