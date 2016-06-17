@@ -1,8 +1,9 @@
 import logging
 
 from apps.atencion.forms.ConsultaForm import ConsultaForm
+from apps.atencion.forms.DetalleRecetaForm import DetalleRecetaForm
 from apps.atencion.forms.TratamientoForm import TratamientoForm
-from apps.atencion.models import Consulta, AntecedenteMedico, DiagnosticoConsulta
+from apps.atencion.models import Consulta, AntecedenteMedico, DiagnosticoConsulta, Tratamiento, DetalleReceta
 
 log = logging.getLogger(__name__)
 from apps.utils.security import SecurityKey, log_params, UserToken, get_dep_objects
@@ -345,6 +346,8 @@ class HitoriaDetailView(DetailView):
 
     form_antecedente = AntecedenteMedicoForm
 
+    form_receta = DetalleRecetaForm
+
     def get_context_data(self, **kwargs):
 
         context = super(HitoriaDetailView, self).get_context_data(**kwargs)
@@ -355,6 +358,7 @@ class HitoriaDetailView(DetailView):
             antecedente = None
 
         context['form'] = self.form_f_vitales
+        context['form_receta'] = self.form_receta
 
         context['form_antecedente'] = self.form_antecedente
 
@@ -386,7 +390,28 @@ class DiagnosticoConsultaCreate(TemplateView):
             consulta.examen_fisico = proceso['examen']
             consulta.enfermedad_actual = proceso['enfermedad']
             consulta.hecho = True
+            consulta.estado = False
             consulta.save()
+
+            tratamiento = Tratamiento()
+            tratamiento.recomendacion = historiaid = proceso['recomendacion']
+            tratamiento.consulta = consulta
+            tratamiento.save()
+
+
+            for c in proceso['medicamento']:
+                producto = Producto.objects.get(codigo=c['codigo'])
+                presentacion = UnidadMedida.objects.get(id=c['presentacion'])
+                receta = DetalleReceta()
+                receta.tratamiento = tratamiento
+                receta.producto = producto
+                receta.cantidad = c['cantidad']
+                receta.presentacion = presentacion
+                receta.dosis = c['dosis']
+                receta.periodo = c['periodo']
+
+                receta.save()
+
 
             for c in proceso['diagnostico']:
                 diagonostico = Diagnostico.objects.get(id=c['pkey'])
@@ -465,6 +490,18 @@ class ProductoListView(ListView):
         context['q'] = self.q.replace('/', '-')
 
         return context
+
+class ProductoBuscarAjaxView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        codigo = request.GET.get('codigo')
+        print('llego hasta el post')
+        object = Producto.objects.get(codigo=codigo)
+        print(object)
+
+        data = serializers.serialize('json', [object,])
+
+        return HttpResponse(data, content_type='application/json')
 
 
 class ProductoCreateView(CreateView):
@@ -1074,7 +1111,7 @@ class DiagnosticoListView(ListView):
         return context
 
 
-class DiagnosticoCreateView(TemplateView):
+class DiagnosticoCreateView(CreateView):
     model = Diagnostico
     form_class = DiagnosticoForm
     template_name = 'diagnostico/diagnostico_add.html'
