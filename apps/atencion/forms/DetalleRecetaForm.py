@@ -13,7 +13,7 @@ class DetalleRecetaForm(forms.ModelForm):
     """Class DetalleRecetaForm."""
     class Meta:
         model = DetalleReceta
-        exclude = ('',)
+        exclude = ('precio_venta','producto', 'importe', 'tratamiento', )
         widgets = {
             'precio_venta': forms.NumberInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese precio de venta'}),
             'producto': forms.Select(attrs={'class': 'form-control', 'required':'true'}),

@@ -228,13 +228,13 @@ class Tratamiento(models.Model):
         return "%s" % self.fecha
 
 class DetalleReceta(models.Model):
-    precio_venta = models.FloatField()
+    precio_venta = models.FloatField(blank=True, null=True)
     producto = models.ForeignKey(Producto)
-    cantidad = models.IntegerField()
+    cantidad = models.IntegerField(blank=True, null=True)
     presentacion = models.ForeignKey(UnidadMedida)
-    importe = models.FloatField()
-    dosis = models.IntegerField()
-    periodo = models.IntegerField()
+    importe = models.FloatField(blank=True, null=True)
+    dosis = models.IntegerField(blank=True, null=True)
+    periodo = models.IntegerField(blank=True, null=True)
     tratamiento = models.ForeignKey(Tratamiento)
     class Meta:
         verbose_name = "Detalle de Receta"

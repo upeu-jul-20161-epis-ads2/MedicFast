@@ -78,6 +78,7 @@
             <fieldset>
                 <legend>Funciones Vitales</legend> {% for funciones in proceso.funcionesvitales_set.all %}
 
+<<<<<<< HEAD
                 <p>
                     <label for="">Frecuencia Cardiaca: </label><strong>{{ funciones.frecuencia_cardiaca }}</strong></p>
                 <p>
@@ -106,10 +107,14 @@
             </div>
             {% endif %}
         </div>
+=======
+
+>>>>>>> 1f240893c682259184434a6f15d68f220fdc6e50
 
         </div>
     </div>
 </div>
+<<<<<<< HEAD
     
         <!--<div class="consulta_actual page-header ">
             {% if proceso %}
@@ -142,6 +147,11 @@
         </div>-->
                 
         <div class="col-md-12"> 
+=======
+        {% if proceso %}
+<fieldset>
+            <legend>Consulta</legend>
+>>>>>>> 1f240893c682259184434a6f15d68f220fdc6e50
             <div class="row">
                 <div class="col-xs-6">
                     <fieldset>
@@ -181,16 +191,45 @@
             <div class="row">
                 <fieldset>
                     <legend>Tratamiento</legend>
+<<<<<<< HEAD
                     <div class="col-md-6">
                         <fieldset>
                             <legend>Formulario Tratamiendo</legend>
                             {{ form_tratamiento }}
                         </fieldset>
                     </div>
+=======
+                <div class="col-md-6">
+                    <fieldset>
+                    <legend>Formulario Tratamiendo</legend>
+                        {{ form_tratamiento }}
+                </fieldset>
+
+                    <table id="tb-medicamento">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Diagnosticos</th>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>C&oacute;digo</th>
+                            <th>Medicamento</th>
+                            <th>Cantidad</th>
+                            <th>Presentacion</th>
+                            <th>Dosis</th>
+                            <th>Periodo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                </div>
+>>>>>>> 1f240893c682259184434a6f15d68f220fdc6e50
                     <div class="col-md-6">
                         <fieldset>
                             <legend>Receta</legend>
                             <input type="text" class="form-control" placeholder="Bucar Medicamento" id="medicamento_id" name="medicamento">
+<<<<<<< HEAD
                             <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
                             <div id="diagnostico">
                                 <div id="resultado-medicamento">
@@ -211,6 +250,16 @@
                                     </tbody>
                                 </table>
                             </div>
+=======
+                            <button class="btn btn-actions" id="buscar-medicamento"><i class="fa fa-search"></i> Buscar</button>
+                        <div id="medicamento">
+                    <div id="resultado-medicamento">
+                    </div>
+                            {{ form_receta }}
+                <button class="btn btn-success" id="agregar-medicamento">Agregar Medicamento</button>
+
+            </div>
+>>>>>>> 1f240893c682259184434a6f15d68f220fdc6e50
                         </fieldset>
                     </div>
                 </fieldset>
@@ -222,6 +271,7 @@
                 <button class="btn btn-save" id="rentar"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Registrar Consulta</button>
             </form>
         </fieldset>
+<<<<<<< HEAD
     </div>
 </div>
 <div class="row">
@@ -231,6 +281,15 @@
         </fieldset>
     </div>
 </div>
+=======
+        {% endif %}
+
+
+    </div>
+</div>
+
+
+>>>>>>> 1f240893c682259184434a6f15d68f220fdc6e50
 <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -254,13 +313,34 @@
         </div>
     </div>
 </div>
+
+    {% for foo in consulta.diagnosticoconsulta_set.all %}
+        {{ foo.diagnostico.nombre }}
+
+    {% endfor %}
+    {% for foo in consulta.tratamiento_set.all %}
+        {{ foo.recomendacion }}
+
+    {% endfor %}
+
+    {% for foo in consulta.tratamiento_set.all %}
+        {% for ss in foo.detallereceta_set.all %}
+        {{ ss.producto.descripcion }}
+        {% endfor %}
+
+    {% endfor %}
+
+
 {% endblock content %} {% block customjs %}
 <script>
 var consulta = new Object();
 consulta.diagnostico = new Array();
+consulta.medicamento = new Array();
 var table = new Array();
+var medicamentos = new Array();
 $(document).ready(function() {
     $("#diagnostico").hide();
+    $("#medicamento").hide();
 });
 $("#buscar-diagnostico").click(function() {
     diagnostico = $("#diagnostico_id").val();
@@ -300,6 +380,41 @@ $("#buscar-diagnostico").click(function() {
         }
     });
 });
+
+$("#buscar-medicamento").click(function(){
+
+    medicamento = $("#medicamento_id").val();
+
+    $.ajax({
+        type:'get',
+        url:'{% url "atencion:medicamento_search" %}',
+        data: {
+            'codigo': medicamento,
+        },
+        success: function(data){
+            html = ''
+            html += '<table class="table table-bordered"><thead><tr><th class="text-center" colspan="2" width=100%>Informaci&oacute;n</th></thead>';
+                            html += '<tr>';
+                            html += '<td width="50%" class="text-right text-bold">Medicamentos</td>';
+                            html += '<td width="50%">' + data[0].fields.descripcion + '</td>';
+                            html += '</tr>';
+                            html += '</table>';
+
+            var fila = new Object();
+            fila.codigo = data[0].fields.codigo;
+            fila.descripcion = data[0].fields.descripcion;
+            medicamentos.push(fila);
+
+            $("#medicamento").show();
+            $("#resultado-medicamento").html(html);
+        },
+        error: function(err){
+            console.log(err);
+        }
+    })
+
+})
+
 $("#agregar-diagnostico").click(function() {
     var d = table;
     var t = document.getElementById("tb-diagnostico").getElementsByTagName('tbody')[0];
@@ -315,10 +430,11 @@ $("#agregar-diagnostico").click(function() {
         'pkey': d[d.length - 1].id,
         'codigo': d[d.length - 1].codigo,
         'nombre': d[d.length - 1].nombre
-    })
+    });
     console.log(consulta);
 });
 
+<<<<<<< HEAD
 function enviar() {
     consulta.historia = $("#histro_ac").val();
     consulta.enfermedad = $("#id_enfermedad_actual").val();
@@ -326,5 +442,50 @@ function enviar() {
     console.log(JSON.stringify(consulta));
     document.getElementById("proceso").value = JSON.stringify(consulta);
 }
+=======
+$("#agregar-medicamento").click(function (){
+    var d = medicamentos;
+    var t = document.getElementById("tb-medicamento").getElementsByTagName('tbody')[0];
+    var rowCount = t.rows.length;
+    var row = t.insertRow(rowCount);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+
+    cell1.innerHTML = rowCount + 1;
+    cell2.innerHTML = d[d.length - 1].codigo;
+    cell3.innerHTML = d[d.length - 1].descripcion;
+    cell4.innerHTML = $("#id_cantidad").val();
+    cell5.innerHTML = $("#id_presentacion").val();
+    cell6.innerHTML = $("#id_dosis").val();
+    cell7.innerHTML = $("#id_periodo").val();
+
+    consulta.medicamento.push({
+        'pkey': d[d.length - 1].id,
+        'codigo': d[d.length - 1].codigo,
+        'cantidad': $("#id_cantidad").val(),
+        'presentacion': $("#id_presentacion").val(),
+        'dosis': $("#id_dosis").val(),
+        'periodo': $("#id_periodo").val(),
+
+    });
+
+});
+
+
+
+function enviar() {
+                    consulta.historia = $("#histro_ac").val();
+                    consulta.enfermedad = $("#id_enfermedad_actual").val();
+                    consulta.examen = $("#id_examen_fisico").val();
+                    consulta.recomendacion = $("#id_recomendacion").val();
+                    console.log(JSON.stringify(consulta));
+                    document.getElementById("proceso").value = JSON.stringify(consulta);
+            }
+>>>>>>> 1f240893c682259184434a6f15d68f220fdc6e50
 </script>
 {% endblock %}
