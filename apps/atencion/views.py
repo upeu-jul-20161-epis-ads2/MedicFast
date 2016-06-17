@@ -1074,7 +1074,7 @@ class DiagnosticoListView(ListView):
         return context
 
 
-class DiagnosticoCreateView(TemplateView):
+class DiagnosticoCreateView(CreateView):
     model = Diagnostico
     form_class = DiagnosticoForm
     template_name = 'diagnostico/diagnostico_add.html'

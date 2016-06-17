@@ -2,25 +2,14 @@
 <div class="col-md-12 page-header">
     <div class="col-md-6">
         <h2 for="">{{object.persona.nombres}} {{object.persona.apellido_paterno}} {{object.persona.apellido_materno}} - [{{objects.persona.edad}}]</h2>
-       
-  </div>
-  <div class="persona text-center col-md-6" >
-      <h2 class="text-center"><span>N°- </span>{{ historia.numero }}</h2>
+    </div>
+    <div class="persona text-center col-md-6">
+        <h2 class="text-center"><span>N°- </span>{{ historia.numero }}</h2>
     </div>
 </div>
-
-
-<div class="atencion text-center col-md-12  page-header">
-    <div class="consulta_anterior col-md-6" style="background:#9E9E9E;border-radius:10px;">
-        {% if consulta %}
-
-            {% for ss in consulta.tratamiento_set.all %}
-                {% for foo in ss.tratemiento_set.all %}
-
-                {% endfor %}
-
-            {% endfor %}
-
+<div class="atencion text-center  page-header">
+    <div class="consulta_anterior col-md-12 " style="background:rgba(8, 8, 8, 0.03);border-radius:5px;">
+        {% if consulta %} {% for ss in consulta.tratamiento_set.all %} {% for foo in ss.tratemiento_set.all %} {% endfor %} {% endfor %}
         <div class="">
             <h2>Ultima Consulta</h2>
             <p>{{ consulta.fecha }}</p>
@@ -31,193 +20,217 @@
         {% else %}
         <h3>No hay consultas anteriores</h3> {% endif %}
     </div>
-    <div class="col-md-6">
-        <div class="fvitales_prceso" style="background:#9E9E9E;border-radius:10px;">
-            <h3>Funciones Vitales</h3> {% for funciones in proceso.funcionesvitales_set.all %}
-            <p>
-                <label for="">Frecuencia Cardiaca: </label><strong>{{ funciones.frecuencia_cardiaca }}</strong></p>
-            <p>
-                <label for="">Frecuencia Respiratoria: </label><strong>{{ funciones.frecuencia_respiratoria }}</strong></p>
-            <p>
-                <label for="">Presi&oacute;n Arterial: </label><strong>{{ funciones.presion_arterial }}</strong></p>
-            <p>
-                <label for="">Temparatura: </label><strong>{{ funciones.temperatura }}</strong></p>
-            <p>
-                <label for="">Masa Corporal: </label><strong>{{ funciones.masa_corporal }}</strong></p>
-            <p>
-                <label for="">Diagnostico Mc: </label><strong>{{ funciones.diagnostico_mc }}</strong></p>
-            {% endfor %}
-        </div>
-    </div>
 </div>
-<div class="col-md-12">
-    <div class="consulta_actual page-header ">
-        {% if proceso %}
-        <h3>Consulta en Proceso</h3>
-        <div class="consulta_proceso">
-            <h4>Consulta</h4>
-            <p>{{ proceso.fecha }}</p>
-            {% if proceso.enfermedad_actual %}
-                 <p><label for="">Malestar Actual</label> {{ proceso.enfermedad_actual }}</p>
-            {% else %}
-            <p><label for="">Malestar Actual</label> En Proceso</p>
-            {% endif %}
-            {% if proceso.examen_fisico %}
-               <p><label for="">Examen Fisico</label> {{ proceso.examen_fisico }}</p>
-                {% else %}
-                <p> <label for="">Examen Fisico</label> En Proceso</p>
-            {% endif %}
-        </div>
-        {% else %}
-        <h3>No hay nada en Proceso</h3>
-        <div class="nueva-consulta">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Cargar Funciones Vitales
-            </button>
-        </div>
-        {% endif %}
 
-    </div>
-    <div class="form-consulta">
-
-<div class="row">
-
+<div >    
 {% if antecedente %}
+<div class="col-md-12">
+<div>&nbsp;</div>
+    
 
-<div class="col-md-6">
-    <fieldset>
-        <legend>Antecedentes Medicos</legend>
-        <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
-        <p><label for="">Antecedentes ginecoobstétricos: </label>{{ antecedente.antecedente_ginecoobstetrico }}</p>
-        <p><label for="">Hábitos: </label>{{ antecedente.habito }}</p>
-        <p><label for="">Antecedente sobre uso de medicamentos: </label>{{ antecedente.antecedente_medicamento }}</p>
-        <p><label for="">Alergias: </label>{{ antecedente.alergia }}</p>
-        <p><label for="">Antecedentes sociales y personales: </label>{{ antecedente.antecedente_personal_social }}</p>
-        <p><label for="">Antecedentes familiares: </label>{{ antecedente.atecedente_familiar }}</p>
-        <p><label for="">Inmunozaciones: </label>{{ antecedente.inmunizacion }}</p>
-
-    </fieldset>
-
-    {% else %}
-
-
-                <fieldset>
-                    <legend>Formulario antecedentes medicos</legend>
-                <form action="{% url 'atencion:antecedente_add' %}" method="post">
-                    {% csrf_token %}
-                    {{ form_antecedente }}
-                    <input type="hidden" name="historia" value="{{ historia.id }}">
-
-                        <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
-                </form>
-                </fieldset>
-
-
-{% endif %}
-</div>
-
-<div class="col-md-6">
-
-</div>
-
-</div>
-        <fieldset>
-            <legend>Consulta</legend>
-            <div class="row">
-        <div class="col-xs-6">
-
-    <fieldset>
-        <legend>Formulario Consulta</legend>
-        {{ form_consulta }}
-    </fieldset>
-        </div>
-        <div class="col-xs-6">
+    
+        <div class="col-md-6" style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px;">
             <fieldset>
-                <legend>Diagnosticos</legend>
-                <input type="text" class="form-control" placeholder="Bucar Malestar" id="diagnostico_id" name="diagnostico">
-            <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
-            <div id="diagnostico">
-                <div id="resultado-consulta">
-                </div>
-                <button class="btn btn-success" id="agregar-diagnostico">Agregar Diagnostico</button>
-                <table id="tb-diagnostico">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Diagnosticos</th>
-                        </tr>
-                        <tr>
-                            <th>#</th>
-                            <th>C&oacute;digo</th>
-                            <th>Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+                <legend style="text-align:center;">Antecedentes Medicos</legend>
+                <div>
+                    
+                        <label for="">Antecedentes mórbidos: </label>
+                        <dd>{{ antecedente.antecedente_morbidos }}</dd>
+
+                        <label for="">Antecedentes ginecoobstétricos: </label>
+                        <dd>{{ antecedente.antecedente_ginecoobstetrico }}</dd>
+
+                        <label for="">Hábitos: </label>
+                        <dd>{{ antecedente.habito }}</dd>
+
+                        <label for="">Antecedente sobre uso de medicamentos: </label>
+                        <dd>{{ antecedente.antecedente_medicamento }}</dd>
+
+                        <label for="">Alergias: </label>
+                        <dd>{{ antecedente.alergia }}</dd>
+
+                        <label for="">Antecedentes sociales y personales: </label>
+                        <dd>{{ antecedente.antecedente_personal_social }}</dd>
+
+                        <label for="">Antecedentes familiares: </label>
+                        <dd>{{ antecedente.atecedente_familiar }}</dd>
+
+                        <label for="">Inmunozaciones: </label>
+                        <dd>{{ antecedente.inmunizacion }}</dd>
+
+                    </div>
+
             </fieldset>
+            {% else %}
+            <fieldset>
+                <legend>Formulario antecedentes medicos</legend>
+                <form action="{% url 'atencion:antecedente_add' %}" method="post">
+                    {% csrf_token %} {{ form_antecedente }}
+                    <input type="hidden" name="historia" value="{{ historia.id }}">
+                    <button class="btn btn-primary"><i class="fa fa-upload">Guardar Antecedentes</i></button>
+                </form>
+            </fieldset>
+            {% endif %}
         </div>
+
+        <div class="col-md-6" style="text-align:center;">
+            <div class="fvitales_prceso" style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px;">
+            <fieldset>
+                <legend>Funciones Vitales</legend> {% for funciones in proceso.funcionesvitales_set.all %}
+
+                <p>
+                    <label for="">Frecuencia Cardiaca: </label><strong>{{ funciones.frecuencia_cardiaca }}</strong></p>
+                <p>
+                    <label for="">Frecuencia Respiratoria: </label><strong>{{ funciones.frecuencia_respiratoria }}</strong></p>
+                <p>
+                    <label for="">Presi&oacute;n Arterial: </label><strong>{{ funciones.presion_arterial }}</strong></p>
+                <p>
+                    <label for="">Temparatura: </label><strong>{{ funciones.temperatura }}</strong></p>
+                <p>
+                    <label for="">Masa Corporal: </label><strong>{{ funciones.masa_corporal }}</strong></p>
+                <p>
+                    <label for="">Diagnostico Mc: </label><strong>{{ funciones.diagnostico_mc }}</strong></p>
+                {% endfor %}
+                </fieldset>
+            </div>
+
+            <div class="consulta_actual  ">
+            {% if proceso %}
+            
+            {% else %}
+            
+            <div class="nueva-consulta">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Tomar Funciones Vitales
+                </button>
+            </div>
+            {% endif %}
         </div>
+
+        </div>
+    </div>
+</div>
+    
+        <!--<div class="consulta_actual page-header ">
+            {% if proceso %}
+            <h3>Consulta en Proceso</h3>
+            <div class="consulta_proceso">
+                <h4>Consulta</h4>
+                <p>{{ proceso.fecha }}</p>
+                {% if proceso.enfermedad_actual %}
+                <p>
+                    <label for="">Malestar Actual</label> {{ proceso.enfermedad_actual }}</p>
+                {% else %}
+                <p>
+                    <label for="">Malestar Actual</label> En Proceso</p>
+                {% endif %} {% if proceso.examen_fisico %}
+                <p>
+                    <label for="">Examen Fisico</label> {{ proceso.examen_fisico }}</p>
+                {% else %}
+                <p>
+                    <label for="">Examen Fisico</label> En Proceso</p>
+                {% endif %}
+            </div>
+            {% else %}
+            <h3>No hay nada en Proceso</h3>
+            <div class="nueva-consulta">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Cargar Funciones Vitales
+                </button>
+            </div>
+            {% endif %}
+        </div>-->
+                
+        <div class="col-md-12"> 
+            <div class="row">
+                <div class="col-xs-6">
+                    <fieldset>
+                        <h3>Formulario Consulta</h3>
+                        {{ form_consulta }}
+                    </fieldset>
+                </div>
+                <div class="col-xs-6">
+                    
+                        <h3>Diagnosticos</h3>
+                        <input type="text" class="form-control" placeholder="Bucar Malestar" id="diagnostico_id" name="diagnostico">
+                        <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
+                        <div id="diagnostico">
+                            
+                            <button class="btn btn-success" id="agregar-diagnostico">Agregar Diagnostico</button>
+                            <table id="tb-diagnostico">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Diagnosticos</th>
+                                    </tr>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>C&oacute;digo</th>
+                                        <th>Nombre</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                  
+                </div>
+            </div>
+
 
 
             <div class="row">
                 <fieldset>
                     <legend>Tratamiento</legend>
-                <div class="col-md-6">
-                    <fieldset>
-                    <legend>Formulario Tratamiendo</legend>
-                        {{ form_tratamiento }}
-                </fieldset>
-                </div>
+                    <div class="col-md-6">
+                        <fieldset>
+                            <legend>Formulario Tratamiendo</legend>
+                            {{ form_tratamiento }}
+                        </fieldset>
+                    </div>
                     <div class="col-md-6">
                         <fieldset>
                             <legend>Receta</legend>
                             <input type="text" class="form-control" placeholder="Bucar Medicamento" id="medicamento_id" name="medicamento">
                             <button class="btn btn-actions" id="buscar-diagnostico"><i class="fa fa-search"></i> Buscar</button>
-                        <div id="diagnostico">
-                    <div id="resultado-medicamento">
-                    </div>
-                <button class="btn btn-success" id="agregar-medicamento">Agregar Medicamento</button>
-                <table id="tb-medicamento">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Diagnosticos</th>
-                        </tr>
-                        <tr>
-                            <th>#</th>
-                            <th>C&oacute;digo</th>
-                            <th>Nombre</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+                            <div id="diagnostico">
+                                <div id="resultado-medicamento">
+                                </div>
+                                <button class="btn btn-success" id="agregar-medicamento">Agregar Medicamento</button>
+                                <table id="tb-medicamento">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Diagnosticos</th>
+                                        </tr>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>C&oacute;digo</th>
+                                            <th>Nombre</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </fieldset>
                     </div>
                 </fieldset>
             </div>
-
-
             <form action="{% url 'atencion:diagnostico_add' %}" method="post" onsubmit="enviar()">
-            {% csrf_token %}
-              <input type="hidden" id="proceso" name="proceso">
+                {% csrf_token %}
+                <input type="hidden" id="proceso" name="proceso">
                 <input type="hidden" id="histro_ac" name="historia_ac" value="{{ historia.id }}">
-                <button  class="btn btn-save" id="rentar"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Registrar Consulta</button>
-        </form>
+                <button class="btn btn-save" id="rentar"><span class="glyphicon glyphicon-floppy-save"></span>&nbsp;Registrar Consulta</button>
+            </form>
         </fieldset>
-
-
     </div>
 </div>
-
-    <div class="row">
+<div class="row">
     <div class="col-md-12">
         <fieldset>
             <legend>Formulario Recetas</legend>
         </fieldset>
     </div>
-    </div>
+</div>
 <!-- Button trigger modal -->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -305,12 +318,13 @@ $("#agregar-diagnostico").click(function() {
     })
     console.log(consulta);
 });
+
 function enviar() {
-                    consulta.historia = $("#histro_ac").val();
-                    consulta.enfermedad = $("#id_enfermedad_actual").val();
-                    consulta.examen = $("#id_examen_fisico").val();
-                    console.log(JSON.stringify(consulta));
-                    document.getElementById("proceso").value = JSON.stringify(consulta);
-            }
+    consulta.historia = $("#histro_ac").val();
+    consulta.enfermedad = $("#id_enfermedad_actual").val();
+    consulta.examen = $("#id_examen_fisico").val();
+    console.log(JSON.stringify(consulta));
+    document.getElementById("proceso").value = JSON.stringify(consulta);
+}
 </script>
 {% endblock %}

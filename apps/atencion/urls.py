@@ -7,8 +7,8 @@ from .views import ProductoListView, ProductoCreateView, ProductoDeleteView, Pro
 from .views import LaboratorioListView, LaboratorioCreateView, LaboratorioDeleteView, LaboratorioUpdateView
 from .views import FuncionesVitalesListView, FuncionesVitalesCreateView, FuncionesVitalesDeleteView, FuncionesVitalesUpdateView
 from .views import PeriodoListView, PeriodoCreateView, PeriodoDeleteView, PeriodoUpdateView
-from .views import DiagnosticoListView,DiagnosticoCreateView,DiagnosticoDeleteView,DiagnosticoUpdateView
-from .views import UnidadMedidaCreateView,UnidadMedidaListView,UnidadMedidaUpdateView,UnidadMedidaDeleteView
+from .views import DiagnosticoListView, DiagnosticoDeleteView, DiagnosticoUpdateView, DiagnosticoCreateView, DiagnosticoConsultaCreate
+from .views import UnidadMedidaCreateView, UnidadMedidaListView, UnidadMedidaUpdateView, UnidadMedidaDeleteView
 from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
     ProvinciaAjax, DistritoAjax, HitoriaDetailView, AntecedenteCreateView, DiagnosticoConsultaCreate)
 from .views import HitoriaBusquedaTemplateView, HitoriaCreateView
@@ -54,6 +54,7 @@ urlpatterns = [
     #Diagnostico
     url(r'^diagnostico/lista$', DiagnosticoListView.as_view(), name="diagnostico_list"),
     url(r'^diagnostico/crear/$', DiagnosticoConsultaCreate.as_view(), name="diagnostico_add"),
+    url(r'^diagnostico/nuevo/$', DiagnosticoCreateView.as_view(), name="diagnostico_create"),
     url(r'^diagnostico/eliminar/(?P<pk>\d+)$', DiagnosticoDeleteView.as_view(), name="diagnostico_delete"),
     url(r'^diagnostico/editar/(?P<pk>\d+)$', DiagnosticoUpdateView.as_view(), name="diagnostico_update"),
     url(r'^diagnostico/buscarajax$', DiagnosticoBuscar.as_view(), name="diagnostico_search"),
