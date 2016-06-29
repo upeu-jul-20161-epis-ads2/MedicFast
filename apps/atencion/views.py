@@ -18,12 +18,11 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core import serializers
 from django.http import HttpResponse, request
-from django.db.models import Max, Sum
+from django.db.models import Max, Sum, Count
 from django.contrib import messages
 from django.shortcuts import get_list_or_404, get_object_or_404
 from datetime import datetime, time, date
 from django.contrib.auth import authenticate, login, logout
-from django.db.models import Sum
 from django.utils.encoding import force_text
 from django.contrib.messages.views import SuccessMessageMixin
 from apps.utils.decorators import permission_resource_required
@@ -1383,36 +1382,49 @@ class UnidadMedidaDeleteView(DeleteView):
         return self.delete(request, *args, **kwargs)
 
 # class reportes==============================================================================
-def reporte_atencion(request):
-    #Step 1: Create a PivotDataPool with the data we want to retrieve.
-    rainpivotdata = \
-        PivotDataPool(
-           series =
-            [{'options': {
-               'source': ReporteAtencion.objects.all(),
-               'categories': ['pacientes']},
-              'terms': {
-                'meses': Avg('mes'),
-                'dias': ['dia'],
-                }}
-             ])
 
-    #Step 2: Create the PivotChart object
-    rainpivcht = \
-        PivotChart(
-            datasource = rainpivotdata,
-            series_options =
-              [{'options':{
-                  'type': 'column',
-                  'stacking': True},
-                'terms':[
-                  'meses']}],
-            chart_options =
-              {'title': {
-                   'text': 'Rain by Month in top 3 cities'},
-               'xAxis': {
-                    'title': {
-                       'text': 'Month'}}})
+from django.http import JsonResponse
+import json
+import random
 
-    #Step 3: Send the PivotChart object to the template.
-    return render_to_response({'atenciones': rainpivcht})
+
+def vista(request):
+
+    return render(request, 'reportes/atencion.html')
+
+def consultas_reporte(request):
+    consulta = Consulta.objects.extra({'atencion':"date(fecha)"}).values('atencion').annotate(count=Count('id'))
+    
+    return HttpResponse(
+        json.dumps(consulta),
+        content_type = 'application/javascript; charset=utf8'
+    )
+
+from highcharts.views import HighChartsLineView
+
+class BarView(HighChartsLineView):
+    print("ssssss")
+    consulta = Consulta.objects.extra({'atencion':"date(fecha)"}).values('atencion').annotate(count=Count('id'))
+    a = 1
+    count = []
+    names = []
+    while a <= len(consulta):
+        count.append(a)
+        names.append(consulta[a-1]['atencion'])
+        a = a + 1
+
+    print(names)
+    categories = names
+
+
+    @property
+    def series(self):
+        result = []
+        for name in self.names:
+            data = []
+            i = 0
+            while i < len(self.consulta):
+                data.append(self.consulta[i]['count'])
+                i = i + 1
+            result.append({'name': 'atenciones', "data": data})
+        return result
