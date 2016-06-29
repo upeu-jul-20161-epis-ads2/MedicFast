@@ -1,66 +1,59 @@
-{% extends "mod_hotel/base_mod_backend.html" %}
-
-{% block content %}
-    <h2>Buscar Paciente</h2>
+{% extends "mod_hotel/base_mod_backend.html" %} {% block content %}
+<h2>Buscar Paciente</h2>
 <div>
     &nbsp;
 </div>
 <div class="busqueda">
     <form action="{% url 'atencion:historia_search' %}" method="get">
-        <div class="col-md-6" >
-            <input type="text" name="codigo" id="codigo" value="{{ request.GET.codigo }}" class="form form-control" >
+        <div class="col-md-6">
+            <input type="text" name="codigo" id="codigo" value="{{ request.GET.codigo }}" class="form form-control">
         </div>
-       
-        <div class="col-md-6" style="padding-left:0;">
-            <button type="submit" class="btn btn-search">  <i class="glyphicon glyphicon-search"></i>  Buscar</button>
+        <div class="col-md-6" style="padding-left:15px;">
+            <button type="submit" style="width:106px;" class="btn btn-search"> <i class="glyphicon glyphicon-search"></i> &nbsp;&nbsp;Buscar</button>
         </div>
-       <br>
+        <br>
+        <br>
+        <br>
     </form>
 </div>
-<div class="resultado">
+<div class="resultado" >
     {% if persona %}
-    <dl  class="dl-horizontal">
-
-        <br>
-        <br>
-        <dt for="">Nombres: </dt>
-        <dd>{{persona.nombres}}</dd>
-    
-        <dt for="">Apellido: </dt>
-        <dd>{{persona.apellido_paterno}} {{persona.apellido_materno}}</dd>
-   
-        <dt for="">C&oacute;digo: </dt>
-        <dd>{{persona.codigo}}</dd>
-
-        <dt for="">Fecha Nacimiento:</dt>
-        <dd>{{persona.fecha_nacimiento}}</dd>
-
-        <dt for="">Sexo: </dt>
-        <dd>{{ persona.sexo }}</dd>
-        <dt for="">Estado Civil: </dt>
-        <dd>{{ persona.estado_civil }}</dd>
-        <dt for="">Estudiante</dt>
-        <dd>{% if estudiante %}SI {% else %}No {% endif %}</dd>
-        <dt for="">Matriculado</dt>
-        <dd>{% if matriculado %} Si {% else %}No {% endif %}</dd>
-
-    </dl>
+    <div class="col-md-6" style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px;">
+        <dl class="dl-horizontal">
+            <br>
+            <br>
+            <dt for="">Nombres: </dt>
+            <dd>{{persona.nombres}}</dd>
+            <dt for="">Apellido: </dt>
+            <dd>{{persona.apellido_paterno}} {{persona.apellido_materno}}</dd>
+            <dt for="">C&oacute;digo: </dt>
+            <dd>{{persona.codigo}}</dd>
+            <dt for="">Fecha Nacimiento:</dt>
+            <dd>{{persona.fecha_nacimiento}}</dd>
+            <dt for="">Sexo: </dt>
+            <dd>{{ persona.sexo }}</dd>
+            <dt for="">Estado Civil: </dt>
+            <dd>{{ persona.estado_civil }}</dd>
+            <dt for="">Estudiante</dt>
+            <dd>{% if estudiante %}SI {% else %}No {% endif %}</dd>
+            <dt for="">Matriculado</dt>
+            <dd>{% if matriculado %} Si {% else %}No {% endif %}</dd>
+        </dl>
+    </div>
     <div class="historial">
         {% if historia %}
-        <a href="{% url 'atencion:historia_detail' historia.id %}" class="btn btn-success"> Abrir Historial</a> {% else %}
-        
+        <div class="col-md-6">
+        <a  href="{% url 'atencion:historia_detail' historia.id %}" class="btn btn-success"> Abrir Historia</a> 
+        </div>{% else %}
         <form action="{% url 'atencion:historia_add' %}" method="POST">
             {% csrf_token %}
             <div class="col-md-6">
                 <h4 class="col-md-12" style="color:#D42C2C;">No tiene historia</h4>
                 <input type="hidden" name="persona" id="id_persona" value="{{persona.id}}">
             </div>
-            
             <div class="col-md-6">
                 <button type="submit" class="btn btn-primary">Crear Historia</button>
-                
             </div>
-            
         </form>
         </button>
         {% endif %}

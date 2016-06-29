@@ -2,10 +2,10 @@
 __pycache__
 .idea
 media
-db.sqlite3
+
 /nbproject/private/
 migrations
-temp
+
 *~
 ~*
 .ropeproject
