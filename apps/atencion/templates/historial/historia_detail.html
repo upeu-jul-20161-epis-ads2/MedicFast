@@ -30,7 +30,8 @@
             {% for foo in consulta.tratamiento_set.all %} {% for ss in foo.detallereceta_set.all %} {{foo.ss}} {{ ss.producto.descripcion }} } } {% endfor %} {% endfor %}
         </div>
         {% else %}
-        <h3>No hay consultas anteriores</h3> {% endif %}
+        <h3>No hay consultas anteriores</h3> 
+        {% endif %}
     </div>
 
     
@@ -90,6 +91,15 @@
                 <label for="">Diagnostico Mc: </label><strong>{{ funciones.diagnostico_mc }}</strong></p>
             {% endfor %}
         </div>
+        <div class="consulta_actual  ">
+                {% if proceso %} {% else %}
+                <div class="nueva-consulta">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                        Tomar Funciones Vitales
+                    </button>
+                </div>
+                {% endif %}
+            </div>
         </fieldset>
     </div>
 
