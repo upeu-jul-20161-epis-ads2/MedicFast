@@ -43,7 +43,7 @@ from .forms.UnidadMedidaForm import UnidadMedidaForm
 from .forms.HistoriaForm import HistoriaForm
 from .forms.DiagnosticoForm import DiagnosticoForm
 from .forms.AntecendeMedicoForm import AntecedenteMedicoForm
-from chartit import PivotDataPool, PivotChart
+
 from .models import (Persona, Producto, Laboratorio, FuncionesVitales,
                     Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito,ReporteAtencion)
 
