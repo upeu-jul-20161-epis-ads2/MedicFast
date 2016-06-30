@@ -45,7 +45,8 @@ from .forms.HistoriaForm import HistoriaForm
 from .forms.DiagnosticoForm import DiagnosticoForm
 from .forms.AntecendeMedicoForm import AntecedenteMedicoForm
 from .models import (Persona, Producto, Laboratorio, FuncionesVitales,
-                    Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito)
+                    Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito,ReporteAtencion)
+from chartit import Datapool, Chart
 
 
 # class Persona==============================================================================
@@ -1379,156 +1380,37 @@ class UnidadMedidaDeleteView(DeleteView):
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
 
-# class Consulta==============================================================================
-"""
-class ConsultaListView(ListView):
-    model = Consulta
-    template_name = 'consulta/consulta_list.html'
-    paginate_by = settings.PER_PAGE
+# class reportes==============================================================================
+def ReporteAtencion(request):
+    #Step 1: Create a DataPool with the data we want to retrieve.
+    weatherdata = \
+        DataPool(
+           series=
+            [{'options': {
+               'source': ReporteAtencion.objects.all()},
+              'terms': [
+                'pacientes',
+                'mes',
+                'dia']}
+             ])
+    #Step 2: Create the Chart object
+    cht = Chart(
+            datasource = weatherdata,
+            series_options =
+              [{'options':{
+                  'type': 'line',
+                  'stacking': False},
+                'terms':{
+                  'pacientes': [
+                    'mes',
+                    'dia']
+                  }}],
+            chart_options =
+              {'title': {
+                   'text': 'Weather Data of Boston and Houston'},
+               'xAxis': {
+                    'title': {
+                       'text': 'Month number'}}})
 
-    @method_decorator(permission_resource_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super(ConsultaListView, self).dispatch(request, *args, **kwargs)
-
-    def get_paginate_by(self, queryset):
-        if 'all' in self.request.GET:
-            return None
-        return ListView.get_paginate_by(self, queryset)
-
-    def get_queryset(self):
-        self.o = empty(self.request, 'o', '-id')
-        self.f = empty(self.request, 'f', 'fecha')
-        self.q = empty(self.request, 'q', '')
-        column_contains = u'%s__%s' % (self.f, 'contains')
-
-        return self.model.objects.filter(**{column_contains: self.q}).order_by(self.o)
-
-
-    def get_context_data(self, **kwargs):
-        context = super(ConsultaListView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'consulta'
-        context['title'] = _('Select %s to change') % capfirst(_('Consulta'))
-
-        context['o'] = self.o
-        context['f'] = self.f
-        context['q'] = self.q.replace('/', '-')
-
-        return context
-
-
-class ConsultaCreateView(CreateView):
-    model = Consulta
-    form_class = ConsultaForm
-    template_name = 'consulta/dconsulta_add.html'
-    success_url = reverse_lazy('atencion:consulta_list')
-
-    @method_decorator(permission_resource_required )
-    def dispatch(self, request, *args, **kwargs):
-        return super(ConsultaCreateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(DiagnosticoCreateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'consulta'
-        context['title'] = ('Agregar %s') % ('Diagnostico')
-        return context
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        
-        self.object.usuario = self.request.user
-
-        
-        msg = _(' %(name)s "%(obj)s" fue creado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
-        return super(DiagnosticoCreateView, self).form_valid(form)
-
-
-
-class DiagnosticoUpdateView(UpdateView):
-    model = Diagnostico
-    template_name = 'diagnostico/diagnostico_add.html'
-    form_class = DiagnosticoForm
-    success_url = reverse_lazy('atencion:diagnostico_list')
-
-    @method_decorator(permission_resource_required )
-    def dispatch(self, request, *args, **kwargs):
-        return super(DiagnosticoUpdateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(DiagnosticoUpdateView, self).get_context_data(**kwargs)
-        context['opts'] = self.model._meta
-        context['cmi'] = 'diagnostico'
-        context['title'] = _('Add %s') % _('Diagnostico')
-        return context
-
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-
-        self.object.usuario = self.request.user
-
-
-        msg = _('%(name)s "%(obj)s" fue cambiado satisfactoriamente.') % {
-            'name': capfirst(force_text(self.model._meta.verbose_name)),
-            'obj': force_text(self.object)
-        }
-        if self.object.id:
-            messages.success(self.request, msg)
-            log.warning(msg, extra=log_params(self.request))
-        return super(DiagnosticoUpdateView, self).form_valid(form)
-
-
-class DiagnosticoDeleteView(DeleteView):
-    model = Diagnostico
-    success_url = reverse_lazy('atencion:pdiagnostico_list')
-
-
-    @method_decorator(permission_resource_required)
-    def dispatch(self, request, *args, **kwargs):
-        
-        try:
-            self.get_object()
-        except Exception as e:
-            messages.error(self.request, e)
-            log.warning(force_text(e), extra=log_params(self.request))
-            return HttpResponseRedirect(self.success_url)
-        return super(DiagnosticoDeleteView, self).dispatch(request, *args, **kwargs)
-
-
-    def delete(self, request, *args, **kwargs):
-        try:
-            d = self.get_object()
-            deps, msg = get_dep_objects(d)
-            print(deps)
-            if deps:
-                messages.warning(self.request,  ('No se puede Eliminar %(name)s') % {
-                    "name": capfirst(force_text(self.model._meta.verbose_name))
-                    + ' "' + force_text(d) + '"'
-                })
-                raise Exception(msg)
-
-
-            d.delete()
-            msg = _(' %(name)s "%(obj)s" fue eliminado satisfactoriamente.') % {
-                'name': capfirst(force_text(self.model._meta.verbose_name)),
-                'obj': force_text(d)
-            }
-            if not d.id:
-                messages.success(self.request, msg)
-                log.warning(msg, extra=log_params(self.request))
-        except Exception as e:
-            messages.error(request, e)
-            log.warning(force_text(e), extra=log_params(self.request))
-        return HttpResponseRedirect(self.success_url)
-
-    def get(self, request, *args, **kwargs):
-        return self.delete(request, *args, **kwargs)
-"""
+    #Step 3: Send the chart object to the template.
+    return render (request,'reportes/atencion.html'{atenciones: cht})
