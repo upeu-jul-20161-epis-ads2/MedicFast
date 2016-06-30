@@ -1,0 +1,8 @@
+{% extends "mod_hotel/base_mod_backend.html" %} {% block content %}
+<div id='container'> Chart will be rendered here </div>
+{% endblock %}
+{% block customjs %}
+    {% load chartit %}
+    {{ atenciones|load_charts:"container" }}
+{% endblock customjs %}
+

@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from apps.atencion.models import AntecedenteMedico
-from .models import Distrito, Provincia, Departamento, FuncionesVitales, Diagnostico, Producto, UnidadMedida
+from .models import Distrito, Provincia, Departamento, FuncionesVitales, Diagnostico, Producto, UnidadMedida, ReporteAtencion
 from .models import DetalleReceta, Tratamiento, Consulta, Laboratorio, Historia, ConsultaEmergencia, Persona, Periodo,DiagnosticoConsulta
 # Register your models here.
 
@@ -22,3 +22,4 @@ admin.site.register(Persona)
 admin.site.register(Periodo)
 admin.site.register(DiagnosticoConsulta)
 admin.site.register(AntecedenteMedico)
+admin.site.register(ReporteAtencion)

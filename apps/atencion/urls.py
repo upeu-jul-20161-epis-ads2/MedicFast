@@ -1,6 +1,6 @@
 
 from django.conf.urls import url
-
+from django.conf.urls import patterns, include, url
 from apps.atencion.views import DiagnosticoBuscar
 from .views import PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView
 from .views import ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView
@@ -11,7 +11,7 @@ from .views import DiagnosticoListView, DiagnosticoDeleteView, DiagnosticoUpdate
 from .views import UnidadMedidaCreateView, UnidadMedidaListView, UnidadMedidaUpdateView, UnidadMedidaDeleteView
 from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
     ProvinciaAjax, DistritoAjax, HitoriaDetailView, AntecedenteCreateView, DiagnosticoConsultaCreate, ProductoBuscarAjaxView)
-from .views import HitoriaBusquedaTemplateView, HitoriaCreateView
+from .views import HitoriaBusquedaTemplateView, HitoriaCreateView, ReporteAtencion
 
 urlpatterns = [
 
@@ -68,6 +68,9 @@ urlpatterns = [
 
     # Antecedentes
     url(r'^antecedente/crear/$', AntecedenteCreateView.as_view(), name="antecedente_add"),
+
+    #Reportes
+    url(r'^reporte/atencion/$', ReporteAtencion, name="reporte_atencion"),
 
 
 

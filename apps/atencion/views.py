@@ -44,9 +44,10 @@ from .forms.UnidadMedidaForm import UnidadMedidaForm
 from .forms.HistoriaForm import HistoriaForm
 from .forms.DiagnosticoForm import DiagnosticoForm
 from .forms.AntecendeMedicoForm import AntecedenteMedicoForm
+from chartit import DataPool, Chart
 from .models import (Persona, Producto, Laboratorio, FuncionesVitales,
                     Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito,ReporteAtencion)
-from chartit import Datapool, Chart
+
 
 
 # class Persona==============================================================================
@@ -1413,4 +1414,4 @@ def ReporteAtencion(request):
                        'text': 'Month number'}}})
 
     #Step 3: Send the chart object to the template.
-    return render (request,'reportes/atencion.html'{atenciones: cht})
+    return render(request, 'reportes/atencion.html', {'atenciones': cht})

@@ -281,7 +281,7 @@ class ConsultaEmergencia(models.Model):
         return self.historia.nombres
 
 class ReporteAtencion(models.Model):
-    pacientes=models.ForeignKey(Consulta)
+    pacientes=models.IntegerField()
     mes=models.IntegerField()
     dia=models.IntegerField()
     
