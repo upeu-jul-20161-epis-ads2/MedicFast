@@ -13,7 +13,7 @@ class PersonaForm(forms.ModelForm):
     """Class PersonaForm."""
     class Meta:
         model = Persona
-        exclude = ('edad','distrito')
+        exclude = ('edad',)
         widgets = {
             'nombres': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese nombres'}),
             'apellido_paterno': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Apellido Paterno'}),
