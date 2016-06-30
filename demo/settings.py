@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     # mis tools
     'apps.utils',
     'django_bootstrap_typeahead',
+    'chartit',
 
     # mis apps
     'apps.params',

@@ -5,7 +5,8 @@ media
 
 /nbproject/private/
 migrations
-
+db.sqlite3
+temp
 *~
 ~*
 .ropeproject
