@@ -11,7 +11,7 @@
 
 
 
-     <div class="consulta_anterior col-md-12 page-header " style="background:rgba(8, 8, 8, 0.03);border-radius:5px;">
+<div class="consulta_anterior col-md-12 page-header " style="background:rgba(8, 8, 8, 0.03);border-radius:5px;">
         {% if consulta %}
         <h3 class="page-header " style="text-align:center;">Ultima Consulta - {{ consulta.fecha }}</h3>
         <div class="col-md-6">
@@ -32,13 +32,13 @@
         {% else %}
         <h3>No hay consultas anteriores</h3> 
         {% endif %}
-    </div>
+</div>
 
     
 
 {% if antecedente %}
-
-<div class="col-md-6 " style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px;">
+<div class="col-md-12">
+    <div class="col-md-6 " style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px;">
     <fieldset>
         <legend>Antecedentes Medicos</legend>
         <p><label for="">Antecedentes mórbidos: </label>{{ antecedente.antecedente_morbidos }}</p>
@@ -53,30 +53,26 @@
     </fieldset>
 
     {% else %}
-
-
-                <fieldset>
-                    <legend>Formulario antecedentes medicos</legend>
-                <form action="{% url 'atencion:antecedente_add' %}" method="post">
-                    {% csrf_token %}
-                    {{ form_antecedente }}
-                    <input type="hidden" name="historia" value="{{ historia.id }}">
-
-                        <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
-                </form>
-                </fieldset>
-
-
-{% endif %}
-</div>
-
-
-
-
     <div class="col-md-6">
         <fieldset>
-        <div class="fvitales_prceso" style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px; ">
-            <legend>Funciones Vitales</legend> {% for funciones in proceso.funcionesvitales_set.all %}
+            <legend>Formulario antecedentes medicos</legend>
+        </fieldset>
+        <form action="{% url 'atencion:antecedente_add' %}" method="post">
+            {% csrf_token %}
+            {{ form_antecedente }}
+        <input type="hidden" name="historia" value="{{ historia.id }}">
+
+        <button class="btn btn-primary"><i class="fa fa-upload">Cargar Antecedentes</i></button>
+        </form>
+    </div>
+    
+    {% endif %}
+
+    </div>
+    <div class="col-md-6" >
+        
+            <div  style="background:rgba(8, 8, 8, 0.03);border-radius:5px;box-shadow:rgba(153, 153, 153, 0.62) 0 0px 16px; ">
+            <fieldset><legend>Funciones Vitales</legend> </fieldset>{% for funciones in proceso.funcionesvitales_set.all %}
             <p>
                 <label for="">Frecuencia Cardiaca: </label><strong>{{ funciones.frecuencia_cardiaca }}</strong></p>
             <p>
@@ -91,17 +87,19 @@
                 <label for="">Diagnostico Mc: </label><strong>{{ funciones.diagnostico_mc }}</strong></p>
             {% endfor %}
         </div>
-        <div class="consulta_actual  ">
-                {% if proceso %} {% else %}
-                <div class="nueva-consulta">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        {% if proceso %} 
+                {% else %}
+        <div>
+            <div class="nueva-consulta">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                         Tomar Funciones Vitales
-                    </button>
-                </div>
-                {% endif %}
+                </button>
             </div>
-        </fieldset>
+                {% endif %}
+        </div>
+        
     </div>
+</div>
 
 <!--
     <div class="consulta_actual page-header ">
@@ -131,15 +129,17 @@
         {% endif %}
 
     </div>-->
+
 <div class="col-md-12">
-    <div class="form-consulta">
+    
 
 
         {% if proceso %}
     
         <div class="col-md-6"> 
             <fieldset>
-            <legend>Consulta</legend>
+                <legend>Consulta</legend>
+            </fieldset>
 
 
         {{ form_consulta }}     
@@ -172,9 +172,10 @@
         </div>
 
 
-            <div class="col-md-6">
+        <div class="col-md-6">
                 <fieldset>
                     <legend>Tratamiento</legend>
+                    </fieldset>
                 <div class="">
                     
                         {{ form_tratamiento }}
@@ -199,9 +200,9 @@
                     </tbody>
                 </table>
                 </div>
-                    <div class="col-md-6">
-                        <fieldset>
-                            <legend>Receta</legend>
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend>Receta</legend>
                             <input type="text" class="form-control" placeholder="Bucar Medicamento" id="medicamento_id" name="medicamento">
                             <button class="btn btn-actions" id="buscar-medicamento"><i class="fa fa-search"></i> Buscar</button>
                         <div id="medicamento">
@@ -215,7 +216,7 @@
             </div>
                         </fieldset>
                     </div>
-                </fieldset>
+                
             </div>
             
     
@@ -229,11 +230,11 @@
                 <button  class="btn btn-save btn btn-warning" id="rentar"><span class="glyphicon glyphicon-home"></span>&nbsp;Imprimir receta</button>
         </form>
         
-        </fieldset>
+        
         {% endif %}
 
 
-    </div>
+  
 </div>
 
 
