@@ -11291,3 +11291,831 @@ AttributeError: 'function' object has no attribute 'objects'
 [2016-06-30 16:30:41] DEBUG [django.db.backends:89] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'reporteatencion' AND "django_content_type"."app_label" = 'atencion'); args=('reporteatencion', 'atencion')
 [2016-06-30 16:30:41] DEBUG [django.db.backends:89] (0.000) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 23, 24, 25, 26, 27, 28, 29, 30, 31) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 23, 24, 25, 26, 27, 28, 29, 30, 31)
 [2016-06-30 16:30:41] DEBUG [django.db.backends:89] (0.000) SELECT "django_content_type"."id", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'atencion'; args=('atencion',)
+[2016-06-30 16:32:18] DEBUG [django.db.backends:89] (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:32:18.941117'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:32:18.941117')
+[2016-06-30 16:32:18] ERROR [django.request:284] Internal Server Error: /atencion/reporte/atencion/
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/shiane/proyectosdjango/hotel/MedicFast/apps/atencion/views.py", line 1391, in ReporteAtencion
+    'source': ReporteAtencion.objects.all()},
+AttributeError: 'function' object has no attribute 'objects'
+[2016-06-30 16:32:20] DEBUG [django.db.backends:89] (0.005) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:32:20.475095'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:32:20.475095')
+[2016-06-30 16:32:20] ERROR [django.request:284] Internal Server Error: /atencion/reporte/atencion/
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/shiane/proyectosdjango/hotel/MedicFast/apps/atencion/views.py", line 1391, in ReporteAtencion
+    'source': ReporteAtencion.objects.all()},
+AttributeError: 'function' object has no attribute 'objects'
+[2016-06-30 16:32:20] DEBUG [django.db.backends:89] (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:32:20.969889'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:32:20.969889')
+[2016-06-30 16:32:20] ERROR [django.request:284] Internal Server Error: /atencion/reporte/atencion/
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/shiane/proyectosdjango/hotel/MedicFast/apps/atencion/views.py", line 1391, in ReporteAtencion
+    'source': ReporteAtencion.objects.all()},
+AttributeError: 'function' object has no attribute 'objects'
+[2016-06-30 16:32:21] DEBUG [django.db.backends:89] (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:32:21.486140'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:32:21.486140')
+[2016-06-30 16:32:21] ERROR [django.request:284] Internal Server Error: /atencion/reporte/atencion/
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/shiane/proyectosdjango/hotel/MedicFast/apps/atencion/views.py", line 1391, in ReporteAtencion
+    'source': ReporteAtencion.objects.all()},
+AttributeError: 'function' object has no attribute 'objects'
+[2016-06-30 16:32:26] DEBUG [django.db.backends:89] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:32:26.432901'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:32:26.432901')
+[2016-06-30 16:32:26] ERROR [django.request:284] Internal Server Error: /atencion/reporte/atencion/
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/shiane/proyectosdjango/hotel/MedicFast/apps/atencion/views.py", line 1391, in ReporteAtencion
+    'source': ReporteAtencion.objects.all()},
+AttributeError: 'function' object has no attribute 'objects'
+[2016-06-30 16:37:50] DEBUG [django.db.backends:89] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-06-30 16:37:50] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-06-30 16:38:11] DEBUG [django.db.backends:89] (0.002) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None
+[2016-06-30 16:38:11] DEBUG [django.db.backends:89] (0.000) SELECT "django_migrations"."app", "django_migrations"."name" FROM "django_migrations"; args=()
+[2016-06-30 16:38:50] DEBUG [django.db.backends:89] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:38:50.269168'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:38:50.269168')
+[2016-06-30 16:38:50] DEBUG [django.db.backends:89] (0.000) SELECT "atencion_reporteatencion"."dia", "atencion_reporteatencion"."mes", "atencion_reporteatencion"."pacientes" FROM "atencion_reporteatencion"; args=()
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'title' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [title] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: title. Contents: [<TextNode: ' '>, <Variable Node: title>, <TextNode: ' | '>, <Variable Node: site_title|default:_('Backend site admin')>, <TextNode: ' '>]>}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'site_title' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [site_title] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: title. Contents: [<TextNode: ' '>, <Variable Node: title>, <TextNode: ' | '>, <Variable Node: site_title|default:_('Backend site admin')>, <TextNode: ' '>]>}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393aa71898>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a232488>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1ba908>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393aca5378>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1fea58>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1c8eb8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:38:50] DEBUG [django.db.backends:89] (0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "auth_user"."last_headquar_id", "auth_user"."last_module_id", "auth_user"."person_id" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+[2016-06-30 16:38:50] DEBUG [django.db.backends:89] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:38:50.453436'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:38:50.453436')
+[2016-06-30 16:39:47] DEBUG [django.db.backends:89] (0.004) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:39:47.973838'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:39:47.973838')
+[2016-06-30 16:39:47] DEBUG [django.db.backends:89] (0.000) SELECT "atencion_reporteatencion"."dia", "atencion_reporteatencion"."mes", "atencion_reporteatencion"."pacientes" FROM "atencion_reporteatencion"; args=()
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'title' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [title] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: title. Contents: [<TextNode: ' '>, <Variable Node: title>, <TextNode: ' | '>, <Variable Node: site_title|default:_('Backend site admin')>, <TextNode: ' '>]>}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'site_title' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [site_title] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: title. Contents: [<TextNode: ' '>, <Variable Node: title>, <TextNode: ' | '>, <Variable Node: site_title|default:_('Backend site admin')>, <TextNode: ' '>]>}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a191240>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393bfa0f28>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1d7f28>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a1c2598>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1bab38>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a1842e8>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:39:48] DEBUG [django.db.backends:89] (0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "auth_user"."last_headquar_id", "auth_user"."last_module_id", "auth_user"."person_id" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+[2016-06-30 16:39:48] DEBUG [django.db.backends:89] (0.004) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:39:48.107996'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:39:48.107996')
+[2016-06-30 16:42:09] DEBUG [django.db.backends:89] (0.004) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:42:09.253559'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:42:09.253559')
+[2016-06-30 16:42:09] DEBUG [django.db.backends:89] (0.000) SELECT "atencion_reporteatencion"."dia", "atencion_reporteatencion"."mes", "atencion_reporteatencion"."pacientes" FROM "atencion_reporteatencion"; args=()
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'title' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [title] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: title. Contents: [<TextNode: ' '>, <Variable Node: title>, <TextNode: ' | '>, <Variable Node: site_title|default:_('Backend site admin')>, <TextNode: ' '>]>}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'site_title' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'site_title'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [site_title] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: title. Contents: [<TextNode: ' '>, <Variable Node: title>, <TextNode: ' | '>, <Variable Node: site_title|default:_('Backend site admin')>, <TextNode: ' '>]>}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.template:927] Exception while resolving variable 'cmi' in template 'reportes/atencion.html'.
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 883, in _resolve_lookup
+    current = current[bit]
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/context.py", line 77, in __getitem__
+    raise KeyError(key)
+KeyError: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 889, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 898, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'cmi'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/shiane/.virtualenvs/hotel/lib/python3.5/site-packages/django/template/base.py", line 905, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [cmi] in "[{'False': False, 'None': None, 'True': True}, {'messages': <django.contrib.messages.storage.fallback.FallbackStorage object at 0x7f393a1c8ef0>, 'LANGUAGE_BIDI': False, 'DEFAULT_MESSAGE_LEVELS': {'WARNING': 30, 'SUCCESS': 25, 'ERROR': 40, 'DEBUG': 10, 'INFO': 20}, 'STATIC_URL': '/static/', 'csrf_token': <SimpleLazyObject: <function csrf.<locals>._get_val at 0x7f393a15cd08>>, 'LANGUAGE_CODE': 'en', 'perms': <django.contrib.auth.context_processors.PermWrapper object at 0x7f393a1c8898>, 'TIME_ZONE': 'CST', 'request': <WSGIRequest: GET '/atencion/reporte/atencion/'>, 'LANGUAGES': (('ja', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b0f0>), ('zh-tw', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b128>), ('fr', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b160>), ('de', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd5b198>), ('en', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4e0>), ('es', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a470>), ('es-ar', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a4a8>), ('es-pe', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a518>), ('pt', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a550>), ('pt-br', <django.utils.functional.lazy.<locals>.__proxy__ object at 0x7f393dd6a5c0>)), 'user': <SimpleLazyObject: <function AuthenticationMiddleware.process_request.<locals>.<lambda> at 0x7f393a15ce18>>, 'MEDIA_URL': '/media/'}, {}, {'atenciones': <chartit.charts.Chart object at 0x7f393a1c8e10>}, {'block': <Block Node: header. Contents: [<TextNode: ' '>, <django.template.loader_tags.IncludeNode object at 0x7f393a184128>, <TextNode: ' '>]>}, {}]"
+[2016-06-30 16:42:09] DEBUG [django.db.backends:89] (0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "auth_user"."last_headquar_id", "auth_user"."last_module_id", "auth_user"."person_id" FROM "auth_user" WHERE "auth_user"."id" = 1; args=(1,)
+[2016-06-30 16:42:09] DEBUG [django.db.backends:89] (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'm9j8j81xhtaivn5mu6mt61bh2fdcg8zx' AND "django_session"."expire_date" > '2016-06-30 21:42:09.405253'); args=('m9j8j81xhtaivn5mu6mt61bh2fdcg8zx', '2016-06-30 21:42:09.405253')

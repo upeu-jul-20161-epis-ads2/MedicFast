@@ -11,7 +11,7 @@ from .views import DiagnosticoListView, DiagnosticoDeleteView, DiagnosticoUpdate
 from .views import UnidadMedidaCreateView, UnidadMedidaListView, UnidadMedidaUpdateView, UnidadMedidaDeleteView
 from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
     ProvinciaAjax, DistritoAjax, HitoriaDetailView, AntecedenteCreateView, DiagnosticoConsultaCreate, ProductoBuscarAjaxView)
-from .views import HitoriaBusquedaTemplateView, HitoriaCreateView, ReporteAtencion
+from .views import HitoriaBusquedaTemplateView, HitoriaCreateView, reporte_atencion
 
 urlpatterns = [
 
@@ -70,7 +70,7 @@ urlpatterns = [
     url(r'^antecedente/crear/$', AntecedenteCreateView.as_view(), name="antecedente_add"),
 
     #Reportes
-    url(r'^reporte/atencion/$', ReporteAtencion, name="reporte_atencion"),
+    url(r'^reporte/atencion/$', reporte_atencion, name="reporte_atencion"),
 
 
 

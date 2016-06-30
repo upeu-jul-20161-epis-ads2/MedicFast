@@ -1382,7 +1382,7 @@ class UnidadMedidaDeleteView(DeleteView):
         return self.delete(request, *args, **kwargs)
 
 # class reportes==============================================================================
-def ReporteAtencion(request):
+def reporte_atencion(request):
     #Step 1: Create a DataPool with the data we want to retrieve.
     weatherdata = \
         DataPool(
