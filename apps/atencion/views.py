@@ -1383,48 +1383,42 @@ class UnidadMedidaDeleteView(DeleteView):
 
 # class reportes==============================================================================
 
-from django.http import JsonResponse
-import json
-import random
 
 
-def vista(request):
 
-    return render(request, 'reportes/atencion.html')
 
-def consultas_reporte(request):
-    consulta = Consulta.objects.extra({'atencion':"date(fecha)"}).values('atencion').annotate(count=Count('id'))
-    
-    return HttpResponse(
-        json.dumps(consulta),
-        content_type = 'application/javascript; charset=utf8'
-    )
-
-from highcharts.views import HighChartsLineView
+from highcharts.views import HighChartsLineView, HighChartsBarView
 
 class BarView(HighChartsLineView):
-    print("ssssss")
-    consulta = Consulta.objects.extra({'atencion':"date(fecha)"}).values('atencion').annotate(count=Count('id'))
-    a = 1
-    count = []
-    names = []
-    while a <= len(consulta):
-        count.append(a)
-        names.append(consulta[a-1]['atencion'])
-        a = a + 1
+    
 
-    print(names)
-    categories = names
+    categories = [1,2,3]
 
 
     @property
     def series(self):
+        consultas = Consulta.objects.extra({'atencion':"date(fecha)"}).values('atencion').annotate(count=Count('id'))[:3]
+
         result = []
-        for name in self.names:
-            data = []
-            i = 0
-            while i < len(self.consulta):
-                data.append(self.consulta[i]['count'])
+        data = []
+        i = 0
+        while i<3:
+            data.append(consultas[i]['count'])
+            result.append({'name':consultas[i]['atencion'] , "data":data })
+                
+            i = i+1
+            
+            """
+            while i < len(consultas):
+                data.append(consultas[i]['count'])
+                names.append(consultas[i]['atencion'])
+                result.append({'name':names , "data": data})
                 i = i + 1
-            result.append({'name': 'atenciones', "data": data})
+            """
         return result
+
+def vista(request):
+
+
+    return render(request, 'reportes/atencion.html')
+

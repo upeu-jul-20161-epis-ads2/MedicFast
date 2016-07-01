@@ -11,7 +11,7 @@ from .views import DiagnosticoListView, DiagnosticoDeleteView, DiagnosticoUpdate
 from .views import UnidadMedidaCreateView, UnidadMedidaListView, UnidadMedidaUpdateView, UnidadMedidaDeleteView
 from .views import (PersonaListView, PersonaCreateView, PersonaUpdateView, PersonaDeleteView, ProductoListView, ProductoCreateView, ProductoDeleteView, ProductoUpdateView,
     ProvinciaAjax, DistritoAjax, HitoriaDetailView, AntecedenteCreateView, DiagnosticoConsultaCreate, ProductoBuscarAjaxView)
-from .views import HitoriaBusquedaTemplateView, HitoriaCreateView, vista, consultas_reporte, BarView
+from .views import HitoriaBusquedaTemplateView, HitoriaCreateView, vista, BarView
 
 urlpatterns = [
 
