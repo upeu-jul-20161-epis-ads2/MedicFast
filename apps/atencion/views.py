@@ -44,7 +44,7 @@ from .forms.UnidadMedidaForm import UnidadMedidaForm
 from .forms.HistoriaForm import HistoriaForm
 from .forms.DiagnosticoForm import DiagnosticoForm
 from .forms.AntecendeMedicoForm import AntecedenteMedicoForm
-from chartit import DataPool, Chart
+from chartit import PivotDataPool, PivotChart
 from .models import (Persona, Producto, Laboratorio, FuncionesVitales,
                     Periodo, Diagnostico, UnidadMedida, Historia, Departamento, Provincia, Distrito,ReporteAtencion)
 
@@ -833,6 +833,7 @@ class FuncionesVitalesCreateView(CreateView):
         consulta.historia = historia
         consulta.save()
 
+
         self.object.consulta = consulta
 
 
@@ -1383,35 +1384,35 @@ class UnidadMedidaDeleteView(DeleteView):
 
 # class reportes==============================================================================
 def reporte_atencion(request):
-    #Step 1: Create a DataPool with the data we want to retrieve.
-    weatherdata = \
-        DataPool(
-           series=
+    #Step 1: Create a PivotDataPool with the data we want to retrieve.
+    rainpivotdata = \
+        PivotDataPool(
+           series =
             [{'options': {
-               'source': ReporteAtencion.objects.all()},
-              'terms': [
-                'pacientes',
-                'mes',
-                'dia']}
+               'source': ReporteAtencion.objects.all(),
+               'categories': ['pacientes']},
+              'terms': {
+                'meses': Avg('mes'),
+                'dias': ['dia'],
+                }}
              ])
-    #Step 2: Create the Chart object
-    cht = Chart(
-            datasource = weatherdata,
+
+    #Step 2: Create the PivotChart object
+    rainpivcht = \
+        PivotChart(
+            datasource = rainpivotdata,
             series_options =
               [{'options':{
-                  'type': 'line',
-                  'stacking': False},
-                'terms':{
-                  'pacientes': [
-                    'mes',
-                    'dia']
-                  }}],
+                  'type': 'column',
+                  'stacking': True},
+                'terms':[
+                  'meses']}],
             chart_options =
               {'title': {
-                   'text': 'Weather Data of Boston and Houston'},
+                   'text': 'Rain by Month in top 3 cities'},
                'xAxis': {
                     'title': {
-                       'text': 'Month number'}}})
+                       'text': 'Month'}}})
 
-    #Step 3: Send the chart object to the template.
-    return render(request, 'reportes/atencion.html', {'atenciones': cht})
+    #Step 3: Send the PivotChart object to the template.
+    return render_to_response({'atenciones': rainpivcht})

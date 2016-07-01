@@ -135,6 +135,8 @@ class Consulta(models.Model):
         verbose_name = "Consulta"
         verbose_name_plural = "Consultas"
 
+
+
     def __str__(self):
         return "%s" % self.historia.persona.nombres
 
@@ -284,4 +286,5 @@ class ReporteAtencion(models.Model):
     pacientes=models.ForeignKey(Consulta)
     mes=models.IntegerField()
     dia=models.IntegerField()
+
     
