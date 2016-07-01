@@ -1402,7 +1402,7 @@ class BarView(HighChartsLineView):
         result = []
         data = []
         i = 0
-        while i<3:
+        while i<len(consultas):
             data.append(consultas[i]['count'])
             result.append({'name':consultas[i]['atencion'] , "data":data })
                 
