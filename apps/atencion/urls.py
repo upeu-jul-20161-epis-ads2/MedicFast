@@ -73,7 +73,7 @@ urlpatterns = [
     url(r'^reporte/atencion/$', vista, name="reporte_atencion"),
     url(r'^barbash/$', BarView.as_view(), name="bar"),
 
-    url(r'^consulta_json/$', consultas_reporte, name='consulta_json')
+   
 
 
 
