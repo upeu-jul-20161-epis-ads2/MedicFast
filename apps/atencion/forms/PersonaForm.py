@@ -21,6 +21,7 @@ class PersonaForm(forms.ModelForm):
             'dni': forms.NumberInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese dni'}),
             'codigo': forms.NumberInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Código'}),
             'fecha_nacimiento': forms.DateInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Fecha de Nacimiento'}),
+            'edad': forms.NumberInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese edad'}),
             'estado_civil': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
             'sexo': forms.Select(attrs={'class': 'form-control', 'required':'true'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control', 'required':'true', 'placeholder': 'Ingrese Telefono/Celular'}),
