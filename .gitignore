@@ -2,10 +2,9 @@
 __pycache__
 .idea
 media
-
+db.sqlite3
 /nbproject/private/
 migrations
-db.sqlite3
 temp
 *~
 ~*
