@@ -1,3 +1,0 @@
-[2016-06-24 08:16:06] [WARNING] [apps.atencion.views:572] [/atencion/producto/editar/1] [127.0.0.1] [ad] Producto "Sulfato Ferroso" fue cambiado satisfactoriamente.
-[2016-06-24 08:21:44] [WARNING] [apps.atencion.views:1332] [/atencion/unidadmedida/editar/1] [127.0.0.1] [ad] Unidad de Medida "mililitro" fue cambiado satisfactoriamente.
-[2016-06-24 09:33:47] [WARNING] [apps.atencion.views:1179] [/atencion/diagnostico/editar/1] [127.0.0.1] [ad] Diagnostico "Enfermedades infecciosas Intestinales" fue cambiado satisfactoriamente.
